@@ -7,13 +7,16 @@ Instructor: King
 Semester: Spring
 
 ## Team InformationList team members
-Taylor LaMantia (Junior) - Computer Engineering, Management
-Eva Frankovic (Junior) - Computer Science
-Ashley Albert (Sophomore) - Computer Science
+Taylor LaMantia, Developer (Junior) - Computer Engineering, Management
+Eva Frankovic, Scrum Master (Junior) - Computer Science
+Ashley Albert, Product Owner (Sophomore) - Computer Science
 
 ## Project Information
-*Write a few sentences about your project. This can be done later, as you 
-may not quite know all the details yet.*
+*A couple of paragraphs summarizing what this project is.*
+*Explanation of your package structure*
+*List of all 3rd party libraries you used that are not part of the standard Java API (Yes, you should include
+JavaFX here). Include version numbers of all libraries and URLs to the main page for the library.*
+*Video URL*
 Black Jack game
 
 ## How to run it
