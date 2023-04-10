@@ -19,4 +19,5 @@
 package org.team04.blackjackmvc;
 
 public class Dealer {
+
 }
