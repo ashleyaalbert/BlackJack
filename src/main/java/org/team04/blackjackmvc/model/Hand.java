@@ -17,7 +17,7 @@
  *
  * ****************************************
  */
-package org.team04.blackjackmvc;
+package org.team04.blackjackmvc.model;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

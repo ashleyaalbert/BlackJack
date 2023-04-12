@@ -6,18 +6,21 @@
  * Name: Taylor LaMantia
  * Section: 9am
  * Date: 4/8/2023
- * Time: 11:36 AM
+ * Time: 11:35 AM
  *
  * Project: csci205_final_project
  * Package: org.team04.blackjackmvc
- * Class: Dealer
+ * Class: Player
  *
- * Description:
+ * Description: Player interface that includes a method
+ * for the next move to be played by the player, which will
+ * differ in rules depending on the type of player
  *
  * ****************************************
  */
-package org.team04.blackjackmvc;
+package org.team04.blackjackmvc.model;
 
-public class Dealer {
-
+public interface Player {
+    // Player plays the next move
+    void playNextMove();
 }

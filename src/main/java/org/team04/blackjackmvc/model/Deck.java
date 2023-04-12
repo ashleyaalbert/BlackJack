@@ -19,20 +19,11 @@
  * **********************************************
  */
 
-package org.team04.blackjackmvc;
+package org.team04.blackjackmvc.model;
 
 import java.util.Collections;
 import java.util.LinkedList;
-import java.lang.Exception;
 
-/**
- * Checked exception representing the issue of the deck being empty
- */
-class EmptyDeckException extends Exception {
-    public EmptyDeckException(String message) {
-        super(message);
-    }
-}
 public class Deck {
 
     /**

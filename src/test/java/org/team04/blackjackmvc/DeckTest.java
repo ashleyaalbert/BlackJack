@@ -15,12 +15,13 @@
 
 package org.team04.blackjackmvc;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.team04.blackjackmvc.model.Card;
+import org.team04.blackjackmvc.model.Deck;
+import org.team04.blackjackmvc.model.EmptyDeckException;
 
-import java.sql.SQLOutput;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;

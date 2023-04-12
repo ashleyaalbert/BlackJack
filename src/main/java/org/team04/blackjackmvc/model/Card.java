@@ -13,21 +13,21 @@
  * in a deck of cards with a suit, rank, and value property
  *
  * *****************************************/
-package org.team04.blackjackmvc;
+package org.team04.blackjackmvc.model;
 
 public class Card {
 
     /**
      * The four suits of playing cards
      */
-    enum Suit {
+    public enum Suit {
         HEARTS, DIAMONDS, CLUBS, SPADES
     };
 
     /**
      * The 13 card rank options
      */
-    enum Rank {
+    public enum Rank {
         TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8),
         NINE(9), TEN(10), JACK(10), QUEEN(10), KING(10), ACE(1);
 

@@ -16,7 +16,7 @@
  *
  * ****************************************
  */
-package org.team04.blackjackmvc;
+package org.team04.blackjackmvc.model;
 
 import java.util.Map;
 import java.util.TreeMap;

@@ -16,7 +16,7 @@
  *
  * ****************************************
  */
-package org.team04.blackjackmvc;
+package org.team04.blackjackmvc.model;
 
 public class Game {
 
