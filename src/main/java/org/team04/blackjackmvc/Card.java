@@ -44,9 +44,21 @@ public class Card {
     /**Rank of card*/
     private final Rank rank;
 
+    /**
+     * Visibility of the card to the user
+     */
+    private Boolean visibility;
+
+    /**
+     * Create a new card
+     * @param suit
+     * @param rank
+     */
+
     public Card(Suit suit, Rank rank) {
         this.suit = suit;
         this.rank = rank;
+        this.visibility = false;
     }
 
     /**
@@ -62,6 +74,13 @@ public class Card {
 
     public int value() {
         return rank.value;
+    }
+    public Boolean getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(Boolean visibility) {
+        this.visibility = visibility;
     }
 
     @Override

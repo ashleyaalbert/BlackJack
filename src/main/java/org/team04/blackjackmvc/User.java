@@ -18,5 +18,33 @@
  */
 package org.team04.blackjackmvc;
 
-public class User {
+import java.util.Map;
+import java.util.TreeMap;
+
+class InsufficientFundsException extends Exception {
+    public InsufficientFundsException(String message) {
+        super(message);
+    }
+}
+
+public class User implements Player{
+    /**
+     * Name of the player
+     */
+    private String name;
+    /**
+     * Maps the bet placed by the user to the hand of the bet
+     */
+    private Map<Hand, Integer> handBets = new TreeMap<>();
+    /**
+     * A property that represents the player's money
+     */
+    private double money;
+
+
+
+    @Override
+    public void playNextMove() {
+
+    }
 }

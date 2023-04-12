@@ -32,6 +32,14 @@ public class Hand {
      * The cards currently in the hand
      */
     private LinkedList<Card> cardList;
+    /**
+     * Number of aces in the hand
+     */
+    private int aces;
+    /**
+     * Number of cards in the current hand
+     */
+    private int size;
 
 
     /**
@@ -39,6 +47,8 @@ public class Hand {
      */
     public Hand() {
         this.cardList = new LinkedList<Card>();
+        this.aces = 0;
+        this.size = 0;
     }
 
     /**
@@ -46,6 +56,10 @@ public class Hand {
      */
     public void add(Card card) {
         this.cardList.add(card);
+        this.size +=1;
+        if (card.rank().equals("ACE")) {
+            this.aces +=1;
+        }
     }
 
     /**
@@ -99,6 +113,8 @@ public class Hand {
     public List<Card> getCardList() {
         return this.cardList;
     }
+
+
 
 
 
