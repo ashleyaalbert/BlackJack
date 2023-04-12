@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane fx:id="tableBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="blackjackTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="26.0" prefHeight="84.0" prefWidth="375.0" text="BLACKJACK" textFill="#f5f5f5">
@@ -30,18 +31,19 @@
          </image></ImageView>
       <ImageView id="BlackChip" fx:id="blackchipImageView" fitHeight="105.0" fitWidth="113.0" layoutX="14.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Downloads/Black%20Chip-1.png" />
+            <Image url="@../../../../../../Downloads/blackchip.png" />
          </image>
       </ImageView>
       <ImageView id="RedChip" fx:id="redchipImageView" fitHeight="105.0" fitWidth="113.0" layoutX="14.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Downloads/Red%20Chip-1.png" />
+            <Image url="@../../../../../../Downloads/redchip.png" />
          </image>
       </ImageView>
       <ImageView id="BlueChip" fx:id="bluechipImageView" fitHeight="105.0" fitWidth="105.0" layoutX="128.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Downloads/Blue%20Chip-1.png" />
+            <Image url="@../../../../../../Downloads/bluechip.png" />
          </image>
       </ImageView>
    </children>
 </AnchorPane>
+
