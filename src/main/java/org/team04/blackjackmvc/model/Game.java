@@ -18,13 +18,20 @@
  */
 package org.team04.blackjackmvc.model;
 
+import java.util.Scanner;
+
 public class Game {
 
     /**
      * User has begun the game
      */
     public void start() {
-        //TODO
+        Scanner scnr = new Scanner(System.in);
+        System.out.println("Please enter your name:");
+        String name = scnr.nextLine().strip();
+        // Generate player
+        Player player1 = new User(name, 200);
+
     }
 
     public void end() {

@@ -41,7 +41,10 @@ public class User implements Player{
      */
     private double money;
 
-
+    public User(String name, double initMoney) {
+        this.name = name;
+        this.money= initMoney;
+    }
 
     @Override
     public void playNextMove() {
