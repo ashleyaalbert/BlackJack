@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlackjackTie">
-
+   <children>
+      <Button fx:id="playagainButton" layoutX="208.0" layoutY="250.0" mnemonicParsing="false" text="Play Again" />
+      <Button fx:id="homeButton" layoutX="319.0" layoutY="250.0" mnemonicParsing="false" text="Home" />
+      <Button fx:id="quitButton" layoutX="280.0" layoutY="301.0" mnemonicParsing="false" text="Quit" />
+      <Label fx:id="tiegameLabel" layoutX="197.0" layoutY="88.0" text="TIE GAME" textFill="#a10d0d">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlackjackPlaceBets">
-
+   <children>
+      <Label fx:id="betsLabel" layoutX="106.0" layoutY="47.0" text="PLACE YOUR BETS">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
