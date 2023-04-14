@@ -1,3 +1,5 @@
+package org.team04.blackjackmvc;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
