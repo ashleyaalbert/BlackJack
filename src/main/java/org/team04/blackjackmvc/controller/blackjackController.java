@@ -57,4 +57,14 @@ public class blackjackController {
 
     }
 
+//    private void initEventHandlers() {
+//        btnPlay.onMouseClickedProperty().setValue(event -> {
+//            if (theView.getCheckBoxAutoOff().isSelected()) {
+//                lightModel.turnOnForMs(1000);
+//            } else {
+//                lightModel.toggle();
+//            }
+//        });
+//    }
+
 }
