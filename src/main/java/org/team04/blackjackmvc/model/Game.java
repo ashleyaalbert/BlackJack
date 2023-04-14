@@ -31,6 +31,7 @@ public class Game {
         String name = scnr.nextLine().strip();
         // Generate player
         Player player1 = new User(name, 200);
+        Dealer dealer = new Dealer();
 
     }
 

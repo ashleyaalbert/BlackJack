@@ -18,6 +18,20 @@
  */
 package org.team04.blackjackmvc.model;
 
-public class Dealer {
+public class Dealer implements Player{
+    /**
+     * The dealer hand to be used
+     */
+    Hand dealerHand;
 
+    /**
+     * Dealer is created with new empty hand
+     */
+    public Dealer() {
+        dealerHand = new Hand();
+    }
+    @Override
+    public void playNextMove() {
+        //TODO
+    }
 }
