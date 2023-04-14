@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlackjackLoser">
+   <children>
+      <Label fx:id="loserLabel" layoutX="152.0" layoutY="79.0" text="DEALER WINS" textFill="#a10d0d">
+         <font>
+            <Font size="48.0" />
+         </font></Label>
+      <Button fx:id="playagainButton" layoutX="202.0" layoutY="222.0" mnemonicParsing="false" text="Play Again" />
+      <Button fx:id="homeButton" layoutX="313.0" layoutY="222.0" mnemonicParsing="false" text="Home" />
+      <Button fx:id="quitButton" layoutX="274.0" layoutY="290.0" mnemonicParsing="false" text="Quit" />
+   </children>
+</AnchorPane>
