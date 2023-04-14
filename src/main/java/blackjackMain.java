@@ -20,7 +20,7 @@ public class blackjackMain extends Application {
         Parent root = loader.load();
 
         // Set up the stage and show it
-        primaryStage.setTitle("BLACKJACK");
+        primaryStage.setTitle("BLACKJACK!");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
