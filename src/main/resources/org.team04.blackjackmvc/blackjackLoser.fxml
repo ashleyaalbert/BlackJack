@@ -1,17 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlackjackLoser">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlackjackLoser">
    <children>
-      <Label fx:id="loserLabel" layoutX="152.0" layoutY="79.0" text="DEALER WINS" textFill="#a10d0d">
+      <Label fx:id="loserLabel" layoutX="182.0" layoutY="219.0" text="DEALER WINS!" textFill="#f8f8f8">
          <font>
-            <Font size="48.0" />
+            <Font name="Charter Roman" size="52.0" />
          </font></Label>
-      <Button fx:id="playagainButton" layoutX="202.0" layoutY="222.0" mnemonicParsing="false" text="Play Again" />
-      <Button fx:id="homeButton" layoutX="313.0" layoutY="222.0" mnemonicParsing="false" text="Home" />
-      <Button fx:id="quitButton" layoutX="274.0" layoutY="290.0" mnemonicParsing="false" text="Quit" />
+      <Label layoutX="39.0" layoutY="65.0" text="Label" textFill="#fcfcfc">
+         <font>
+            <Font name="Charter Roman" size="18.0" />
+         </font>
+      </Label>
+      <Text fill="#c9c614" layoutX="32.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="POT">
+         <font>
+            <Font name="Charter Roman" size="32.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="blackChip" fitHeight="130.0" fitWidth="150.0" layoutX="4.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/blackchipTrans.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="redChip" fitHeight="130.0" fitWidth="150.0" layoutX="9.0" layoutY="634.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/redchipTrans.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="greenChip" fitHeight="130.0" fitWidth="150.0" layoutX="104.0" layoutY="680.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/greenchipTrans.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blueChip" fitHeight="130.0" fitWidth="150.0" layoutX="212.0" layoutY="682.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/bluechipTrans.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
