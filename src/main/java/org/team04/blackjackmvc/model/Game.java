@@ -23,6 +23,42 @@ import java.util.Scanner;
 public class Game {
 
     /**
+     * User to play game
+     */
+    private User player;
+    /**
+     * Dealer for game
+     */
+    private Dealer dealer;
+    /**
+     * Deck to be used
+     */
+    private Deck deck;
+    /**
+     * Number of 52 deck cards in shoe
+     */
+    private final int nBox = 4;
+    /**
+     * Initial funds for user to start with
+     */
+    private final double initFunds = 200;
+    private GameState state;
+
+    public void playBlackJack() {
+        state = GameState.START_GAME;
+        if (state == GameState.START_GAME) {
+            start();
+        }
+        while (state != GameState.END_GAME) {
+            if (state == GameState.IN_GAME) {
+                if ()
+            }
+        }
+
+
+    }
+
+    /**
      * User has begun the game
      */
     public void start() {
@@ -30,37 +66,21 @@ public class Game {
         System.out.println("Please enter your name:");
         String name = scnr.nextLine().strip();
         // Generate player
-        Player player1 = new User(name, 200);
-        Dealer dealer = new Dealer();
+        player = new User(name, initFunds);
+        dealer = new Dealer();
+        deck = new Deck(nBox);
+        state = GameState.IN_GAME;
+    }
 
+    public void playHand() {
+        if (player.getMoney()>0) {
+
+        }
     }
 
     public void end() {
         //TODO
     }
 
-    /**
-     * The hand gets an additional card
-     */
-    public void hit() {
-        //Todo
-    }
-
-    /**
-     * If the player's hand has both cards of equal rank, the player is offered
-     * a split. The player accepts by creating an additional Bet. The original
-     * hand is removed; The two original cards are split and the dealer deals
-     * two extra cards to create two new Hands. There will not be any further splitting.
-     */
-    public void split() {
-        //Todo
-    }
-
-    /**
-     * The player chooses to not receive another card and closes the hand
-     */
-    public void stand() {
-        //Todo
-    }
 
 }

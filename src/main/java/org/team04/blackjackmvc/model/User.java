@@ -48,6 +48,10 @@ public class User implements Player{
 
     @Override
     public void playNextMove() {
+        //TODO
+    }
 
+    public double getMoney() {
+        return money;
     }
 }
