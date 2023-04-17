@@ -120,6 +120,35 @@ public class Hand {
         return this.cardList;
     }
 
+    /**
+     * @return a String of all the cards in the hand
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append('[');
+        int i = 0;
+        for(Card c : this.cardList)
+        {
+            if(i != this.cardList.size() - 1)
+                if (c.getVisibility()) {
+                    sb.append(c+", ");
+                }
+                else {
+                    sb.append("__, ");
+                }
+            else
+            if (c.getVisibility()) {
+                sb.append(c);
+            }
+            else {
+                sb.append("__");
+            }
+            i++;
+        }
+        return sb.append(']').toString();
+    }
+
 
 
 
