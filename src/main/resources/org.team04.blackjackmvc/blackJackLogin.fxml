@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.team04.blackjackmvc.BlackJackLogin">
+   <children>
+      <Label layoutX="151.0" layoutY="27.0" text="WELCOME TO BLACKJACK" textFill="#f2f0f0">
+         <font>
+            <Font name="Charter Roman" size="35.0" />
+         </font>
+      </Label>
+      <Text fill="#fcfcfc" layoutX="85.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter your name:">
+         <font>
+            <Font name="Charter Roman" size="23.0" />
+         </font>
+      </Text>
+      <TextField layoutX="367.0" layoutY="121.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="188.0" promptText="Name">
+         <font>
+            <Font name="Charter Roman" size="13.0" />
+         </font>
+      </TextField>
+      <Text fill="#fcfcfc" layoutX="83.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your remaining balance:">
+         <font>
+            <Font name="Charter Roman" size="23.0" />
+         </font>
+      </Text>
+      <Label layoutX="430.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="54.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="Charter Roman" size="23.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
