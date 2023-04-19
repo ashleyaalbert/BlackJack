@@ -25,7 +25,7 @@
             <Font name="Charter Roman" size="32.0" />
          </font>
       </Text>
-      <Button fx:id="btnDeal" alignment="CENTER" contentDisplay="CENTER" layoutX="153.0" layoutY="285.0" maxHeight="50.0" maxWidth="54.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="54.0" style="-fx-background-radius: 5em; -fx-min-width: 70px; -fx-max-width: 70px; -fx-max-height: 70px; -fx-min-height: 70px; -fx-background-color: gray;" text="Deal" textAlignment="CENTER" textFill="#f5f3f3" textOverrun="CLIP">
+      <Button fx:id="btnDeal" alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="277.0" maxHeight="50.0" maxWidth="54.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="54.0" style="-fx-background-radius: 5em; -fx-min-width: 70px; -fx-max-width: 70px; -fx-max-height: 70px; -fx-min-height: 70px; -fx-background-color: gray;" text="Deal" textAlignment="CENTER" textFill="#f5f3f3" textOverrun="CLIP">
          <font>
             <Font name="Charter Roman" size="19.0" />
          </font>
