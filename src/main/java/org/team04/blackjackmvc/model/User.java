@@ -35,7 +35,7 @@ public class User implements Player{
     /**
      * Maps the bet placed by the user to the hand of the bet
      */
-    private Map<Hand, Integer> handBets = new TreeMap<>();
+    private Map<Hand, Double> handBets = new TreeMap<>();
     /**
      * A property that represents the player's money
      */
@@ -48,6 +48,23 @@ public class User implements Player{
 
     @Override
     public void playNextMove() {
+        //TODO
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void placeBet(double amount) throws InsufficientFundsException{
+        if (this.money < amount) {
+            throw new InsufficientFundsException((String.format(
+                    "INSUFFICIENT FUNDS! Required: $%.2f, Available: $%.2f",
+                    amount, this.money)));
+        }
+        Hand hand = new Hand();
+        this.handBets.put(hand, amount);
+        this.money -= amount;
+        System.out.printf("Bet: $.2f, Remaining funds: $.2f", amount, this.money);
 
     }
 }

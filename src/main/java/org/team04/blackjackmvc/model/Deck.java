@@ -110,5 +110,11 @@ public class Deck {
         return sb.append(']').toString();
     }
 
+    /**
+     * @return true if the shoe has cards remaining
+     */
+    public boolean hasCards() {
+        return this.cards.size()>0;
+    }
 
 }

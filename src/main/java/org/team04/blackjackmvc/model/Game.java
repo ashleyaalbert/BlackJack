@@ -23,44 +23,102 @@ import java.util.Scanner;
 public class Game {
 
     /**
+     * User to play game
+     */
+    private User player;
+    /**
+     * Dealer for game
+     */
+    private Dealer dealer;
+    /**
+     * Deck to be used
+     */
+    private Deck deck;
+    /**
+     * Number of 52 deck cards in shoe
+     */
+    private final int nBox = 4;
+    /**
+     * Initial funds for user to start with
+     */
+    private final double initFunds = 200;
+    /**
+     * Current state of the game
+     */
+    private GameState state;
+
+    /**
+     * Generate scanner for user prompts
+     */
+    private Scanner scnr;
+
+    public void playBlackJack() {
+        state = GameState.START_GAME;
+        if (state == GameState.START_GAME) {
+            start();
+        }
+        while (state != GameState.END_GAME && player.getMoney() >0) {
+            if (state == GameState.IN_GAME) {
+                placeBet();
+            }
+        }
+        if (state == GameState.END_GAME || player.getMoney() ==0) {
+            end();
+        }
+    }
+
+    /**
      * User has begun the game
      */
     public void start() {
-        Scanner scnr = new Scanner(System.in);
-        System.out.println("Please enter your name:");
+        scnr = new Scanner(System.in);
+        System.out.println("Please enter your name: ");
         String name = scnr.nextLine().strip();
-        // Generate player
-        Player player1 = new User(name, 200);
-        Dealer dealer = new Dealer();
+        // Generate player, dealer, and deck
+        player = new User(name, initFunds);
+        dealer = new Dealer();
+        deck = new Deck(nBox);
+        state = GameState.IN_GAME;
+    }
 
+    /**
+     * User can either place bet or end game. If bet exceeds available funds
+     * then InsufficientFundsException is thrown.
+     */
+    public void placeBet() {
+        if (player.getMoney()>0) {
+            System.out.println("Bet amount ($" + player.getMoney() + " remaining) or 0 to end game: ");
+            Double bet = scnr.nextDouble();
+            if (bet==0) {
+                state = GameState.END_GAME;
+            }
+            else {
+                try {
+                    player.placeBet(bet);
+                } catch (InsufficientFundsException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
     }
 
     public void end() {
-        //TODO
+        if (player.getMoney() ==0) {
+            System.out.println("Out of money! Game over.");
+        }
+        else {
+            Double earnings = player.getMoney() - initFunds;
+            if (earnings>=0) {
+                System.out.printf("Final balance: $.2f, You won: $.2f", player.getMoney(), earnings);
+            }
+            else {
+                earnings = earnings *-1;
+                System.out.printf("Final balance: $.2f, You lost: $.2f", player.getMoney(), earnings);
+            }
+        }
+
+
     }
 
-    /**
-     * The hand gets an additional card
-     */
-    public void hit() {
-        //Todo
-    }
-
-    /**
-     * If the player's hand has both cards of equal rank, the player is offered
-     * a split. The player accepts by creating an additional Bet. The original
-     * hand is removed; The two original cards are split and the dealer deals
-     * two extra cards to create two new Hands. There will not be any further splitting.
-     */
-    public void split() {
-        //Todo
-    }
-
-    /**
-     * The player chooses to not receive another card and closes the hand
-     */
-    public void stand() {
-        //Todo
-    }
 
 }

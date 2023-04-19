@@ -19,8 +19,8 @@
 package org.team04.blackjackmvc.model;
 
 public enum Chip {
-    ONE(1), TWO(2), FIVE(5), TEN(10),
-    TWENTYFIVE(25), FIFTY(50), ONEHUNDRED(100);
+    ONE(1), FIVE(5),
+    TWENTYFIVE(25), ONEHUNDRED(100);
     final double value;
     Chip(int value) {
             this.value = value;
