@@ -8,16 +8,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlackjackPlaceBets">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlackjackPlaceBets">
    <children>
       <Text fill="WHITE" layoutX="162.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLACE YOUR BETS">
          <font>
             <Font name="Charter Roman" size="44.0" />
          </font>
       </Text>
-      <Label layoutX="39.0" layoutY="65.0" text="Label" textFill="#fcfcfc">
+      <Label fx:id="amountOfMoneyInPot" layoutX="39.0" layoutY="65.0" text="Label" textFill="#fcfcfc">
          <font>
-            <Font name="Charter Roman" size="18.0" />
+            <Font name="Charter Roman" size="20.0" />
          </font>
       </Label>
       <Text fill="#c9c614" layoutX="32.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="POT">
@@ -25,35 +25,39 @@
             <Font name="Charter Roman" size="32.0" />
          </font>
       </Text>
-      <ImageView fx:id="blackChip" fitHeight="130.0" fitWidth="150.0" layoutX="8.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="blackChip" fitHeight="101.0" fitWidth="106.0" layoutX="8.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/blackchipTrans.png" />
+            <Image url="@images/blackchipTrans_1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="redChip" fitHeight="130.0" fitWidth="150.0" layoutX="7.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="redChip" fitHeight="111.0" fitWidth="106.0" layoutX="7.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/redchipTrans.png" />
+            <Image url="@images/redchipTransNum_1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="greenChip" fitHeight="130.0" fitWidth="150.0" layoutX="80.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="greenChip" fitHeight="111.0" fitWidth="106.0" layoutX="54.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/greenchipTrans.png" />
+            <Image url="@images/greenchipTransNum_1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="blueChip" fitHeight="130.0" fitWidth="150.0" layoutX="180.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="blueChip" fitHeight="107.0" fitWidth="106.0" layoutX="131.0" layoutY="390.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/bluechipTrans.png" />
+            <Image url="@images/bluechipTransNum_1.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnDeal" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="346.0" maxHeight="50.0" maxWidth="54.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="54.0"
-              style="-fx-background-radius: 5em; -fx-min-width: 70px; -fx-max-width: 70px; -fx-max-height: 70px; -fx-min-height: 70px; -fx-background-color: gray;" textFill="#f5f3f3" textOverrun="CLIP" >
+      <Button fx:id="btnDeal" alignment="CENTER" contentDisplay="CENTER" layoutX="153.0" layoutY="285.0" maxHeight="50.0" maxWidth="54.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="54.0" style="-fx-background-radius: 5em; -fx-min-width: 70px; -fx-max-width: 70px; -fx-max-height: 70px; -fx-min-height: 70px; -fx-background-color: gray;" textFill="#f5f3f3" textOverrun="CLIP">
          <font>
             <Font name="Charter Roman" size="13.0" />
          </font>
       </Button>
-      <Label layoutX="194.0" layoutY="373.0" text="DEAL">
+      <Label layoutX="173.0" layoutY="312.0" text="DEAL" textFill="WHITE">
          <font>
             <Font name="Charter Roman" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="chipTotal" layoutX="253.0" layoutY="433.0" prefHeight="40.0" prefWidth="176.0" text="Label" textAlignment="CENTER" textFill="#fffbfb" wrapText="true">
+         <font>
+            <Font name="Charter Roman" size="25.0" />
          </font>
       </Label>
    </children>

@@ -16,18 +16,18 @@
             <Font name="Charter Roman" size="58.0" />
          </font>
       </Label>
-      <Button fx:id="btnPlay" layoutX="162.0" layoutY="387.0" mnemonicParsing="false" text="Play">
+      <Button fx:id="btnPlay" layoutX="172.0" layoutY="387.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="88.0" text="Play">
          <font>
-            <Font size="20.0" />
+            <Font name="Charter Roman" size="20.0" />
          </font>
       </Button>
       <ImageView id="Cards" fx:id="cardsImageView" fitHeight="226.0" fitWidth="307.0" layoutX="182.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/welcomeCards.png" />
          </image></ImageView>
-      <Button fx:id="btnSettings" layoutX="406.0" layoutY="387.0" mnemonicParsing="false" text="Settings">
+      <Button fx:id="btnSettings" layoutX="406.0" layoutY="387.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="97.0" text="Settings">
          <font>
-            <Font size="20.0" />
+            <Font name="Charter Roman" size="20.0" />
          </font>
       </Button>
       <ImageView fx:id="topLeftSparkle" fitHeight="70.0" fitWidth="132.0" layoutX="135.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">

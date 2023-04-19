@@ -1,5 +1,5 @@
 /**
- * Used example code for help.
+ * Used example code from Prof. King's JavaFXExamples for help.
  */
 package org.team04.blackjackmvc;
 
@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Enumeration that captures each scene.
+ */
     enum FXMLScenes {
         WELCOME("blackjackWelcome.fxml"),
         PLAY("blackjackPlay.fxml"),
@@ -35,9 +38,9 @@ import java.io.IOException;
     public class blackjackMain extends Application {
         @Override
         public void start(Stage stage) {
-            loadSceneOnStage(stage, FXMLScenes.WELCOME);
+            loadSceneOnStage(stage, FXMLScenes.WELCOME); // Loads the first scene
             stage.setTitle("Blackjack!");
-            stage.show();
+            stage.show(); // Shows the scene
         }
 
         public static void main(String[] args) {
