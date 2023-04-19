@@ -22,6 +22,7 @@ package org.team04.blackjackmvc.model;
  * The current state of the player in the game
  */
 public enum GameState {
+    NO_GAME, // Player created but no game in progress
     START_GAME, // Player starts game
     IN_GAME, // Player can place bets or end game
     PLAY_HAND, // Deal hand to user and dealer and allow user to decide moves
