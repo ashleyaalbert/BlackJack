@@ -16,14 +16,14 @@ import java.io.IOException;
  * Enumeration that captures each scene.
  */
     enum FXMLScenes {
-        WELCOME("/org/team04/blackjackmvc/blackjackWelcome.fxml"),
+        WELCOME("blackjackWelcome.fxml"),
         PLAY("blackjackPlay.fxml"),
         SETTINGS("blackjackSettings.fxml"),
         BET ("blackjackPlaceBets.fxml"),
         WINNER("blackjackWinner.fxml"),
         PUSH ("blackjackTie.fxml"),
         BLACKJACK("blackjackBlackjack.fxml"),
-        LOGIN ("/org/team04/blackjackmvc/blackJackLogin.fxml"),
+        LOGIN ("blackJackLogin.fxml"),
         SPLIT("blackjackSplit.fxml");
 
 
@@ -61,7 +61,6 @@ import java.io.IOException;
         public static void loadSceneOnStage(Stage stage, FXMLScenes fxmlScene) {
             FXMLLoader fxmlLoader = new FXMLLoader(blackjackMain.class.getResource(fxmlScene.getFileName()));
             try {
-                System.out.println(fxmlScene.getFileName());
                 // Get the root node of the scene graph
                 Parent root = fxmlLoader.load();
 
@@ -70,7 +69,8 @@ import java.io.IOException;
 
                 // Place it on the stage
                 stage.setScene(scene);
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 System.out.println(fxmlScene.getFileName());
                 throw new RuntimeException("Could not load " + fxmlScene.getFileName());
             }
