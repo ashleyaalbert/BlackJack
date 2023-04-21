@@ -75,17 +75,19 @@ public class Deck {
     }
 
     /**
-     * @return the first card drawn from the deck
-     * @throws EmptyDeckException if there are no cards left in the deck
+     * @return the first card drawn from the deck. If there are no cards remaining, reset and reshuffle deck first
      */
-    public Card drawCard() throws EmptyDeckException {
-        if (cards.isEmpty()) {
-            throw new EmptyDeckException("The deck is empty!");
-        }
-        else {
+    public Card drawCard() {
+        if (this.hasCards()) {
             Card drawn = cards.pollFirst();
             takenCards.add(drawn);
-
+            return drawn;
+        }
+        else {
+            this.reset();
+            this.shuffle();
+            Card drawn = cards.pollFirst();
+            takenCards.add(drawn);
             return drawn;
         }
 
