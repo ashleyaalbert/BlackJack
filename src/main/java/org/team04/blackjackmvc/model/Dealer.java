@@ -34,4 +34,22 @@ public class Dealer implements Player{
     public void playNextMove() {
         //TODO
     }
+
+    /**
+     * Make card visible and add it to the dealer hand
+     * @param card
+     */
+    public void dealCardVisible(Card card) {
+        card.setVisibility(true);
+        this.dealerHand.add(card);
+    }
+
+    /**
+     * Add card that is not yet visible to dealer hand
+     * @param card
+     */
+    public void dealCardInvisible(Card card) {
+        this.dealerHand.add(card);
+    }
 }
+
