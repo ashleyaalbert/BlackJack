@@ -1,12 +1,16 @@
-package org.team04.blackjackmvc.controller;
+package org.team04.blackjackmvc;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import org.team04.blackjackmvc.blackjackMain;
 
 public class blackjackWelcomeController {
 
@@ -54,17 +58,23 @@ public class blackjackWelcomeController {
         assert tableBackground != null : "fx:id=\"tableBackground\" was not injected: check your FXML file 'blackjackWelcome.fxml'.";
         assert topLeftSparkle != null : "fx:id=\"topLeftSparkle\" was not injected: check your FXML file 'blackjackWelcome.fxml'.";
         assert topRightSparkle != null : "fx:id=\"topRightSparkle\" was not injected: check your FXML file 'blackjackWelcome.fxml'.";
-
     }
 
-//    private void initEventHandlers() {
-//        btnPlay.onMouseClickedProperty().setValue(event -> {
-//            if (theView.getCheckBoxAutoOff().isSelected()) {
-//                lightModel.turnOnForMs(1000);
-//            } else {
-//                lightModel.toggle();
-//            }
-//        });
-//    }
+    /**
+     * {@link ActionEvent} handler for when we're ready to change to the next
+     * scene.
+     *
+     * @param event is the {@link ActionEvent} passed
+     */
+    @FXML
+    void onBtnNextSceneAction(ActionEvent event) {
+        // Get the Stage object of this button
+        Stage stage = (Stage) btnPlay.getScene().getWindow();
+
+        if (event.getSource() == btnPlay)
+            blackjackMain.loadSceneOnStage(stage, FXMLScenes.LOGIN);
+        else if (event.getSource() == btnSettings)
+            blackjackMain.loadSceneOnStage(stage, FXMLScenes.SETTINGS);
+    }
 
 }

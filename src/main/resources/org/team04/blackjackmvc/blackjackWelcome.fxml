@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="tableBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="tableBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.team04.blackjackmvc.blackjackWelcomeController">
    <children>
       <Circle fill="#f9fbfc" layoutX="335.0" layoutY="229.0" radius="119.0" stroke="#0404f2" strokeType="INSIDE" strokeWidth="4.0" />
       <Label fx:id="blackjackTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="148.0" layoutY="30.0" prefHeight="84.0" prefWidth="375.0" text="BLACKJACK" textAlignment="CENTER" textFill="#a10d0d">
@@ -16,7 +16,7 @@
             <Font name="Charter Roman" size="58.0" />
          </font>
       </Label>
-      <Button fx:id="btnPlay" layoutX="172.0" layoutY="387.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="88.0" text="Play">
+      <Button fx:id="btnPlay" layoutX="172.0" layoutY="387.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="39.0" prefWidth="88.0" text="Play">
          <font>
             <Font name="Charter Roman" size="20.0" />
          </font>
@@ -25,7 +25,7 @@
          <image>
             <Image url="@images/welcomeCards.png" />
          </image></ImageView>
-      <Button fx:id="btnSettings" layoutX="406.0" layoutY="387.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="97.0" text="Settings">
+      <Button fx:id="btnSettings" layoutX="406.0" layoutY="387.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="39.0" prefWidth="97.0" text="Settings">
          <font>
             <Font name="Charter Roman" size="20.0" />
          </font>

@@ -21,8 +21,11 @@ import java.io.IOException;
         SETTINGS("blackjackSettings.fxml"),
         BET ("blackjackPlaceBets.fxml"),
         WINNER("blackjackWinner.fxml"),
-        PUSH ("blackjackTie.fxml");
-        // DEALER
+        PUSH ("blackjackTie.fxml"),
+        BLACKJACK("blackjackBlackjack.fxml"),
+        LOGIN ("/org/team04/blackjackmvc/blackJackLogin.fxml"),
+        SPLIT("blackjackSplit.fxml");
+
 
         private final String fileName;
 
@@ -53,7 +56,7 @@ import java.io.IOException;
          * the{@link FXMLScenes} enumeration and places it on the {@link Stage}
          *
          * @param stage     the {@link Stage} to place the Scene on
-         * @param fxmlScene the {@link FXMLScenes} enum that speciies the {@code .fxml} file to load
+         * @param fxmlScene the {@link FXMLScenes} enum that specifies the {@code .fxml} file to load
          */
         public static void loadSceneOnStage(Stage stage, FXMLScenes fxmlScene) {
             FXMLLoader fxmlLoader = new FXMLLoader(blackjackMain.class.getResource(fxmlScene.getFileName()));
@@ -62,21 +65,13 @@ import java.io.IOException;
                 // Get the root node of the scene graph
                 Parent root = fxmlLoader.load();
 
-//                // Attach any possible model to the controller if necessary
-//                switch (fxmlScene) {
-//                    case LIGHTS_DEMO -> {
-//                        LightsModel model = new LightsModel();
-//                        LightsDemoController controller = fxmlLoader.getController();
-//                        controller.setModel(model);
-//                    }
-//                }
-
                 // Create the scene for the scene graph
                 Scene scene = new Scene(root);
 
                 // Place it on the stage
                 stage.setScene(scene);
             } catch (IOException e) {
+                System.out.println(fxmlScene.getFileName());
                 throw new RuntimeException("Could not load " + fxmlScene.getFileName());
             }
         }
