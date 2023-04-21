@@ -52,6 +52,7 @@ public class Game {
      */
     private Scanner scnr;
 
+
     public void playBlackJack() {
         state = GameState.START_GAME;
         if (state == GameState.START_GAME) {
@@ -60,6 +61,9 @@ public class Game {
         while (state != GameState.END_GAME && player.getMoney() >0) {
             if (state == GameState.IN_GAME) {
                 placeBet();
+            }
+            else if (state==GameState.PLAY_HAND) {
+                dealHand();
             }
         }
         if (state == GameState.END_GAME || player.getMoney() ==0) {
@@ -102,6 +106,20 @@ public class Game {
         }
     }
 
+    /**
+     * Deal cards to user and dealer and reshuffle and reset deck if out of cards. Dealer's second card
+     * is not yet visible
+     */
+    public void dealHand() {
+        player.dealCard(deck.drawCard());
+        dealer.dealCardVisible(deck.drawCard());
+        player.dealCard(deck.drawCard());
+        dealer.dealCardInvisible(deck.drawCard());
+    }
+
+    /**
+     * End game and report earnings or losses to user
+     */
     public void end() {
         if (player.getMoney() ==0) {
             System.out.println("Out of money! Game over.");

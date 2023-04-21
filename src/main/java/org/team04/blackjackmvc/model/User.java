@@ -41,6 +41,11 @@ public class User implements Player{
      */
     private double money;
 
+    /**
+     * The current hand being played
+     */
+    private Hand currentHand;
+
     public User(String name, double initMoney) {
         this.name = name;
         this.money= initMoney;
@@ -62,9 +67,19 @@ public class User implements Player{
                     amount, this.money)));
         }
         Hand hand = new Hand();
+        this.currentHand = hand;
         this.handBets.put(hand, amount);
         this.money -= amount;
         System.out.printf("Bet: $.2f, Remaining funds: $.2f", amount, this.money);
 
+    }
+
+    /**
+     * Make card visible and add it to the current hand
+     * @param card
+     */
+    public void dealCard(Card card) {
+        card.setVisibility(true);
+        this.currentHand.add(card);
     }
 }
