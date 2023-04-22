@@ -19,7 +19,7 @@
             <Font name="Charter Roman" size="23.0" />
          </font>
       </Text>
-      <TextField fx:id="txtFieldName" layoutX="367.0" layoutY="121.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="188.0" promptText="Name">
+      <TextField fx:id="txtFieldName" layoutX="367.0" layoutY="121.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="188.0" promptText="Name" text="Name">
          <font>
             <Font name="Charter Roman" size="13.0" />
          </font>
