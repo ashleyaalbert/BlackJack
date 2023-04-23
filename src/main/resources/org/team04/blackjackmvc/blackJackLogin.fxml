@@ -34,12 +34,12 @@
             <Font name="Charter Roman" size="23.0" />
          </font>
       </Label>
-      <Button fx:id="btnGo" layoutX="316.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="41.0" prefWidth="68.0" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-min-height: 70px; -fx-max-height: 70px; -fx-min-width: 70px; -fx-max-width: 70px;">
+      <Button fx:id="btnGo" layoutX="316.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="41.0" prefWidth="68.0">
          <font>
             <Font name="Charter Roman" size="23.0" />
          </font>
       </Button>
-      <Text fill="#f5f3f3" layoutX="333.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go!">
+      <Text layoutX="332.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go!">
          <font>
             <Font name="Charter Roman" size="23.0" />
          </font>

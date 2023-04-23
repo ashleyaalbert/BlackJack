@@ -32,27 +32,7 @@
             </Label>
          </graphic>
       </Button>
-      <ImageView fx:id="blueChip" fitHeight="111.0" fitWidth="106.0" layoutX="155.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/bluechipTransNum_1.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="redChip" fitHeight="111.0" fitWidth="106.0" layoutX="14.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/redchipTransNum_1.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="blackChip" fitHeight="111.0" fitWidth="106.0" layoutX="14.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/blackchipTrans_1.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="greenChip" fitHeight="111.0" fitWidth="106.0" layoutX="67.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/greenchipTransNum_1.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="lblChipTotal" layoutX="278.0" layoutY="428.0" prefHeight="40.0" prefWidth="176.0" text="Label" textAlignment="CENTER" textFill="#fffbfb" wrapText="true">
+      <Label fx:id="lblChipTotal" layoutX="278.0" layoutY="428.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="176.0" text="0" textAlignment="CENTER" textFill="#fffbfb" wrapText="true">
          <font>
             <Font name="Charter Roman" size="25.0" />
          </font>
@@ -101,10 +81,46 @@
             <Font name="Charter Roman" size="19.0" />
          </font>
       </Text>
-      <Label fx:id="lblPot" layoutX="18.0" layoutY="93.0" prefHeight="40.0" prefWidth="176.0" text="Label" textAlignment="CENTER" textFill="#fffbfb" wrapText="true">
+      <Label fx:id="lblPot" layoutX="18.0" layoutY="93.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="110.0" text="0" textAlignment="CENTER" textFill="#fffbfb" wrapText="true">
          <font>
-            <Font name="Charter Roman" size="25.0" />
+            <Font name="Charter Roman" size="31.0" />
          </font>
       </Label>
+      <Button fx:id="btnBlueChip" layoutX="168.0" layoutY="397.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChip" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
+         <graphic>
+            <ImageView fx:id="blueChip" fitHeight="111.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/bluechipTransNum_1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnGreenChip" layoutX="83.0" layoutY="397.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChip" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
+         <graphic>
+            <ImageView fx:id="greenChip" fitHeight="111.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/greenchipTransNum_1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnRedCHip" layoutX="24.0" layoutY="345.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChip" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
+         <graphic>
+            <ImageView fx:id="redChip" fitHeight="111.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/redchipTransNum_1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnBlackChip" layoutX="24.0" layoutY="266.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChip" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
+         <graphic>
+            <ImageView fx:id="blackChip" fitHeight="112.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/blackchipTrans_1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

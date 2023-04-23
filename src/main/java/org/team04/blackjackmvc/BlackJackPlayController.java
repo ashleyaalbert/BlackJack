@@ -2,7 +2,6 @@ package org.team04.blackjackmvc;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -31,16 +30,25 @@ public class BlackJackPlayController {
     private ImageView blueChip;
 
     @FXML
+    private Button btnBlackChip;
+
+    @FXML
+    private Button btnBlueChip;
+
+    @FXML
     private Button btnDeal;
+
+    @FXML
+    private Button btnGreenChip;
 
     @FXML
     private ImageView btnHome;
 
     @FXML
-    private Button btnVolume;
+    private Button btnRedCHip;
 
     @FXML
-    private Label chipTotal;
+    private Button btnVolume;
 
     @FXML
     private ImageView greenChip;
@@ -52,10 +60,17 @@ public class BlackJackPlayController {
     private Button homeButton;
 
     @FXML
+    private Label lblChipTotal;
+
+    @FXML
+    private Label lblPot;
+
+    @FXML
     private ImageView redChip;
 
     @FXML
     private Button standButton;
+
 
     @FXML
     void initialize() {
@@ -63,16 +78,24 @@ public class BlackJackPlayController {
         assert blackChip != null : "fx:id=\"blackChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert blackjackText != null : "fx:id=\"blackjackText\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert blueChip != null : "fx:id=\"blueChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert btnBlackChip != null : "fx:id=\"btnBlackChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert btnBlueChip != null : "fx:id=\"btnBlueChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnDeal != null : "fx:id=\"btnDeal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert btnGreenChip != null : "fx:id=\"btnGreenChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnHome != null : "fx:id=\"btnHome\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert btnRedCHip != null : "fx:id=\"btnRedCHip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnVolume != null : "fx:id=\"btnVolume\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert chipTotal != null : "fx:id=\"chipTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert greenChip != null : "fx:id=\"greenChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert hitButton != null : "fx:id=\"hitButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert lblChipTotal != null : "fx:id=\"lblChipTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert lblPot != null : "fx:id=\"lblPot\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert redChip != null : "fx:id=\"redChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+
     }
+
+
 
     /**
      * {@link ActionEvent} handler for when we're ready to change to the next
@@ -94,8 +117,25 @@ public class BlackJackPlayController {
 
     @FXML
     void onChip(ActionEvent event){
-
+        if (event.getSource() == btnBlackChip) {
+            int currentPot = Integer.parseInt(amountOfMoneyInPot.getText());
+            int newPot = currentPot + 1;
+            lblPot.setText(Integer.toString(newPot));
+        } else if (event.getSource() == btnRedCHip){
+            int currentPot = Integer.parseInt(amountOfMoneyInPot.getText());
+            int newPot = currentPot + 5;
+            lblPot.setText(Integer.toString(newPot));
+        } else if (event.getSource() == btnGreenChip){
+            int currentPot = Integer.parseInt(amountOfMoneyInPot.getText());
+            int newPot = currentPot + 25;
+            lblPot.setText(Integer.toString(newPot));
+        } else if (event.getSource() == btnBlueChip){
+            int currentPot = Integer.parseInt(amountOfMoneyInPot.getText());
+            int newPot = currentPot + 100;
+            lblPot.setText(Integer.toString(newPot));
+        }
     }
+
 
     @FXML
     void updatePot(){
