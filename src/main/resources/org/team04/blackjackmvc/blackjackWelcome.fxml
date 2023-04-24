@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="tableBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.team04.blackjackmvc.blackjackWelcomeController">
+<AnchorPane fx:id="tableBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.team04.blackjackmvc.BlackjackWelcomeController">
    <children>
       <Circle fill="#f9fbfc" layoutX="335.0" layoutY="229.0" radius="119.0" stroke="#0404f2" strokeType="INSIDE" strokeWidth="4.0" />
       <Label fx:id="blackjackTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="148.0" layoutY="30.0" prefHeight="84.0" prefWidth="375.0" text="BLACKJACK" textAlignment="CENTER" textFill="#a10d0d">
