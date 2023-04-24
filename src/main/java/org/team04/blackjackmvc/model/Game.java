@@ -41,7 +41,7 @@ public class Game {
     /**
      * Initial funds for user to start with
      */
-    private final double initFunds = 200;
+    private final double initFunds = 500;
     /**
      * Current state of the game
      */
@@ -65,16 +65,18 @@ public class Game {
             else if (state==GameState.PLAY_HAND) {
                 dealHand();
             }
+
         }
         if (state == GameState.END_GAME || player.getMoney() ==0) {
             end();
         }
+
     }
 
     /**
      * User has begun the game
      */
-    public void start() {
+    private void start() {
         scnr = new Scanner(System.in);
         System.out.println("Please enter your name: ");
         String name = scnr.nextLine().strip();
@@ -89,7 +91,7 @@ public class Game {
      * User can either place bet or end game. If bet exceeds available funds
      * then InsufficientFundsException is thrown.
      */
-    public void placeBet() {
+    private void placeBet() {
         if (player.getMoney()>0) {
             System.out.println("Bet amount ($" + player.getMoney() + " remaining) or 0 to end game: ");
             Double bet = scnr.nextDouble();
@@ -110,7 +112,7 @@ public class Game {
      * Deal cards to user and dealer and reshuffle and reset deck if out of cards. Dealer's second card
      * is not yet visible
      */
-    public void dealHand() {
+    private void dealHand() {
         player.dealCard(deck.drawCard());
         dealer.dealCardVisible(deck.drawCard());
         player.dealCard(deck.drawCard());
@@ -120,7 +122,7 @@ public class Game {
     /**
      * End game and report earnings or losses to user
      */
-    public void end() {
+    private void end() {
         if (player.getMoney() ==0) {
             System.out.println("Out of money! Game over.");
         }
@@ -134,9 +136,24 @@ public class Game {
                 System.out.printf("Final balance: $.2f, You lost: $.2f", player.getMoney(), earnings);
             }
         }
+    }
 
+    private void playerStand() {
 
     }
+
+    /**
+     * Player hits and gets new card
+     */
+    private void playerHit() {
+        player.dealCard(deck.drawCard());
+    }
+
+
+
+
+
+
 
 
 }

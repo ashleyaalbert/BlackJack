@@ -18,7 +18,7 @@
  */
 package org.team04.blackjackmvc.model;
 
-public class Dealer implements Player{
+public class Dealer{
     /**
      * The dealer hand to be used
      */
@@ -29,10 +29,6 @@ public class Dealer implements Player{
      */
     public Dealer() {
         dealerHand = new Hand();
-    }
-    @Override
-    public void playNextMove() {
-        //TODO
     }
 
     /**
@@ -50,6 +46,13 @@ public class Dealer implements Player{
      */
     public void dealCardInvisible(Card card) {
         this.dealerHand.add(card);
+    }
+
+    /**
+     * Make all dealer cards visible
+     */
+    public void makeCardsVisible() {
+        this.dealerHand.makeVisible();
     }
 }
 

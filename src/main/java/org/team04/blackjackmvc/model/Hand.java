@@ -121,6 +121,26 @@ public class Hand {
     }
 
     /**
+     * @return true if the hand can be split. i.e. there are 2 cards in
+     * the hand of the same rank
+     */
+    public boolean splitable() {
+        return ((this.cardList.size() ==2) && (this.cardList.get(0).rank()==this.cardList.get(1).rank()));
+    }
+
+    /**
+     * Make all cards visible
+     */
+    public void makeVisible() {
+        for(Card c : this.cardList)
+        {
+            if (c.getVisibility() == false) {
+                c.setVisibility(true);
+            }
+        }
+    }
+
+    /**
      * @return a String of all the cards in the hand
      */
     @Override

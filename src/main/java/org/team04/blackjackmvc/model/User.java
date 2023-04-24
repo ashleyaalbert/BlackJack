@@ -20,6 +20,7 @@ package org.team04.blackjackmvc.model;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.Scanner;
 
 class InsufficientFundsException extends Exception {
     public InsufficientFundsException(String message) {
@@ -27,7 +28,7 @@ class InsufficientFundsException extends Exception {
     }
 }
 
-public class User implements Player{
+public class User{
     /**
      * Name of the player
      */
@@ -46,14 +47,14 @@ public class User implements Player{
      */
     private Hand currentHand;
 
+    /**
+     * Scanner for user input
+     */
+    private Scanner scnr;
+
     public User(String name, double initMoney) {
         this.name = name;
         this.money= initMoney;
-    }
-
-    @Override
-    public void playNextMove() {
-        //TODO
     }
 
     public double getMoney() {
