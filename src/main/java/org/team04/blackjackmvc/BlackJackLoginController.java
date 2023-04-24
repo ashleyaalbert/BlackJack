@@ -50,6 +50,4 @@ public class BlackJackLoginController {
         if (event.getSource() == btnGo)
             blackjackMain.loadSceneOnStage(stage, FXMLScenes.PLAY);
     }
-
-
 }

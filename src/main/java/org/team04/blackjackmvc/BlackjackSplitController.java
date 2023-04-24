@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class BlackJackPlayController {
+public class BlackjackSplitController {
 
     @FXML
     private ResourceBundle resources;
@@ -36,7 +36,7 @@ public class BlackJackPlayController {
     private Button btnBlueChip;
 
     @FXML
-    private Button btnDeal;
+    private Button btnSplit;
 
     @FXML
     private Button btnGreenChip;
@@ -74,27 +74,26 @@ public class BlackJackPlayController {
 
     @FXML
     void initialize() {
-        assert amountOfMoneyInPot != null : "fx:id=\"amountOfMoneyInPot\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert blackChip != null : "fx:id=\"blackChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert blackjackText != null : "fx:id=\"blackjackText\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert blueChip != null : "fx:id=\"blueChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert btnBlackChip != null : "fx:id=\"btnBlackChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert btnBlueChip != null : "fx:id=\"btnBlueChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert btnDeal != null : "fx:id=\"btnDeal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert btnGreenChip != null : "fx:id=\"btnGreenChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert btnHome != null : "fx:id=\"btnHome\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert btnRedCHip != null : "fx:id=\"btnRedCHip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert btnVolume != null : "fx:id=\"btnVolume\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert greenChip != null : "fx:id=\"greenChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert hitButton != null : "fx:id=\"hitButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert lblChipTotal != null : "fx:id=\"lblChipTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert lblPot != null : "fx:id=\"lblPot\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert redChip != null : "fx:id=\"redChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert amountOfMoneyInPot != null : "fx:id=\"amountOfMoneyInPot\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert blackChip != null : "fx:id=\"blackChip\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert blackjackText != null : "fx:id=\"blackjackText\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert blueChip != null : "fx:id=\"blueChip\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert btnBlackChip != null : "fx:id=\"btnBlackChip\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert btnBlueChip != null : "fx:id=\"btnBlueChip\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert btnSplit != null : "fx:id=\"btnSplit\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert btnGreenChip != null : "fx:id=\"btnGreenChip\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert btnHome != null : "fx:id=\"btnHome\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert btnRedCHip != null : "fx:id=\"btnRedCHip\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert btnVolume != null : "fx:id=\"btnVolume\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert greenChip != null : "fx:id=\"greenChip\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert hitButton != null : "fx:id=\"hitButton\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert lblChipTotal != null : "fx:id=\"lblChipTotal\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert lblPot != null : "fx:id=\"lblPot\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert redChip != null : "fx:id=\"redChip\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+        assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
 
     }
-
 
 
     /**
@@ -115,78 +114,43 @@ public class BlackJackPlayController {
         }
     }
 
-    /**
-     * This method controls how the chips can be selected
-     * and alters the pot value and the remaining balance of the
-     * player
-     * @param event event is the {@link ActionEvent} passed
-     */
     @FXML
     void onChip(ActionEvent event){
         if (event.getSource() == btnBlackChip) {
-            // Adds to the pot
             int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 1;
             lblPot.setText(Integer.toString(newPot));
 
-            // Removes from the balance
             int currentBalance = Integer.parseInt(lblChipTotal.getText());
             int newBalance = currentBalance - 1;
             lblChipTotal.setText(Integer.toString(newBalance));
         } else if (event.getSource() == btnRedCHip){
-            // Adds to the pot
             int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 5;
             lblPot.setText(Integer.toString(newPot));
 
-            // Removes from the balance
             int currentBalance = Integer.parseInt(lblChipTotal.getText());
             int newBalance = currentBalance - 5;
             lblChipTotal.setText(Integer.toString(newBalance));
         } else if (event.getSource() == btnGreenChip){
-            // Adds to the pot
             int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 25;
             lblPot.setText(Integer.toString(newPot));
 
-            // Removes from the balance
             int currentBalance = Integer.parseInt(lblChipTotal.getText());
             int newBalance = currentBalance - 25;
             lblChipTotal.setText(Integer.toString(newBalance));
         } else if (event.getSource() == btnBlueChip){
-            // Adds to the pot
             int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 100;
             lblPot.setText(Integer.toString(newPot));
 
-            // Removes from the balance
             int currentBalance = Integer.parseInt(lblChipTotal.getText());
             int newBalance = currentBalance - 100;
             lblChipTotal.setText(Integer.toString(newBalance));
         }
     }
 
-//    /**
-//     * When two cards are the same, the user can have the option to
-//     * split there hand, allowing them to have two hands instead of one.
-//     *
-//     * @param event is the {@link ActionEvent} passed
-//     */
-//    @FXML
-//    void onSplit(ActionEvent event) {
-//        // if card one and card two are the same
-//        // Get the Stage object of this button
-//        Stage stage = (Stage) btnSplit.getScene().getWindow();
-//
-//        if (event.getSource() == btnSplit) {
-//            blackjackMain.loadSceneOnStage(stage, FXMLScenes.SPLIT);
-//
-//        }
-//    }
 
 
-
-
-
-
-}
+    }

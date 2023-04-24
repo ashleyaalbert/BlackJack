@@ -10,9 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.team04.blackjackmvc.blackjackMain;
 
-public class blackjackWelcomeController {
+public class BlackjackWelcomeController {
 
     @FXML
     private ResourceBundle resources;
@@ -72,7 +71,7 @@ public class blackjackWelcomeController {
         Stage stage = (Stage) btnPlay.getScene().getWindow();
 
         if (event.getSource() == btnPlay)
-            blackjackMain.loadSceneOnStage(stage, FXMLScenes.LOGIN);
+            blackjackMain.loadSceneOnStage(stage, FXMLScenes.PLAY);
         else if (event.getSource() == btnSettings)
             blackjackMain.loadSceneOnStage(stage, FXMLScenes.SETTINGS);
     }
