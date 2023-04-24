@@ -118,32 +118,60 @@ public class BlackJackPlayController {
     @FXML
     void onChip(ActionEvent event){
         if (event.getSource() == btnBlackChip) {
-            int currentPot = Integer.parseInt(amountOfMoneyInPot.getText());
+            int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 1;
             lblPot.setText(Integer.toString(newPot));
+
+            int currentBalance = Integer.parseInt(lblChipTotal.getText());
+            int newBalance = currentBalance - 1;
+            lblChipTotal.setText(Integer.toString(newBalance));
         } else if (event.getSource() == btnRedCHip){
-            int currentPot = Integer.parseInt(amountOfMoneyInPot.getText());
+            int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 5;
             lblPot.setText(Integer.toString(newPot));
+
+            int currentBalance = Integer.parseInt(lblChipTotal.getText());
+            int newBalance = currentBalance - 5;
+            lblChipTotal.setText(Integer.toString(newBalance));
         } else if (event.getSource() == btnGreenChip){
-            int currentPot = Integer.parseInt(amountOfMoneyInPot.getText());
+            int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 25;
             lblPot.setText(Integer.toString(newPot));
+
+            int currentBalance = Integer.parseInt(lblChipTotal.getText());
+            int newBalance = currentBalance - 25;
+            lblChipTotal.setText(Integer.toString(newBalance));
         } else if (event.getSource() == btnBlueChip){
-            int currentPot = Integer.parseInt(amountOfMoneyInPot.getText());
+            int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 100;
             lblPot.setText(Integer.toString(newPot));
+
+            int currentBalance = Integer.parseInt(lblChipTotal.getText());
+            int newBalance = currentBalance - 25;
+            lblChipTotal.setText(Integer.toString(newBalance));
         }
     }
 
 
     @FXML
-    void updatePot(){
-
-    }
-
-    @FXML
-    void updateBalance(){
+    void updateBalance(ActionEvent event){
+        if (event.getSource() == btnBlackChip) {
+            int currentPot = Integer.parseInt(lblPot.getText());
+            int newPot = currentPot - 1;
+            lblChipTotal.setText(Integer.toString(newPot));
+        } else if (event.getSource() == btnRedCHip){
+            int currentPot = Integer.parseInt(lblPot.getText());
+            int newPot = currentPot - 5;
+            lblChipTotal.setText(Integer.toString(newPot));
+        } else if (event.getSource() == btnGreenChip){
+            int currentPot = Integer.parseInt(lblPot.getText());
+            int newPot = currentPot - 25;
+            lblChipTotal.setText(Integer.toString(newPot));
+        } else if (event.getSource() == btnBlueChip){
+            int currentPot = Integer.parseInt(lblPot.getText());
+            int newPot = currentPot - 100;
+            lblChipTotal.setText(Integer.toString(newPot));
+        }
 
     }
 

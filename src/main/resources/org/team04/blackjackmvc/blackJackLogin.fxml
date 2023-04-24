@@ -19,11 +19,6 @@
             <Font name="Charter Roman" size="23.0" />
          </font>
       </Text>
-      <TextField fx:id="txtFieldName" layoutX="367.0" layoutY="121.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="188.0" promptText="Name" text="Name">
-         <font>
-            <Font name="Charter Roman" size="13.0" />
-         </font>
-      </TextField>
       <Text fill="#fcfcfc" layoutX="83.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your remaining balance:">
          <font>
             <Font name="Charter Roman" size="23.0" />
@@ -34,15 +29,11 @@
             <Font name="Charter Roman" size="23.0" />
          </font>
       </Label>
-      <Button fx:id="btnGo" layoutX="316.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="41.0" prefWidth="68.0">
+      <Button fx:id="btnGo" layoutX="308.0" layoutY="224.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="42.0" prefWidth="84.0" text="Go!">
          <font>
-            <Font name="Charter Roman" size="23.0" />
+            <Font name="Charter Roman" size="22.0" />
          </font>
       </Button>
-      <Text layoutX="332.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go!">
-         <font>
-            <Font name="Charter Roman" size="23.0" />
-         </font>
-      </Text>
+      <TextField fx:id="txtFieldName" layoutX="392.0" layoutY="121.0" />
    </children>
 </AnchorPane>
