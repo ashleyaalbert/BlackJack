@@ -78,25 +78,63 @@ public class BlackJackPlayController {
     private Label lblWinner;
 
     /**
-     * Creating variables for player and dealer
+     * Creating variables for player
      */
     private Dealer dealer;
 
+    /**
+     * Creating variables for dealer
+     */
     private User player;
+
+    /**
+     * Creating a hand for the player
+     */
     private Hand playerHand;
 
+    /**
+     * Creating a hand for the dealer
+     */
     private Hand dealerHand;
+
+    /**
+     * Initializing a game
+     */
     private Game game;
+
+    /**
+     * Initializing a deck
+     */
+    private Deck deck;
 
     /**
      * Add a boolean variable to track whether the game has started
      */
     private boolean gameStarted = false;
 
+    /**
+     * An updated user balance that is updated
+     * throughout the game
+     */
     private int newBalance;
+
+    /**
+     * The currentBalance of the user at that
+     * current time
+     */
     private int currentBalance;
+    /**
+     * Updated pot after bets are made
+     */
     private int newPot;
+    /**
+     * Resets the pot to 0, when the game is reset
+     */
     private int resetPot;
+    /**
+     * Stores the bets of the user that have
+     * been lost
+     */
     private int bank;
 
 
@@ -123,8 +161,9 @@ public class BlackJackPlayController {
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblWinner != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
-        // Creates a new game
+        // Creates a new game and deck
         game = new Game();
+        deck = new Deck(52);
         // Creates a new dealer and player
         dealer = new Dealer();
         player = new User("Eva", 500);
@@ -290,11 +329,11 @@ public class BlackJackPlayController {
     void onDeal() {
         gameStarted = true;
 
-
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);
 
         // Deals cards to player and dealer
+
         game.dealHand();
 
         // and hit and stand button are visible.
@@ -330,7 +369,7 @@ public class BlackJackPlayController {
             // dealer hits repeatedly, stands on hard a 17
             while (dealerHand.sum() < 17) {
                 dealerHand.add(new Card(Card.Suit.CLUBS, Card.Rank.JACK));
-
+//
 //                // if dealer has a soft 17, hit again
 //                if (dealerHand.sum() == 17 && dealerHand.hasAce()) {
 //                    dealerHand.add(new Card(Card.Suit.CLUBS, Card.Rank.JACK));
@@ -344,7 +383,7 @@ public class BlackJackPlayController {
             newBalance += newPot;
             // Updates the pot label and balance label
             lblPot.setText(Integer.toString(resetPot));
-            lblChipTotal.setText(Integer.toString(newBalance));
+            lblChipTotal.setText(Integer.toString(currentBalance));
 
             lblWinner.setText("Blackjack!!!");
             lblWinner.setVisible(true);
@@ -366,7 +405,6 @@ public class BlackJackPlayController {
 
         // dealer has black jack or wins
         if(getWinner.equals("dealer blackjack") || getWinner.equals("dealer wins")){
-            // give bets to dealer
             // give bets to player
             bank += newPot;
             // Updates the pot label and balance label
