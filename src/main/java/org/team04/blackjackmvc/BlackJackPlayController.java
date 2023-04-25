@@ -122,71 +122,78 @@ public class BlackJackPlayController {
      * @param event event is the {@link ActionEvent} passed
      */
     @FXML
-    void onChip(ActionEvent event){
+    void onChip(ActionEvent event) throws NegativeBalanceException {
         if (event.getSource() == btnBlackChip) {
             // Adds to the pot
             int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 1;
-            lblPot.setText(Integer.toString(newPot));
 
-            // Removes from the balance
+            // Get the current balance
             int currentBalance = Integer.parseInt(lblChipTotal.getText());
             int newBalance = currentBalance - 1;
+
+            // Check if the new pot value exceeds the balance
+            if (newBalance < 0) {
+                throw new NegativeBalanceException("Not enough funds for this bet!");
+            }
+
+            // Updates the pot label and balance label
+            lblPot.setText(Integer.toString(newPot));
             lblChipTotal.setText(Integer.toString(newBalance));
         } else if (event.getSource() == btnRedCHip){
             // Adds to the pot
             int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 5;
-            lblPot.setText(Integer.toString(newPot));
 
-            // Removes from the balance
+            // Get the current balance
             int currentBalance = Integer.parseInt(lblChipTotal.getText());
             int newBalance = currentBalance - 5;
+
+            // Check if the new pot value exceeds the balance
+            if (newBalance < 0) {
+                throw new NegativeBalanceException("Not enough funds for this bet!");
+            }
+
+            // Updates the pot label and balance label
+            lblPot.setText(Integer.toString(newPot));
             lblChipTotal.setText(Integer.toString(newBalance));
         } else if (event.getSource() == btnGreenChip){
             // Adds to the pot
             int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 25;
-            lblPot.setText(Integer.toString(newPot));
 
-            // Removes from the balance
+            // Get the current balance
             int currentBalance = Integer.parseInt(lblChipTotal.getText());
             int newBalance = currentBalance - 25;
+
+            // Check if the new pot value exceeds the balance
+            if (newBalance < 0) {
+                throw new NegativeBalanceException("Not enough funds for this bet!");
+            }
+
+            // Updates the pot label and balance label
+            lblPot.setText(Integer.toString(newPot));
             lblChipTotal.setText(Integer.toString(newBalance));
+
         } else if (event.getSource() == btnBlueChip){
             // Adds to the pot
             int currentPot = Integer.parseInt(lblPot.getText());
             int newPot = currentPot + 100;
-            lblPot.setText(Integer.toString(newPot));
 
-            // Removes from the balance
+            // Get the current balance
             int currentBalance = Integer.parseInt(lblChipTotal.getText());
             int newBalance = currentBalance - 100;
+
+            // Check if the new pot value exceeds the balance
+            if (newBalance < 0) {
+                throw new NegativeBalanceException("Not enough funds for this bet!");
+            }
+
+            // Updates the pot label and balance label
+            lblPot.setText(Integer.toString(newPot));
             lblChipTotal.setText(Integer.toString(newBalance));
+            }
+
         }
-    }
-
-//    /**
-//     * When two cards are the same, the user can have the option to
-//     * split there hand, allowing them to have two hands instead of one.
-//     *
-//     * @param event is the {@link ActionEvent} passed
-//     */
-//    @FXML
-//    void onSplit(ActionEvent event) {
-//        // if card one and card two are the same
-//        // Get the Stage object of this button
-//        Stage stage = (Stage) btnSplit.getScene().getWindow();
-//
-//        if (event.getSource() == btnSplit) {
-//            blackjackMain.loadSceneOnStage(stage, FXMLScenes.SPLIT);
-//
-//        }
-//    }
-
-
-
-
-
-
 }
+
