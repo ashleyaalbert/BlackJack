@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.team04.blackjackmvc.model.Hand;
 
 public class BlackJackPlayController {
 
@@ -71,6 +72,12 @@ public class BlackJackPlayController {
     @FXML
     private Button standButton;
 
+    // Creating variables for player and dealer hands
+    private Hand playerHand;
+
+    private Hand dealerHand;
+
+
 
     @FXML
     void initialize() {
@@ -92,6 +99,10 @@ public class BlackJackPlayController {
         assert lblPot != null : "fx:id=\"lblPot\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert redChip != null : "fx:id=\"redChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+
+        // Creating hands for both player and dealer
+        dealerHand = new Hand();
+        playerHand = new Hand();
 
     }
 
@@ -192,8 +203,18 @@ public class BlackJackPlayController {
             // Updates the pot label and balance label
             lblPot.setText(Integer.toString(newPot));
             lblChipTotal.setText(Integer.toString(newBalance));
-            }
-
         }
+
+    }
+    @FXML
+    void onDeal(){
+        // after the deal button is pressed, it is disabled
+        btnDeal.setVisible(false);
+
+        // and hit and stand button are visible.
+        standButton.setVisible(true);
+        hitButton.setVisible(true);
+
+    }
 }
 
