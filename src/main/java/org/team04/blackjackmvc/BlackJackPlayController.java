@@ -1,5 +1,6 @@
 package org.team04.blackjackmvc;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -92,6 +93,13 @@ public class BlackJackPlayController {
      */
     private boolean gameStarted = false;
 
+    private int newBalance;
+    private int currentBalance;
+    private int newPot;
+    private int resetPot;
+    private int bank;
+
+
 
     @FXML
     void initialize() {
@@ -123,6 +131,10 @@ public class BlackJackPlayController {
         // Creates new hands for dealer and player
         dealerHand = new Hand();
         playerHand = new Hand();
+
+        //Creates a bank for the dealer
+        bank = 0;
+        resetPot = 0;
 
         lblWinner.setVisible(false);
 
@@ -159,10 +171,10 @@ public class BlackJackPlayController {
             if (event.getSource() == btnBlackChip) {
                 // Adds to the pot
                 int currentPot = Integer.parseInt(lblPot.getText());
-                int newPot = currentPot + 1;
+                newPot = currentPot + 1;
 
                 // Get the current balance
-                int currentBalance = Integer.parseInt(lblChipTotal.getText());
+                currentBalance = Integer.parseInt(lblChipTotal.getText());
                 int newBalance = currentBalance - 1;
 
                 // Check if the new pot value exceeds the balance
@@ -190,10 +202,10 @@ public class BlackJackPlayController {
             if (event.getSource() == btnRedCHip) {
                 // Adds to the pot
                 int currentPot = Integer.parseInt(lblPot.getText());
-                int newPot = currentPot + 5;
+                newPot = currentPot + 5;
 
                 // Get the current balance
-                int currentBalance = Integer.parseInt(lblChipTotal.getText());
+                currentBalance = Integer.parseInt(lblChipTotal.getText());
                 int newBalance = currentBalance - 5;
 
                 // Check if the new pot value exceeds the balance
@@ -221,10 +233,10 @@ public class BlackJackPlayController {
             if (event.getSource() == btnGreenChip) {
                 // Adds to the pot
                 int currentPot = Integer.parseInt(lblPot.getText());
-                int newPot = currentPot + 25;
+                newPot = currentPot + 25;
 
                 // Get the current balance
-                int currentBalance = Integer.parseInt(lblChipTotal.getText());
+                currentBalance = Integer.parseInt(lblChipTotal.getText());
                 int newBalance = currentBalance - 25;
 
                 // Check if the new pot value exceeds the balance
@@ -252,10 +264,10 @@ public class BlackJackPlayController {
             if (event.getSource() == btnBlueChip) {
                 // Adds to the pot
                 int currentPot = Integer.parseInt(lblPot.getText());
-                int newPot = currentPot + 100;
+                newPot = currentPot + 100;
 
                 // Get the current balance
-                int currentBalance = Integer.parseInt(lblChipTotal.getText());
+                currentBalance = Integer.parseInt(lblChipTotal.getText());
                 int newBalance = currentBalance - 100;
 
                 // Check if the new pot value exceeds the balance
@@ -329,6 +341,11 @@ public class BlackJackPlayController {
         // player has black jack
         if(getWinner.equals("player blackjack")){
             // give bets to player
+            newBalance += newPot;
+            // Updates the pot label and balance label
+            lblPot.setText(Integer.toString(resetPot));
+            lblChipTotal.setText(Integer.toString(newBalance));
+
             lblWinner.setText("Blackjack!!!");
             lblWinner.setVisible(true);
 
@@ -337,6 +354,11 @@ public class BlackJackPlayController {
         // player wins
         if(getWinner.equals("player wins")){
             // give bets to player
+            newBalance += newPot;
+            // Updates the pot label and balance label
+            lblPot.setText(Integer.toString(resetPot));
+            lblChipTotal.setText(Integer.toString(newBalance));
+
             lblWinner.setText("You win!");
             lblWinner.setVisible(true);
 
@@ -345,6 +367,13 @@ public class BlackJackPlayController {
         // dealer has black jack or wins
         if(getWinner.equals("dealer blackjack") || getWinner.equals("dealer wins")){
             // give bets to dealer
+            // give bets to player
+            bank += newPot;
+            // Updates the pot label and balance label
+            lblPot.setText(Integer.toString(resetPot));
+            lblChipTotal.setText(Integer.toString(currentBalance));
+
+
             lblWinner.setText("Dealer Wins.");
             lblWinner.setVisible(true);
 
@@ -353,6 +382,10 @@ public class BlackJackPlayController {
         // push
         if(getWinner.equals("push")){
             // bets go back to each player
+            newBalance += newPot;
+            lblPot.setText(Integer.toString(resetPot));
+            lblChipTotal.setText(Integer.toString(newBalance));
+
             lblWinner.setText("Push");
             lblWinner.setVisible(true);
         }
