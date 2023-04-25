@@ -132,5 +132,10 @@
             <Font name="Charter Roman" size="25.0" />
          </font>
       </Label>
+      <Label fx:id="lblWinner" layoutX="319.0" layoutY="122.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="99.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="Charter Roman" size="32.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

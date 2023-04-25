@@ -73,6 +73,9 @@ public class BlackJackPlayController {
     @FXML
     private Button standButton;
 
+    @FXML
+    private Label lblWinner;
+
     /**
      * Creating variables for player and dealer
      */
@@ -110,6 +113,7 @@ public class BlackJackPlayController {
         assert lblPot != null : "fx:id=\"lblPot\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert redChip != null : "fx:id=\"redChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert lblWinner != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
         // Creates a new game
         game = new Game();
@@ -119,6 +123,8 @@ public class BlackJackPlayController {
         // Creates new hands for dealer and player
         dealerHand = new Hand();
         playerHand = new Hand();
+
+        lblWinner.setVisible(false);
 
     }
 
@@ -272,6 +278,7 @@ public class BlackJackPlayController {
     void onDeal() {
         gameStarted = true;
 
+
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);
 
@@ -320,18 +327,34 @@ public class BlackJackPlayController {
 
         String getWinner = getWinner();
         // player has black jack
-        if(getWinner.equals("player blackjack") || getWinner.equals("player wins")){
+        if(getWinner.equals("player blackjack")){
             // give bets to player
+            lblWinner.setText("Blackjack!!!");
+            lblWinner.setVisible(true);
+
         }
 
-        // dealer has black jack
+        // player wins
+        if(getWinner.equals("player wins")){
+            // give bets to player
+            lblWinner.setText("You win!");
+            lblWinner.setVisible(true);
+
+        }
+
+        // dealer has black jack or wins
         if(getWinner.equals("dealer blackjack") || getWinner.equals("dealer wins")){
             // give bets to dealer
+            lblWinner.setText("Dealer Wins.");
+            lblWinner.setVisible(true);
+
         }
 
         // push
         if(getWinner.equals("push")){
             // bets go back to each player
+            lblWinner.setText("Push");
+            lblWinner.setVisible(true);
         }
     }
 
