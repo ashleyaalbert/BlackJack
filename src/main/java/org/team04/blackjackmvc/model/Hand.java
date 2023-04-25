@@ -141,6 +141,15 @@ public class Hand {
     }
 
     /**
+     * Get the size of the hand.
+     *
+     * @return How many cards are in the hand.
+     */
+    public int getSize() {
+        return size;
+    }
+
+    /**
      * @return a String of all the cards in the hand
      */
     @Override
@@ -170,7 +179,35 @@ public class Hand {
     }
 
 
+    /**
+     * Sums up the hands to be able to find winner,
+     *
+     * @return The sum of the hand.
+     */
+    public int sum(){
+        // Keeps track of the total cards in each hand
+        int result = 0;
 
+        // Keeps track of number of aces, to determine whether their value
+        // is 11 or 1.
+        int aceCount = 0;
+
+        // Calculates the sum hand and counts the number of aces
+        for (int i = 0; i < size; i++) {
+            result += cardList.get(i).value();
+            if (cardList.get(i).rank().equals("ACE")) {
+                aceCount++;
+            }
+        }
+
+        // Change ace values from 11 to 1 if sum is currently above 21
+        while (result > 21 && aceCount != 0) {
+            result -= 10;
+            aceCount--;
+        }
+
+        return result;
+    }
 
 
 }

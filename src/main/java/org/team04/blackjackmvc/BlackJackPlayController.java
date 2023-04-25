@@ -1,6 +1,7 @@
 package org.team04.blackjackmvc;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -72,7 +73,9 @@ public class BlackJackPlayController {
     @FXML
     private Button standButton;
 
-    // Creating variables for player and dealer hands
+    /**
+     * Creating variables for player and dealer
+     */
     private Dealer dealer;
 
     private User player;
@@ -81,9 +84,10 @@ public class BlackJackPlayController {
     private Hand dealerHand;
     private Game game;
 
-    // Add a boolean variable to track whether the game has started
+    /**
+     * Add a boolean variable to track whether the game has started
+     */
     private boolean gameStarted = false;
-
 
 
     @FXML
@@ -107,16 +111,16 @@ public class BlackJackPlayController {
         assert redChip != null : "fx:id=\"redChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
-        // Creating hands for both player and dealer
+        // Creates a new game
         game = new Game();
+        // Creates a new dealer and player
         dealer = new Dealer();
         player = new User("Eva", 500);
+        // Creates new hands for dealer and player
         dealerHand = new Hand();
         playerHand = new Hand();
 
     }
-
-
 
     /**
      * {@link ActionEvent} handler for when we're ready to change to the next
@@ -137,14 +141,15 @@ public class BlackJackPlayController {
     }
 
     /**
-     * This method controls how the chips can be selected
+     * This method controls how the black chips can be selected
      * and alters the pot value and the remaining balance of the
      * player
+     *
      * @param event event is the {@link ActionEvent} passed
      */
     @FXML
-    void onChip(ActionEvent event) throws NegativeBalanceException {
-        if(!gameStarted) {
+    void onChipBlack(ActionEvent event) throws NegativeBalanceException {
+        if (!gameStarted) {
             if (event.getSource() == btnBlackChip) {
                 // Adds to the pot
                 int currentPot = Integer.parseInt(lblPot.getText());
@@ -162,7 +167,21 @@ public class BlackJackPlayController {
                 // Updates the pot label and balance label
                 lblPot.setText(Integer.toString(newPot));
                 lblChipTotal.setText(Integer.toString(newBalance));
-            } else if (event.getSource() == btnRedCHip) {
+            }
+        }
+    }
+
+    /**
+     * This method controls how the red chips can be selected
+     * and alters the pot value and the remaining balance of the
+     * player
+     *
+     * @param event event is the {@link ActionEvent} passed
+     */
+    @FXML
+    void onChipRed(ActionEvent event) throws NegativeBalanceException {
+        if (!gameStarted) {
+            if (event.getSource() == btnRedCHip) {
                 // Adds to the pot
                 int currentPot = Integer.parseInt(lblPot.getText());
                 int newPot = currentPot + 5;
@@ -179,7 +198,21 @@ public class BlackJackPlayController {
                 // Updates the pot label and balance label
                 lblPot.setText(Integer.toString(newPot));
                 lblChipTotal.setText(Integer.toString(newBalance));
-            } else if (event.getSource() == btnGreenChip) {
+            }
+        }
+    }
+
+    /**
+     * This method controls how the green chips can be selected
+     * and alters the pot value and the remaining balance of the
+     * player
+     *
+     * @param event event is the {@link ActionEvent} passed
+     */
+    @FXML
+    void onChipGreen(ActionEvent event) throws NegativeBalanceException {
+        if (!gameStarted) {
+            if (event.getSource() == btnGreenChip) {
                 // Adds to the pot
                 int currentPot = Integer.parseInt(lblPot.getText());
                 int newPot = currentPot + 25;
@@ -196,8 +229,21 @@ public class BlackJackPlayController {
                 // Updates the pot label and balance label
                 lblPot.setText(Integer.toString(newPot));
                 lblChipTotal.setText(Integer.toString(newBalance));
+            }
+        }
+    }
 
-            } else if (event.getSource() == btnBlueChip) {
+    /**
+     * This method controls how the blue chips can be selected
+     * and alters the pot value and the remaining balance of the
+     * player
+     *
+     * @param event event is the {@link ActionEvent} passed
+     */
+    @FXML
+    void onChipBlue(ActionEvent event) throws NegativeBalanceException {
+        if (!gameStarted) {
+            if (event.getSource() == btnBlueChip) {
                 // Adds to the pot
                 int currentPot = Integer.parseInt(lblPot.getText());
                 int newPot = currentPot + 100;
@@ -217,8 +263,13 @@ public class BlackJackPlayController {
             }
         }
     }
+
+    /**
+     * In this method when the deal button is pressed it locks
+     * the players bet in and deals the cards.
+     */
     @FXML
-    void onDeal(){
+    void onDeal() {
         gameStarted = true;
 
         // after the deal button is pressed, it is disabled
@@ -227,19 +278,106 @@ public class BlackJackPlayController {
         // Deals cards to player and dealer
         game.dealHand();
 
-    }
-
-    @FXML
-    void onBet(){
         // and hit and stand button are visible.
         standButton.setVisible(true);
         hitButton.setVisible(true);
 
     }
 
+    /**
+     * When the hit button is pressed, the dealer will deal the player
+     * a new card.
+     */
     @FXML
-    void onHit(){
-        game.playerHit();
+    void onHit() {
+        playerHand.add(new Card(Card.Suit.HEARTS, Card.Rank.JACK));
+
     }
+
+    /**
+     * When the stand button is pressed, the dealer will stop dealing to
+     * the user and deal itself to try and get 21. Then the sum of the players
+     * and dealers hands will then be calculated and returned. As well as dealing with
+     * beats.
+     */
+    @FXML
+    void onStand() {
+        // Trying to calculate sum of cards as well as deal the dealer
+        // until satisfied.
+        int playerHandSum = playerHand.sum();
+        boolean playerHasBlackjack = playerHand.getSize() == 2 && playerHandSum == 21;
+
+        if (playerHandSum <= 21 && !playerHasBlackjack) {
+            // dealer hits repeatedly, stands on hard a 17
+            while (dealerHand.sum() < 17) {
+                dealerHand.add(new Card(Card.Suit.CLUBS, Card.Rank.JACK));
+
+//                // if dealer has a soft 17, hit again
+//                if (dealerHand.sum() == 17 && dealerHand.hasAce()) {
+//                    dealerHand.add(new Card(Card.Suit.CLUBS, Card.Rank.JACK));
+            }
+        }
+
+        String getWinner = getWinner();
+        // player has black jack
+        if(getWinner.equals("player blackjack") || getWinner.equals("player wins")){
+            // give bets to player
+        }
+
+        // dealer has black jack
+        if(getWinner.equals("dealer blackjack") || getWinner.equals("dealer wins")){
+            // give bets to dealer
+        }
+
+        // push
+        if(getWinner.equals("push")){
+            // bets go back to each player
+        }
+    }
+
+    /**
+     * Compares the values of the sums of player and dealer
+     * to find the winner
+     *
+     * @return String value of player or dealer
+     */
+    private String getWinner() {
+        int dealerSum = dealerHand.sum();
+        int playerSum = playerHand.sum();
+        boolean dealerHasBlackjack = false;
+        boolean playerHasBlackjack = true;
+
+        // Checks if dealer or player has blackjack
+        if (dealerHand.getSize() == 2 && dealerSum == 21) {
+            dealerHasBlackjack = true;
+        } else if (playerHand.getSize() == 2 && playerSum == 21) {
+            playerHasBlackjack = true;
+        }
+
+        // Finds winner is user or dealer has black jack
+        if (dealerHasBlackjack && !playerHasBlackjack) {         // if dealer has blackjack and the player does not
+            return "dealer blackjack";
+        } else if (!dealerHasBlackjack && playerHasBlackjack) {   // if player has blackjack and the dealer does not
+            return "player blackjack";
+        }
+
+        // Compares sums finds winner or determines a push (tie)
+        if (playerSum > 21) {
+            return "dealer wins";
+        } else if (dealerSum > 21) {
+            return "player wins";
+        } else if (playerSum > dealerSum) {
+            return "player wins";
+        } else if (dealerSum > playerSum) {
+            return "dealer wins";
+        } else if (dealerSum == playerSum) {
+            return "push";
+        } else {
+            // Should never get here
+            return "null";
+        }
+
+    }
+
 }
 

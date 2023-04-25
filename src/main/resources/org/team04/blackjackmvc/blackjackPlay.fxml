@@ -20,7 +20,7 @@
             <Font name="Charter Roman" size="32.0" />
          </font>
       </Text>
-      <Button fx:id="btnDeal" alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="277.0" maxHeight="50.0" maxWidth="54.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBet" onMouseClicked="#onDeal" prefHeight="50.0" prefWidth="54.0" style="-fx-background-radius: 5em; -fx-min-width: 70px; -fx-max-width: 70px; -fx-max-height: 70px; -fx-min-height: 70px; -fx-background-color: gray;" textAlignment="CENTER" textFill="#f5f3f3" textOverrun="CLIP">
+      <Button fx:id="btnDeal" alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="277.0" maxHeight="50.0" maxWidth="54.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onDeal" onMouseClicked="#onDeal" prefHeight="50.0" prefWidth="54.0" style="-fx-background-radius: 5em; -fx-min-width: 70px; -fx-max-width: 70px; -fx-max-height: 70px; -fx-min-height: 70px; -fx-background-color: gray;" textAlignment="CENTER" textFill="#f5f3f3" textOverrun="CLIP">
          <font>
             <Font name="Charter Roman" size="19.0" />
          </font>
@@ -56,7 +56,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="hitButton" alignment="CENTER" layoutX="353.0" layoutY="252.0" maxHeight="39.0" maxWidth="70.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-min-height: 60px; -fx-max-height: 60px; -fx-min-width: 60px; -fx-max-width: 60px;" textFill="#fffefe">
+      <Button fx:id="hitButton" alignment="CENTER" layoutX="353.0" layoutY="252.0" maxHeight="39.0" maxWidth="70.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onHit" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-min-height: 60px; -fx-max-height: 60px; -fx-min-width: 60px; -fx-max-width: 60px;" textFill="#fffefe">
          <font>
             <Font name="Charter Roman" size="21.0" />
          </font>
@@ -67,7 +67,7 @@
                </font>
             </Text>
          </graphic></Button>
-      <Button fx:id="standButton" layoutX="350.0" layoutY="337.0" maxHeight="65.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="75.0" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-min-height: 50px; -fx-max-height: 50px; -fx-min-width: 50px; -fx-max-height: 50px;" textFill="#f8f7f7">
+      <Button fx:id="standButton" layoutX="350.0" layoutY="337.0" maxHeight="65.0" mnemonicParsing="false" onAction="#onStand" prefHeight="65.0" prefWidth="75.0" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-min-height: 50px; -fx-max-height: 50px; -fx-min-width: 50px; -fx-max-height: 50px;" textFill="#f8f7f7">
          <font>
             <Font name="Charter Roman" size="17.0" />
          </font></Button>
@@ -86,7 +86,7 @@
             <Font name="Charter Roman" size="31.0" />
          </font>
       </Label>
-      <Button fx:id="btnBlueChip" layoutX="168.0" layoutY="397.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChip" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
+      <Button fx:id="btnBlueChip" layoutX="168.0" layoutY="397.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChipBlue" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
          <graphic>
             <ImageView fx:id="blueChip" fitHeight="111.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -95,7 +95,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnGreenChip" layoutX="83.0" layoutY="397.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChip" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
+      <Button fx:id="btnGreenChip" layoutX="83.0" layoutY="397.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChipGreen" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
          <graphic>
             <ImageView fx:id="greenChip" fitHeight="111.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -104,7 +104,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnRedCHip" layoutX="24.0" layoutY="345.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChip" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
+      <Button fx:id="btnRedCHip" layoutX="24.0" layoutY="345.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChipRed" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
          <graphic>
             <ImageView fx:id="redChip" fitHeight="111.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -113,7 +113,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnBlackChip" layoutX="24.0" layoutY="266.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChip" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
+      <Button fx:id="btnBlackChip" layoutX="24.0" layoutY="266.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChipBlack" prefHeight="85.0" prefWidth="87.0" style="-fx-background-radius: 5em;">
          <graphic>
             <ImageView fx:id="blackChip" fitHeight="112.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
                <image>
