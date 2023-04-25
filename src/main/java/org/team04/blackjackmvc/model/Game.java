@@ -112,7 +112,7 @@ public class Game {
      * Deal cards to user and dealer and reshuffle and reset deck if out of cards. Dealer's second card
      * is not yet visible
      */
-    private void dealHand() {
+    public void dealHand() {
         player.dealCard(deck.drawCard());
         dealer.dealCardVisible(deck.drawCard());
         player.dealCard(deck.drawCard());
@@ -145,7 +145,7 @@ public class Game {
     /**
      * Player hits and gets new card
      */
-    private void playerHit() {
+    public void playerHit() {
         player.dealCard(deck.drawCard());
     }
 

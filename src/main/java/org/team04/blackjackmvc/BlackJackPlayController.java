@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import org.team04.blackjackmvc.model.Hand;
+import org.team04.blackjackmvc.model.*;
 
 public class BlackJackPlayController {
 
@@ -73,9 +73,16 @@ public class BlackJackPlayController {
     private Button standButton;
 
     // Creating variables for player and dealer hands
+    private Dealer dealer;
+
+    private User player;
     private Hand playerHand;
 
     private Hand dealerHand;
+    private Game game;
+
+    // Add a boolean variable to track whether the game has started
+    private boolean gameStarted = false;
 
 
 
@@ -101,6 +108,9 @@ public class BlackJackPlayController {
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
         // Creating hands for both player and dealer
+        game = new Game();
+        dealer = new Dealer();
+        player = new User("Eva", 500);
         dealerHand = new Hand();
         playerHand = new Hand();
 
@@ -134,87 +144,102 @@ public class BlackJackPlayController {
      */
     @FXML
     void onChip(ActionEvent event) throws NegativeBalanceException {
-        if (event.getSource() == btnBlackChip) {
-            // Adds to the pot
-            int currentPot = Integer.parseInt(lblPot.getText());
-            int newPot = currentPot + 1;
+        if(!gameStarted) {
+            if (event.getSource() == btnBlackChip) {
+                // Adds to the pot
+                int currentPot = Integer.parseInt(lblPot.getText());
+                int newPot = currentPot + 1;
 
-            // Get the current balance
-            int currentBalance = Integer.parseInt(lblChipTotal.getText());
-            int newBalance = currentBalance - 1;
+                // Get the current balance
+                int currentBalance = Integer.parseInt(lblChipTotal.getText());
+                int newBalance = currentBalance - 1;
 
-            // Check if the new pot value exceeds the balance
-            if (newBalance < 0) {
-                throw new NegativeBalanceException("Not enough funds for this bet!");
+                // Check if the new pot value exceeds the balance
+                if (newBalance < 0) {
+                    throw new NegativeBalanceException("Not enough funds for this bet!");
+                }
+
+                // Updates the pot label and balance label
+                lblPot.setText(Integer.toString(newPot));
+                lblChipTotal.setText(Integer.toString(newBalance));
+            } else if (event.getSource() == btnRedCHip) {
+                // Adds to the pot
+                int currentPot = Integer.parseInt(lblPot.getText());
+                int newPot = currentPot + 5;
+
+                // Get the current balance
+                int currentBalance = Integer.parseInt(lblChipTotal.getText());
+                int newBalance = currentBalance - 5;
+
+                // Check if the new pot value exceeds the balance
+                if (newBalance < 0) {
+                    throw new NegativeBalanceException("Not enough funds for this bet!");
+                }
+
+                // Updates the pot label and balance label
+                lblPot.setText(Integer.toString(newPot));
+                lblChipTotal.setText(Integer.toString(newBalance));
+            } else if (event.getSource() == btnGreenChip) {
+                // Adds to the pot
+                int currentPot = Integer.parseInt(lblPot.getText());
+                int newPot = currentPot + 25;
+
+                // Get the current balance
+                int currentBalance = Integer.parseInt(lblChipTotal.getText());
+                int newBalance = currentBalance - 25;
+
+                // Check if the new pot value exceeds the balance
+                if (newBalance < 0) {
+                    throw new NegativeBalanceException("Not enough funds for this bet!");
+                }
+
+                // Updates the pot label and balance label
+                lblPot.setText(Integer.toString(newPot));
+                lblChipTotal.setText(Integer.toString(newBalance));
+
+            } else if (event.getSource() == btnBlueChip) {
+                // Adds to the pot
+                int currentPot = Integer.parseInt(lblPot.getText());
+                int newPot = currentPot + 100;
+
+                // Get the current balance
+                int currentBalance = Integer.parseInt(lblChipTotal.getText());
+                int newBalance = currentBalance - 100;
+
+                // Check if the new pot value exceeds the balance
+                if (newBalance < 0) {
+                    throw new NegativeBalanceException("Not enough funds for this bet!");
+                }
+
+                // Updates the pot label and balance label
+                lblPot.setText(Integer.toString(newPot));
+                lblChipTotal.setText(Integer.toString(newBalance));
             }
-
-            // Updates the pot label and balance label
-            lblPot.setText(Integer.toString(newPot));
-            lblChipTotal.setText(Integer.toString(newBalance));
-        } else if (event.getSource() == btnRedCHip){
-            // Adds to the pot
-            int currentPot = Integer.parseInt(lblPot.getText());
-            int newPot = currentPot + 5;
-
-            // Get the current balance
-            int currentBalance = Integer.parseInt(lblChipTotal.getText());
-            int newBalance = currentBalance - 5;
-
-            // Check if the new pot value exceeds the balance
-            if (newBalance < 0) {
-                throw new NegativeBalanceException("Not enough funds for this bet!");
-            }
-
-            // Updates the pot label and balance label
-            lblPot.setText(Integer.toString(newPot));
-            lblChipTotal.setText(Integer.toString(newBalance));
-        } else if (event.getSource() == btnGreenChip){
-            // Adds to the pot
-            int currentPot = Integer.parseInt(lblPot.getText());
-            int newPot = currentPot + 25;
-
-            // Get the current balance
-            int currentBalance = Integer.parseInt(lblChipTotal.getText());
-            int newBalance = currentBalance - 25;
-
-            // Check if the new pot value exceeds the balance
-            if (newBalance < 0) {
-                throw new NegativeBalanceException("Not enough funds for this bet!");
-            }
-
-            // Updates the pot label and balance label
-            lblPot.setText(Integer.toString(newPot));
-            lblChipTotal.setText(Integer.toString(newBalance));
-
-        } else if (event.getSource() == btnBlueChip){
-            // Adds to the pot
-            int currentPot = Integer.parseInt(lblPot.getText());
-            int newPot = currentPot + 100;
-
-            // Get the current balance
-            int currentBalance = Integer.parseInt(lblChipTotal.getText());
-            int newBalance = currentBalance - 100;
-
-            // Check if the new pot value exceeds the balance
-            if (newBalance < 0) {
-                throw new NegativeBalanceException("Not enough funds for this bet!");
-            }
-
-            // Updates the pot label and balance label
-            lblPot.setText(Integer.toString(newPot));
-            lblChipTotal.setText(Integer.toString(newBalance));
         }
-
     }
     @FXML
     void onDeal(){
+        gameStarted = true;
+
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);
 
+        // Deals cards to player and dealer
+        game.dealHand();
+
+    }
+
+    @FXML
+    void onBet(){
         // and hit and stand button are visible.
         standButton.setVisible(true);
         hitButton.setVisible(true);
 
+    }
+
+    @FXML
+    void onHit(){
+        game.playerHit();
     }
 }
 
