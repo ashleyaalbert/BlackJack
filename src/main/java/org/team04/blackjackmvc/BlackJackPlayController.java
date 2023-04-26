@@ -1,14 +1,16 @@
 package org.team04.blackjackmvc;
 
-import java.awt.*;
+//import java.awt.*;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import org.team04.blackjackmvc.model.*;
 
@@ -77,6 +79,12 @@ public class BlackJackPlayController {
     @FXML
     private Label lblWinner;
 
+    @FXML
+    private FlowPane dealerFlowPane;
+
+    @FXML
+    private FlowPane playerFlowPane;
+
     /**
      * Creating variables for player
      */
@@ -136,6 +144,16 @@ public class BlackJackPlayController {
      * been lost
      */
     private int bank;
+
+    /**
+     * An array of ImageView objects that stores 12 images of the dealer's cards
+     */
+    private ImageView[] dealerImageView;
+
+    /**
+     * An array of ImageView objects that stores 12 images of the player's cards
+     */
+    private ImageView[] playerImageView;
 
 
 
@@ -471,6 +489,74 @@ public class BlackJackPlayController {
             return "null";
         }
 
+    }
+
+    /**
+     * Code from https://github.com/nalabrie/Blackjack/blob/master/src/Blackjack/Controller.java
+     * Creates/updates the card images representing the dealer's hand inside the 'dealerFlowPane' container.
+     *
+     * @param showFirstCard Shows the first card when true, replaces it with a card back when false.
+     */
+    private void updateDealerFlowPane(boolean showFirstCard) {
+        // if 'showFirstCard' is true: first card shown is a card back rather than the actual first card
+        if (showFirstCard) {
+            Image back = new Image("file:resources/org.team04.blackjackmvc/images/cards/back.png");
+            dealerImageView[0] = new ImageView();
+            dealerImageView[0].setImage(back);
+            dealerImageView[0].setPreserveRatio(true);
+            dealerImageView[0].setSmooth(true);
+            dealerImageView[0].setCache(true);
+            dealerImageView[0].setFitHeight(160);
+            dealerFlowPane.getChildren().add(dealerImageView[0]);
+        }
+
+        // replace flipped over card with real card by clearing variables to force the next loop to run entirely
+        else if (dealerImageView[0] != null) {
+            dealerFlowPane.getChildren().clear();
+            dealerImageView = new ImageView[12];
+        }
+
+        // add all cards in the dealer's hand to the FlowPane as images
+        for (int i = 0; i < dealerHand.getSize(); i++) {
+            // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
+            if (dealerImageView[i] == null) {
+                Image card = new Image("file:resources/org.team04.blackjackmvc/images/cards/" + dealerHand.getCard(i).value() + dealerHand.getCard(i).suit() + ".png");
+                dealerImageView[i] = new ImageView();
+                dealerImageView[i].setImage(card);
+                dealerImageView[i].setPreserveRatio(true);
+                dealerImageView[i].setSmooth(true);
+                dealerImageView[i].setCache(true);
+                dealerImageView[i].setFitHeight(160);
+                dealerFlowPane.getChildren().add(dealerImageView[i]);
+                if (i != 0) {
+                    FlowPane.setMargin(dealerImageView[i], new Insets(0, 0, 0, -75));
+                }
+            }
+        }
+    }
+
+    /**
+     * Code from https://github.com/nalabrie/Blackjack/blob/master/src/Blackjack/Controller.java
+     * Creates/updates the card images representing the player's hand inside the 'playerFlowPane' container.
+     */
+    private void updatePlayerFlowPane() {
+        // add all cards in the player's hand to the FlowPane as images
+        for (int i = 0; i < playerHand.getSize(); i++) {
+            // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
+            if (playerImageView[i] == null) {
+                Image card = new Image("file:resources/org.team04.blackjackmvc/images/cards/" + playerHand.getCard(i).value() + playerHand.getCard(i).suit() + ".png");
+                playerImageView[i] = new ImageView();
+                playerImageView[i].setImage(card);
+                playerImageView[i].setPreserveRatio(true);
+                playerImageView[i].setSmooth(true);
+                playerImageView[i].setCache(true);
+                playerImageView[i].setFitHeight(160);
+                playerFlowPane.getChildren().add(playerImageView[i]);
+                if (i != 0) {
+                    FlowPane.setMargin(playerImageView[i], new Insets(0, 0, 0, -75));
+                }
+            }
+        }
     }
 
 }

@@ -32,15 +32,16 @@ public class Hand {
      * The cards currently in the hand
      */
     private LinkedList<Card> cardList;
+
     /**
      * Number of aces in the hand
      */
     private int aces;
+
     /**
      * Number of cards in the current hand
      */
     private int size;
-
 
     /**
      * Construct a new empty hand
@@ -207,6 +208,23 @@ public class Hand {
         }
 
         return result;
+    }
+
+    /**
+     * Code from https://github.com/nalabrie/Blackjack/blob/master/src/Blackjack/Hand.java
+     * Get a card from the hand by its index.
+     *
+     * @param index The index of the card to be returned, starting at 0.
+     * @return The card object at the given index.
+     * @throws HandIndexOutOfBoundsException When the index is below 0 or greater than hand size - 1.
+     */
+    public Card getCard(int index) {
+        // check the index is in the bounds of the hand
+        if (index < 0 || index >= size) {
+            throw new HandIndexOutOfBoundsException();
+        }
+
+        return cardList.get(index);
     }
 
 

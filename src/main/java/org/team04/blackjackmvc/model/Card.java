@@ -15,13 +15,6 @@
  * *****************************************/
 package org.team04.blackjackmvc.model;
 
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.awt.Graphics2D;
-import java.io.File;
-import java.io.IOException;
-
-
 public class Card {
 
     /**
@@ -57,16 +50,6 @@ public class Card {
     private Boolean visibility;
 
     /**
-     * X Position of the Card
-     */
-    private int xPosition;
-
-    /**
-     * Y Position of the Card
-     */
-    private int yPosition;
-
-    /**
      * Create a new card
      * @param suit
      * @param rank
@@ -97,53 +80,6 @@ public class Card {
 
     public void setVisibility(Boolean visibility) {
         this.visibility = visibility;
-    }
-
-    /**
-     * This method is derived and altered from https://github.com/uzaymacar/blackjack-with-gui/blob/master/src/Card.java.
-     * It is responsible for printing out our card image.
-     *
-     * @param graphics to draw the image
-     * @param isUserTurn to see whose turn it is
-     * @param cardIsUp to see if the card should be drawn yp or down
-     * @param cardNumber to help calculate where it is drawn
-     * @throws IOException
-     */
-    public void cardPrinter(Graphics2D graphics, boolean isUserTurn, boolean cardIsUp, int cardNumber) throws IOException {
-        // reading the front card image and setting a width and height
-        BufferedImage cardsSprite = ImageIO.read(new File("images/cardSpriteSheet.png"));
-        int imgWidth = 950;
-        int imgHeight = 392;
-
-        // creating an array of the card images
-        BufferedImage[][] cardArray = new BufferedImage[4][13];
-
-        // reading the back card image
-        BufferedImage backOfACard = ImageIO.read(new File("images/backsideOfACard.jpg"));
-
-        // for loop to set up the array to get the subimage from the larger sprite
-        for(int s = 0; s < 4; s++) {
-            for(int v = 0; v < 13; v++) {
-                cardArray[s][v] = cardsSprite.getSubimage(v*imgWidth/13,s*imgHeight/4, imgWidth/13, imgHeight/4);
-            }
-        }
-
-        // checking if it is the user's or dealer's turn for the yPosition
-        if(isUserTurn){
-            yPosition = 400; // if it is the user's turn
-        } else {
-            yPosition = 75; // if it is the dealer's turn
-        }
-
-        // calculating the xPosition
-        xPosition = 500 + 75 * cardNumber;
-
-        // checking if the card should be drawn face up or down
-        if(cardIsUp){
-            graphics.drawImage(cardArray[suit.ordinal()][rank.ordinal()], xPosition, yPosition, null);
-        } else {
-            graphics.drawImage(backOfACard, xPosition, yPosition, null);
-        }
     }
 
     /**
