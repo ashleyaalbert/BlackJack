@@ -99,10 +99,10 @@ public class BlackJackPlayController {
     private Label lblWinner;
 
     @FXML
-    private FlowPane dealerFlowPane;
+    private FlowPane dealerFlowPane = new FlowPane();
 
     @FXML
-    private FlowPane playerFlowPane;
+    private FlowPane playerFlowPane = new FlowPane();
 
     /**
      * Initializing a game
@@ -120,7 +120,6 @@ public class BlackJackPlayController {
     private Hand dealerHand;
 
     private User player;
-
 
     /**
      * Add a boolean variable to track whether the game has started
@@ -155,12 +154,12 @@ public class BlackJackPlayController {
     /**
      * An array of ImageView objects that stores 12 images of the dealer's cards
      */
-    private ImageView[] dealerImageView;
+    private ImageView[] dealerImageView = new ImageView[12];
 
     /**
      * An array of ImageView objects that stores 12 images of the player's cards
      */
-    private ImageView[] playerImageView;
+    private ImageView[] playerImageView = new ImageView[12];
 
 
     @FXML
@@ -489,7 +488,7 @@ public class BlackJackPlayController {
     private void updateDealerFlowPane(boolean showFirstCard) {
         // if 'showFirstCard' is true: first card shown is a card back rather than the actual first card
         if (showFirstCard) {
-            Image back = new Image("resources/org/team04/blackjackmvc/images/cards/backsideOfACard.jpg");
+            Image back = new Image("file:resources/org/team04/blackjackmvc/images/cards/backsideOfACard.jpg");
             dealerImageView[0] = new ImageView();
             dealerImageView[0].setImage(back);
             dealerImageView[0].setPreserveRatio(true);
@@ -509,7 +508,7 @@ public class BlackJackPlayController {
         for (int i = 0; i < dealerHand.getSize(); i++) {
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
             if (dealerImageView[i] == null) {
-                Image card = new Image("resources/org.team04.blackjackmvc/images/cards/" + dealerHand.getCard(i).value() + dealerHand.getCard(i).suit() + ".png");
+                Image card = new Image("file:resources/org.team04.blackjackmvc/images/cards/" + dealerHand.getCard(i).value() + dealerHand.getCard(i).suit() + ".png");
                 dealerImageView[i] = new ImageView();
                 dealerImageView[i].setImage(card);
                 dealerImageView[i].setPreserveRatio(true);
@@ -533,7 +532,7 @@ public class BlackJackPlayController {
         for (int i = 0; i < playerHand.getSize(); i++) {
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
             if (playerImageView[i] == null) {
-                Image card = new Image("resources/org.team04.blackjackmvc/images/cards/" + playerHand.getCard(i).value() + playerHand.getCard(i).suit() + ".png");
+                Image card = new Image("file:resources/org.team04.blackjackmvc/images/cards/" + playerHand.getCard(i).value() + playerHand.getCard(i).suit() + ".png");
                 playerImageView[i] = new ImageView();
                 playerImageView[i].setImage(card);
                 playerImageView[i].setPreserveRatio(true);
