@@ -25,11 +25,11 @@
             <Font name="Charter Roman" size="19.0" />
          </font>
          <graphic>
-            <Label fx:id="amountOfMoneyInPot" textFill="#fcfcfc">
+            <Text fill="#f5f4f4" strokeType="OUTSIDE" strokeWidth="0.0" text="Deal" textAlignment="CENTER" wrappingWidth="99.2283935546875">
                <font>
-                  <Font name="Charter Roman" size="20.0" />
+                  <Font name="Charter Roman" size="19.0" />
                </font>
-            </Label>
+            </Text>
          </graphic>
       </Button>
       <Label fx:id="lblChipTotal" layoutX="289.0" layoutY="430.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="176.0" text="500" textAlignment="CENTER" textFill="#fffbfb" wrapText="true">
@@ -71,11 +71,6 @@
          <font>
             <Font name="Charter Roman" size="17.0" />
          </font></Button>
-      <Text fill="#f5f4f4" layoutX="126.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deal" textAlignment="CENTER" wrappingWidth="99.2283935546875">
-         <font>
-            <Font name="Charter Roman" size="19.0" />
-         </font>
-      </Text>
       <Text fill="#f5f4f4" layoutX="362.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stand" textAlignment="CENTER" wrappingWidth="49.94189453125">
          <font>
             <Font name="Charter Roman" size="19.0" />
@@ -132,7 +127,7 @@
             <Font name="Charter Roman" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lblWinner" alignment="CENTER" contentDisplay="CENTER" layoutX="263.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="240.0" text="Label" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="lblWinner" alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="136.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="240.0" text="Label" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Charter Roman" size="32.0" />
          </font>

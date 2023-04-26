@@ -161,7 +161,6 @@ public class BlackJackPlayController {
 
     @FXML
     void initialize() {
-
         assert btnBlackChip != null : "fx:id=\"btnBlackChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnBlueChip != null : "fx:id=\"btnBlueChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnDeal != null : "fx:id=\"btnDeal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
@@ -358,125 +357,112 @@ public class BlackJackPlayController {
         game.playerHit();
     }
 
-    /**
-     * When the stand button is pressed, the dealer will stop dealing to
-     * the user and deal itself to try and get 21. Then the sum of the players
-     * and dealers hands will then be calculated and returned. As well as dealing with
-     * beats.
-     */
-    @FXML
-    void onStand() {
-        // Trying to calculate sum of cards as well as deal the dealer
-        // until satisfied.
-        int playerHandSum = playerHand.sum();
-        boolean playerHasBlackjack = playerHand.getSize() == 2 && playerHandSum == 21;
-
-        if (playerHandSum <= 21 && !playerHasBlackjack) {
-            // dealer hits repeatedly, stands on hard a 17
-            while (dealerHand.sum() < 17) {
-                dealerHand.add(new Card(Card.Suit.CLUBS, Card.Rank.JACK));
+//    /**
+//     * When the stand button is pressed, the dealer will stop dealing to
+//     * the user and deal itself to try and get 21. Then the sum of the players
+//     * and dealers hands will then be calculated and returned. As well as dealing with
+//     * beats.
+//     */
+//    @FXML
+//    void onStand() {
+//        game.playerStand();
 //
-//                // if dealer has a soft 17, hit again
-//                if (dealerHand.sum() == 17 && dealerHand.hasAce()) {
-//                    dealerHand.add(new Card(Card.Suit.CLUBS, Card.Rank.JACK));
-            }
-        }
+//        //String getWinner = getWinner();
+//        // player has black jack
+//        if(getWinner.equals("player blackjack")){
+//            // give bets to player
+//            newBalance += newPot;
+//            // Updates the pot label and balance label
+//            lblPot.setText(Integer.toString(resetPot));
+//            lblChipTotal.setText(Integer.toString(currentBalance));
+//
+//            lblWinner.setText("Blackjack!!!");
+//            lblWinner.setVisible(true);
+//        }
+//
+//        // player wins
+//        if(getWinner.equals("player wins")){
+//            // give bets to player
+//            newBalance += newPot;
+//            // Updates the pot label and balance label
+//            lblPot.setText(Integer.toString(resetPot));
+//            lblChipTotal.setText(Integer.toString(newBalance));
+//
+//            lblWinner.setText("You win!");
+//            lblWinner.setVisible(true);
+//
+//        }
+//
+//        // dealer has black jack or wins
+//        if(getWinner.equals("dealer blackjack") || getWinner.equals("dealer wins")){
+//            // give bets to player
+//            bank += newPot;
+//            // Updates the pot label and balance label
+//            lblPot.setText(Integer.toString(resetPot));
+//            lblChipTotal.setText(Integer.toString(currentBalance));
+//
+//
+//            lblWinner.setText("Dealer Wins.");
+//            lblWinner.setVisible(true);
+//
+//        }
+//
+//        // push
+//        if(getWinner.equals("push")){
+//            // bets go back to each player
+//            newBalance += newPot;
+//            lblPot.setText(Integer.toString(resetPot));
+//            lblChipTotal.setText(Integer.toString(newBalance));
+//
+//            lblWinner.setText("Push");
+//            lblWinner.setVisible(true);
+//        }
+//    }
 
-        String getWinner = getWinner();
-        // player has black jack
-        if(getWinner.equals("player blackjack")){
-            // give bets to player
-            newBalance += newPot;
-            // Updates the pot label and balance label
-            lblPot.setText(Integer.toString(resetPot));
-            lblChipTotal.setText(Integer.toString(currentBalance));
-
-            lblWinner.setText("Blackjack!!!");
-            lblWinner.setVisible(true);
-        }
-
-        // player wins
-        if(getWinner.equals("player wins")){
-            // give bets to player
-            newBalance += newPot;
-            // Updates the pot label and balance label
-            lblPot.setText(Integer.toString(resetPot));
-            lblChipTotal.setText(Integer.toString(newBalance));
-
-            lblWinner.setText("You win!");
-            lblWinner.setVisible(true);
-
-        }
-
-        // dealer has black jack or wins
-        if(getWinner.equals("dealer blackjack") || getWinner.equals("dealer wins")){
-            // give bets to player
-            bank += newPot;
-            // Updates the pot label and balance label
-            lblPot.setText(Integer.toString(resetPot));
-            lblChipTotal.setText(Integer.toString(currentBalance));
-
-
-            lblWinner.setText("Dealer Wins.");
-            lblWinner.setVisible(true);
-
-        }
-
-        // push
-        if(getWinner.equals("push")){
-            // bets go back to each player
-            newBalance += newPot;
-            lblPot.setText(Integer.toString(resetPot));
-            lblChipTotal.setText(Integer.toString(newBalance));
-
-            lblWinner.setText("Push");
-            lblWinner.setVisible(true);
-        }
-    }
-
-    /**
-     * Compares the values of the sums of player and dealer
-     * to find the winner
-     *
-     * @return String value of player or dealer
-     */
-    private String getWinner() {
-        int dealerSum = dealerHand.sum();
-        int playerSum = playerHand.sum();
-        boolean dealerHasBlackjack = false;
-        boolean playerHasBlackjack = false;
-
-        // Checks if dealer or player has blackjack
-        if (dealerHand.getSize() == 2 && dealerSum == 21) {
-            dealerHasBlackjack = true;
-        } else if (playerHand.getSize() == 2 && playerSum == 21) {
-            playerHasBlackjack = true;
-        }
-
-        // Finds winner is user or dealer has black jack
-        if (dealerHasBlackjack && !playerHasBlackjack) {         // if dealer has blackjack and the player does not
-            return "dealer blackjack";
-        } else if (!dealerHasBlackjack && playerHasBlackjack) {   // if player has blackjack and the dealer does not
-            return "player blackjack";
-        }
-
-        // Compares sums finds winner or determines a push (tie)
-        if (playerSum > 21) {
-            return "dealer wins";
-        } else if (dealerSum > 21) {
-            return "player wins";
-        } else if (playerSum > dealerSum) {
-            return "player wins";
-        } else if (dealerSum > playerSum) {
-            return "dealer wins";
-        } else if (dealerSum == playerSum) {
-            return "push";
-        } else {
-            // Should never get here
-            return "null";
-        }
-
-    }
+//    /**
+//     * Compares the values of the sums of player and dealer
+//     * to find the winner
+//     *
+//     * @return String value of player or dealer
+//     */
+//    private String getWinner() {
+//        int dealerSum = dealerHand.sum();
+//        int playerSum = playerHand.sum();
+//
+//        boolean dealerHasBlackjack = false;
+//        boolean playerHasBlackjack = false;
+//
+//        // Checks if dealer or player has blackjack
+//        if (dealerHand.getSize() == 2 && dealerSum == 21) {
+//            dealerHasBlackjack = true;
+//        } else if (playerHand.getSize() == 2 && playerSum == 21) {
+//            playerHasBlackjack = true;
+//        }
+//
+//        // Finds winner is user or dealer has black jack
+//        if (dealerHasBlackjack && !playerHasBlackjack) {         // if dealer has blackjack and the player does not
+//            return "dealer blackjack";
+//        } else if (!dealerHasBlackjack && playerHasBlackjack) {   // if player has blackjack and the dealer does not
+//            return "player blackjack";
+//        }
+//
+//        // Compares sums finds winner or determines a push (tie)
+//        if (playerSum > 21) {
+//            return "dealer wins";
+//        } else if (dealerSum > 21) {
+//            return "player wins";
+//        } else if (playerSum > dealerSum) {
+//            return "player wins";
+//        } else if (dealerSum > playerSum) {
+//            return "dealer wins";
+//        } else if (dealerSum == playerSum) {
+//            return "push";
+//        } else {
+//            // Should never get here
+//            return "null";
+//        }
+//
+//    }
 
     /**
      * Code from https://github.com/nalabrie/Blackjack/blob/master/src/Blackjack/Controller.java
