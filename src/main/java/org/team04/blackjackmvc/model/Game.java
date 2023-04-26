@@ -22,6 +22,8 @@ import org.team04.blackjackmvc.BlackJackLoginController;
 
 import java.util.Scanner;
 
+import static org.team04.blackjackmvc.BlackJackLoginController.name;
+
 public class Game {
 
     /**
@@ -54,6 +56,14 @@ public class Game {
      */
     private Scanner scnr;
 
+    public Game(String name) {
+        player = new User(name, initFunds);
+        dealer = new Dealer();
+        deck = new Deck(nBox);
+        state = GameState.IN_GAME;
+    }
+
+
 
     public void playBlackJack() {
         state = GameState.START_GAME;
@@ -83,7 +93,7 @@ public class Game {
 //        System.out.println("Please enter your name: ");
 //        String name = scnr.nextLine().strip();
         // Generate player, dealer, and deck
-        player = new User(BlackJackLoginController.name, initFunds);
+        player = new User(name, initFunds);
         dealer = new Dealer();
         deck = new Deck(nBox);
         state = GameState.IN_GAME;

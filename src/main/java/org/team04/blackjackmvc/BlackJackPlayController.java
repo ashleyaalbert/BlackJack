@@ -14,6 +14,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import org.team04.blackjackmvc.model.*;
 
+import static org.team04.blackjackmvc.BlackJackLoginController.name;
+
 public class BlackJackPlayController {
 
     // GUI elements of the program
@@ -105,7 +107,7 @@ public class BlackJackPlayController {
     /**
      * Initializing a game
      */
-    private Game game;
+    public Game game;
 
     /**
      * Creating a hand for the player
@@ -116,6 +118,8 @@ public class BlackJackPlayController {
      * Creating a hand for the dealer
      */
     private Hand dealerHand;
+
+    private User player;
 
 
     /**
@@ -174,20 +178,20 @@ public class BlackJackPlayController {
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblWinner != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
+        game = new Game(name);
+
 
         //Creates a bank for the dealer
         bank = 0;
         resetPot = 0;
-
         lblWinner.setVisible(false);
 
 //        this.game = Game.getTheGame();
 
-/*
+
         if (this.game == null) {
             throw new IllegalArgumentException("CRASH!");
         }
-*/
 
     }
 
@@ -340,7 +344,9 @@ public class BlackJackPlayController {
     @FXML
     void onDeal() {
         gameStarted = true;
-        game.placeBet();
+        //game.playBlackJack();
+        //game.placeBet();
+//        System.out.println(player.getMoney());
 
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);
@@ -374,7 +380,7 @@ public class BlackJackPlayController {
 //     */
     @FXML
     void onStand() {
-        game.playerStand();
+        //game.playerStand();
         updateDealerFlowPane(false);
         updatePlayerFlowPane();
 //

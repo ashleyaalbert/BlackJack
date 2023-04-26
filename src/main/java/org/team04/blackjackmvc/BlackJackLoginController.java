@@ -64,7 +64,7 @@ public class BlackJackLoginController {
      */
     private void initEventHandlers() {
         // Creates a new game and deck
-        game = new Game();
+        game = new Game(name);
         game.start();
 
         txtFieldName.setOnKeyPressed( event -> {
