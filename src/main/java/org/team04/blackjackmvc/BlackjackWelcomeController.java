@@ -71,7 +71,7 @@ public class BlackjackWelcomeController {
         Stage stage = (Stage) btnPlay.getScene().getWindow();
 
         if (event.getSource() == btnPlay)
-            blackjackMain.loadSceneOnStage(stage, FXMLScenes.PLAY);
+            blackjackMain.loadSceneOnStage(stage, FXMLScenes.LOGIN);
         else if (event.getSource() == btnSettings)
             blackjackMain.loadSceneOnStage(stage, FXMLScenes.SETTINGS);
     }
