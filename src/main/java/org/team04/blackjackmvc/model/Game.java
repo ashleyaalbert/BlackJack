@@ -18,6 +18,8 @@
  */
 package org.team04.blackjackmvc.model;
 
+import org.team04.blackjackmvc.BlackJackLoginController;
+
 import java.util.Scanner;
 
 public class Game {
@@ -52,16 +54,6 @@ public class Game {
      */
     private Scanner scnr;
 
-    private static Game theGame = null;
-
-    public Game() {
-        if (theGame != null)
-            throw new IllegalArgumentException("Shit");
-        else
-            theGame = this;
-    }
-
-    public static Game getTheGame() { return Game.theGame; }
 
     public void playBlackJack() {
         state = GameState.START_GAME;
@@ -83,18 +75,15 @@ public class Game {
 
     }
 
-
-
     /**
      * User has begun the game
      */
     public void start() {
-        //scnr = new Scanner(System.in);
-        //System.out.println("Please enter your name: ");
-        //String name = scnr.nextLine().strip();
-        String name = "Ashley";
+//        scnr = new Scanner(System.in);
+//        System.out.println("Please enter your name: ");
+//        String name = scnr.nextLine().strip();
         // Generate player, dealer, and deck
-        player = new User(name, initFunds);
+        player = new User(BlackJackLoginController.name, initFunds);
         dealer = new Dealer();
         deck = new Deck(nBox);
         state = GameState.IN_GAME;
@@ -174,10 +163,5 @@ public class Game {
     }
 
 
-
-
-
-
-
-
 }
+

@@ -181,7 +181,7 @@ public class BlackJackPlayController {
 
         lblWinner.setVisible(false);
 
-        this.game = Game.getTheGame();
+//        this.game = Game.getTheGame();
 
 /*
         if (this.game == null) {
@@ -344,12 +344,15 @@ public class BlackJackPlayController {
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);
 
-        // Deals cards to player and dealer
-        Game.getTheGame().dealHand();
+//        // Deals cards to player and dealer
+//        Game.getTheGame().dealHand();
 
         // and hit and stand button are visible.
         standButton.setVisible(true);
         hitButton.setVisible(true);
+
+        updateDealerFlowPane(true);
+        updatePlayerFlowPane();
 
     }
 
@@ -362,15 +365,17 @@ public class BlackJackPlayController {
         game.playerHit();
     }
 
-//    /**
+    //    /**
 //     * When the stand button is pressed, the dealer will stop dealing to
 //     * the user and deal itself to try and get 21. Then the sum of the players
 //     * and dealers hands will then be calculated and returned. As well as dealing with
 //     * beats.
 //     */
-//    @FXML
-//    void onStand() {
-//        game.playerStand();
+    @FXML
+    void onStand() {
+        game.playerStand();
+        updateDealerFlowPane(false);
+        updatePlayerFlowPane();
 //
 //        //String getWinner = getWinner();
 //        // player has black jack
@@ -422,7 +427,7 @@ public class BlackJackPlayController {
 //            lblWinner.setText("Push");
 //            lblWinner.setVisible(true);
 //        }
-//    }
+    }
 
 //    /**
 //     * Compares the values of the sums of player and dealer
@@ -538,4 +543,3 @@ public class BlackJackPlayController {
     }
 
 }
-

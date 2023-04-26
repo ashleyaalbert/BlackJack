@@ -37,3 +37,4 @@
       <TextField fx:id="txtFieldName" layoutX="392.0" layoutY="121.0" onAction="#initialize" />
    </children>
 </AnchorPane>
+
