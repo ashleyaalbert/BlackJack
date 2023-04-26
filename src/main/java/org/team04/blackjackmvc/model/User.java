@@ -83,4 +83,8 @@ public class User{
         card.setVisibility(true);
         this.currentHand.add(card);
     }
+
+    public int getBest() {
+        return this.currentHand.best();
+    }
 }
