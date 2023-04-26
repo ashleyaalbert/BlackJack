@@ -76,7 +76,7 @@ public class Game {
     /**
      * User has begun the game
      */
-    private void start() {
+    public void start() {
         scnr = new Scanner(System.in);
         System.out.println("Please enter your name: ");
         String name = scnr.nextLine().strip();

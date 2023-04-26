@@ -16,66 +16,83 @@ import org.team04.blackjackmvc.model.*;
 
 public class BlackJackPlayController {
 
+    // GUI elements of the program
+
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
 
-    @FXML
-    private Label amountOfMoneyInPot;
-
-    @FXML
-    private ImageView blackChip;
-
-    @FXML
-    private Label blackjackText;
-
-    @FXML
-    private ImageView blueChip;
-
+    /**
+     * Button for the black chip that represents the value 1
+     */
     @FXML
     private Button btnBlackChip;
 
+    /**
+     * Button for the blue chip that represents the value 100
+     */
     @FXML
     private Button btnBlueChip;
 
+    /**
+     * Button when pressed deals the cards for the player
+     */
     @FXML
     private Button btnDeal;
 
+    /**
+     * Button for the green chip that represents the value 25
+     */
     @FXML
     private Button btnGreenChip;
 
-    @FXML
-    private ImageView btnHome;
-
+    /**
+     * Button for the red chip that represents the value 5
+     */
     @FXML
     private Button btnRedCHip;
 
+    /**
+     * Button to control the volume in settings
+     */
     @FXML
     private Button btnVolume;
 
-    @FXML
-    private ImageView greenChip;
-
+    /**
+     * Button when pressed will deal the user another card
+     */
     @FXML
     private Button hitButton;
 
+    /**
+     * Button when pressed will take the person back to the home screen
+     */
     @FXML
     private Button homeButton;
 
+    /**
+     * Label that represents the chip total for the player
+     */
     @FXML
     private Label lblChipTotal;
 
+    /**
+     * Label that represents the total chips in the pot
+     */
     @FXML
     private Label lblPot;
 
-    @FXML
-    private ImageView redChip;
-
+    /**
+     * Button that deals the dealer to stop dealing cards and is ready for the showdown
+     */
     @FXML
     private Button standButton;
 
+    /**
+     * Label that communicates with the user who is the winner
+     */
     @FXML
     private Label lblWinner;
 
@@ -86,14 +103,9 @@ public class BlackJackPlayController {
     private FlowPane playerFlowPane;
 
     /**
-     * Creating variables for player
+     * Initializing a game
      */
-    private Dealer dealer;
-
-    /**
-     * Creating variables for dealer
-     */
-    private User player;
+    private Game game;
 
     /**
      * Creating a hand for the player
@@ -105,15 +117,6 @@ public class BlackJackPlayController {
      */
     private Hand dealerHand;
 
-    /**
-     * Initializing a game
-     */
-    private Game game;
-
-    /**
-     * Initializing a deck
-     */
-    private Deck deck;
 
     /**
      * Add a boolean variable to track whether the game has started
@@ -156,38 +159,25 @@ public class BlackJackPlayController {
     private ImageView[] playerImageView;
 
 
-
     @FXML
     void initialize() {
-        assert amountOfMoneyInPot != null : "fx:id=\"amountOfMoneyInPot\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert blackChip != null : "fx:id=\"blackChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert blackjackText != null : "fx:id=\"blackjackText\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert blueChip != null : "fx:id=\"blueChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+
         assert btnBlackChip != null : "fx:id=\"btnBlackChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnBlueChip != null : "fx:id=\"btnBlueChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnDeal != null : "fx:id=\"btnDeal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnGreenChip != null : "fx:id=\"btnGreenChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert btnHome != null : "fx:id=\"btnHome\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnRedCHip != null : "fx:id=\"btnRedCHip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnVolume != null : "fx:id=\"btnVolume\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert greenChip != null : "fx:id=\"greenChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert hitButton != null : "fx:id=\"hitButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblChipTotal != null : "fx:id=\"lblChipTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblPot != null : "fx:id=\"lblPot\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert redChip != null : "fx:id=\"redChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblWinner != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
         // Creates a new game and deck
         game = new Game();
-        deck = new Deck(52);
-        // Creates a new dealer and player
-        dealer = new Dealer();
-        player = new User("Eva", 500);
-        // Creates new hands for dealer and player
-        dealerHand = new Hand();
-        playerHand = new Hand();
+        game.start();
 
         //Creates a bank for the dealer
         bank = 0;
@@ -351,7 +341,6 @@ public class BlackJackPlayController {
         btnDeal.setVisible(false);
 
         // Deals cards to player and dealer
-
         game.dealHand();
 
         // and hit and stand button are visible.
@@ -366,8 +355,7 @@ public class BlackJackPlayController {
      */
     @FXML
     void onHit() {
-        playerHand.add(new Card(Card.Suit.HEARTS, Card.Rank.JACK));
-
+        game.playerHit();
     }
 
     /**
@@ -405,7 +393,6 @@ public class BlackJackPlayController {
 
             lblWinner.setText("Blackjack!!!");
             lblWinner.setVisible(true);
-
         }
 
         // player wins

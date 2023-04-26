@@ -17,9 +17,11 @@ public class BlackjackSplitController {
     @FXML
     private URL location;
 
-    @FXML
-    private Label amountOfMoneyInPot;
+    // Member variables for the GUI element of the program
 
+    /**
+     * blackChip for the poker game with a value of
+     */
     @FXML
     private ImageView blackChip;
 
@@ -74,7 +76,7 @@ public class BlackjackSplitController {
 
     @FXML
     void initialize() {
-        assert amountOfMoneyInPot != null : "fx:id=\"amountOfMoneyInPot\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
+
         assert blackChip != null : "fx:id=\"blackChip\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
         assert blackjackText != null : "fx:id=\"blackjackText\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
         assert blueChip != null : "fx:id=\"blueChip\" was not injected: check your FXML file 'blackjackSplit.fxml'.";
