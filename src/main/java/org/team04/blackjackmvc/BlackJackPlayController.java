@@ -457,7 +457,7 @@ public class BlackJackPlayController {
         int dealerSum = dealerHand.sum();
         int playerSum = playerHand.sum();
         boolean dealerHasBlackjack = false;
-        boolean playerHasBlackjack = true;
+        boolean playerHasBlackjack = false;
 
         // Checks if dealer or player has blackjack
         if (dealerHand.getSize() == 2 && dealerSum == 21) {
