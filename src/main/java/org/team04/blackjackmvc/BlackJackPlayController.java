@@ -351,9 +351,6 @@ public class BlackJackPlayController {
         standButton.setVisible(true);
         hitButton.setVisible(true);
 
-        updateDealerFlowPane(true);
-        updatePlayerFlowPane();
-
     }
 
     /**
@@ -371,11 +368,9 @@ public class BlackJackPlayController {
 //     * and dealers hands will then be calculated and returned. As well as dealing with
 //     * beats.
 //     */
-    @FXML
-    void onStand() {
-        game.playerStand();
-        updateDealerFlowPane(false);
-        updatePlayerFlowPane();
+//    @FXML
+//    void onStand() {
+//        game.playerStand();
 //
 //        //String getWinner = getWinner();
 //        // player has black jack
@@ -427,7 +422,7 @@ public class BlackJackPlayController {
 //            lblWinner.setText("Push");
 //            lblWinner.setVisible(true);
 //        }
-   }
+//    }
 
 //    /**
 //     * Compares the values of the sums of player and dealer
