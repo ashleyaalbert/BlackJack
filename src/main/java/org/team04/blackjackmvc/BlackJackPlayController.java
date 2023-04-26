@@ -174,9 +174,6 @@ public class BlackJackPlayController {
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblWinner != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
-        // Creates a new game and deck
-        game = new Game();
-        game.start();
 
         //Creates a bank for the dealer
         bank = 0;

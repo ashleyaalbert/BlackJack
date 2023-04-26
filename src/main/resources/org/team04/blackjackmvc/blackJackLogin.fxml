@@ -34,6 +34,6 @@
             <Font name="Charter Roman" size="22.0" />
          </font>
       </Button>
-      <TextField fx:id="txtFieldName" layoutX="392.0" layoutY="121.0" />
+      <TextField fx:id="txtFieldName" layoutX="392.0" layoutY="121.0" onAction="#onName" />
    </children>
 </AnchorPane>
