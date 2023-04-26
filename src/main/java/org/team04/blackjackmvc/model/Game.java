@@ -93,7 +93,7 @@ public class Game {
      * User can either place bet or end game. If bet exceeds available funds
      * then InsufficientFundsException is thrown.
      */
-    private void placeBet() {
+    public void placeBet() {
         if (player.getMoney()>0) {
             System.out.println("Bet amount ($" + player.getMoney() + " remaining) or 0 to end game: ");
             Double bet = scnr.nextDouble();

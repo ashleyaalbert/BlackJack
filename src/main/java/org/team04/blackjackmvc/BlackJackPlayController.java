@@ -339,12 +339,13 @@ public class BlackJackPlayController {
      */
     @FXML
     void onDeal() {
+        game.placeBet();
         gameStarted = true;
 
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);
 
-//        // Deals cards to player and dealer
+        // Deals cards to player and dealer
 //        Game.getTheGame().dealHand();
 
         // and hit and stand button are visible.
