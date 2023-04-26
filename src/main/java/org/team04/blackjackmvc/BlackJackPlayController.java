@@ -112,12 +112,12 @@ public class BlackJackPlayController {
     /**
      * Creating a hand for the player
      */
-    private Hand playerHand;
+    private Hand playerHand = new Hand();
 
     /**
      * Creating a hand for the dealer
      */
-    private Hand dealerHand;
+    private Hand dealerHand = new Hand();
 
     private User player;
 
