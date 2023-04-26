@@ -19,6 +19,7 @@
 package org.team04.blackjackmvc.model;
 
 import org.team04.blackjackmvc.BlackJackLoginController;
+import org.team04.blackjackmvc.BlackJackPlayController;
 
 import java.util.Scanner;
 
@@ -106,7 +107,7 @@ public class Game {
     public void placeBet() {
         if (player.getMoney()>0) {
             System.out.println("Bet amount ($" + player.getMoney() + " remaining) or 0 to end game: ");
-            Double bet = scnr.nextDouble();
+            Double bet = BlackJackPlayController.newBalance;
             if (bet==0) {
                 state = GameState.END_GAME;
             }

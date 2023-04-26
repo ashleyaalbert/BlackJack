@@ -14,6 +14,7 @@ import org.team04.blackjackmvc.model.Game;
 public class BlackJackLoginController {
 
     public static String name;
+
     @FXML
     private ResourceBundle resources;
 
@@ -65,6 +66,7 @@ public class BlackJackLoginController {
     private void initEventHandlers() {
         // Creates a new game and deck
         game = new Game(name);
+        game.playBlackJack();
         game.start();
 
         txtFieldName.setOnKeyPressed( event -> {

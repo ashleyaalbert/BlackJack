@@ -131,7 +131,7 @@ public class BlackJackPlayController {
      * An updated user balance that is updated
      * throughout the game
      */
-    private int newBalance;
+    public static double newBalance;
 
     /**
      * The currentBalance of the user at that
@@ -344,9 +344,8 @@ public class BlackJackPlayController {
     @FXML
     void onDeal() {
         gameStarted = true;
-        //game.playBlackJack();
-        //game.placeBet();
-//        System.out.println(player.getMoney());
+        game.placeBet();
+
 
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);
@@ -490,7 +489,7 @@ public class BlackJackPlayController {
     private void updateDealerFlowPane(boolean showFirstCard) {
         // if 'showFirstCard' is true: first card shown is a card back rather than the actual first card
         if (showFirstCard) {
-            Image back = new Image("resources/org.team04.blackjackmvc/images/cards/back.png");
+            Image back = new Image("resources/org/team04/blackjackmvc/images/cards/backsideOfACard.jpg");
             dealerImageView[0] = new ImageView();
             dealerImageView[0].setImage(back);
             dealerImageView[0].setPreserveRatio(true);

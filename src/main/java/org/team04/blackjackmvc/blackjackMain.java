@@ -9,7 +9,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.io.File;
 
+
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -45,6 +48,10 @@ import java.io.IOException;
             loadSceneOnStage(stage, FXMLScenes.WELCOME); // Loads the first scene
             stage.setTitle("Blackjack!");
             stage.show(); // Shows the scene
+
+            //Initialising path of the media file, replace this with your file path
+            String path = "/resources/org/team04/blackjackmvc/a-jazz-piano-110481.mp3";
+
         }
 
         public static void main(String[] args) {
