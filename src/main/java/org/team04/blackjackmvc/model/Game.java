@@ -138,8 +138,15 @@ public class Game {
         }
     }
 
+    /**
+     * Player stands and dealer plays. Dealer hits until hand total is greater than 16
+     */
     private void playerStand() {
-
+        dealer.makeCardsVisible();
+        while (dealer.getBest() <=16) {
+            dealer.dealCardVisible(deck.drawCard());
+        }
+        state = GameState.EVALUATE_HANDS;
     }
 
     /**
@@ -147,6 +154,10 @@ public class Game {
      */
     public void playerHit() {
         player.dealCard(deck.drawCard());
+    }
+
+    private void evaluateHands() {
+
     }
 
 
