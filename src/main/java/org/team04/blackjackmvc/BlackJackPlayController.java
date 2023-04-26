@@ -14,6 +14,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import org.team04.blackjackmvc.model.*;
 
+import static org.team04.blackjackmvc.BlackJackLoginController.name;
+
 public class BlackJackPlayController {
 
     // GUI elements of the program
@@ -105,7 +107,7 @@ public class BlackJackPlayController {
     /**
      * Initializing a game
      */
-    private Game game;
+    public Game game;
 
     /**
      * Creating a hand for the player
@@ -117,6 +119,8 @@ public class BlackJackPlayController {
      */
     private Hand dealerHand;
 
+    private User player;
+
 
     /**
      * Add a boolean variable to track whether the game has started
@@ -127,7 +131,7 @@ public class BlackJackPlayController {
      * An updated user balance that is updated
      * throughout the game
      */
-    private int newBalance;
+    public static double newBalance;
 
     /**
      * The currentBalance of the user at that
@@ -174,20 +178,20 @@ public class BlackJackPlayController {
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblWinner != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
+        game = new Game(name);
+
 
         //Creates a bank for the dealer
         bank = 0;
         resetPot = 0;
-
         lblWinner.setVisible(false);
 
-        this.game = Game.getTheGame();
+//        this.game = Game.getTheGame();
 
-/*
+
         if (this.game == null) {
             throw new IllegalArgumentException("CRASH!");
         }
-*/
 
     }
 
@@ -340,12 +344,14 @@ public class BlackJackPlayController {
     @FXML
     void onDeal() {
         gameStarted = true;
+        game.placeBet();
+
 
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);
 
         // Deals cards to player and dealer
-        Game.getTheGame().dealHand();
+//        Game.getTheGame().dealHand();
 
         // and hit and stand button are visible.
         standButton.setVisible(true);
@@ -365,7 +371,7 @@ public class BlackJackPlayController {
         game.playerHit();
     }
 
-//    /**
+    //    /**
 //     * When the stand button is pressed, the dealer will stop dealing to
 //     * the user and deal itself to try and get 21. Then the sum of the players
 //     * and dealers hands will then be calculated and returned. As well as dealing with
@@ -373,7 +379,7 @@ public class BlackJackPlayController {
 //     */
     @FXML
     void onStand() {
-        game.playerStand();
+        //game.playerStand();
         updateDealerFlowPane(false);
         updatePlayerFlowPane();
 //
@@ -427,7 +433,7 @@ public class BlackJackPlayController {
 //            lblWinner.setText("Push");
 //            lblWinner.setVisible(true);
 //        }
-   }
+    }
 
 //    /**
 //     * Compares the values of the sums of player and dealer
@@ -483,7 +489,7 @@ public class BlackJackPlayController {
     private void updateDealerFlowPane(boolean showFirstCard) {
         // if 'showFirstCard' is true: first card shown is a card back rather than the actual first card
         if (showFirstCard) {
-            Image back = new Image("resources/org.team04.blackjackmvc/images/cards/back.png");
+            Image back = new Image("resources/org/team04/blackjackmvc/images/cards/backsideOfACard.jpg");
             dealerImageView[0] = new ImageView();
             dealerImageView[0].setImage(back);
             dealerImageView[0].setPreserveRatio(true);
@@ -543,4 +549,3 @@ public class BlackJackPlayController {
     }
 
 }
-

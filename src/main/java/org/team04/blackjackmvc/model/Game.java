@@ -18,7 +18,12 @@
  */
 package org.team04.blackjackmvc.model;
 
+import org.team04.blackjackmvc.BlackJackLoginController;
+import org.team04.blackjackmvc.BlackJackPlayController;
+
 import java.util.Scanner;
+
+import static org.team04.blackjackmvc.BlackJackLoginController.name;
 
 public class Game {
 
@@ -52,16 +57,14 @@ public class Game {
      */
     private Scanner scnr;
 
-    private static Game theGame = null;
-
-    public Game() {
-        if (theGame != null)
-            throw new IllegalArgumentException("Shit");
-        else
-            theGame = this;
+    public Game(String name) {
+        player = new User(name, initFunds);
+        dealer = new Dealer();
+        deck = new Deck(nBox);
+        state = GameState.IN_GAME;
     }
 
-    public static Game getTheGame() { return Game.theGame; }
+
 
     public void playBlackJack() {
         state = GameState.START_GAME;
@@ -83,16 +86,13 @@ public class Game {
 
     }
 
-
-
     /**
      * User has begun the game
      */
     public void start() {
-        //scnr = new Scanner(System.in);
-        //System.out.println("Please enter your name: ");
-        //String name = scnr.nextLine().strip();
-        String name = "Ashley";
+//        scnr = new Scanner(System.in);
+//        System.out.println("Please enter your name: ");
+//        String name = scnr.nextLine().strip();
         // Generate player, dealer, and deck
         player = new User(name, initFunds);
         dealer = new Dealer();
@@ -104,10 +104,10 @@ public class Game {
      * User can either place bet or end game. If bet exceeds available funds
      * then InsufficientFundsException is thrown.
      */
-    private void placeBet() {
+    public void placeBet() {
         if (player.getMoney()>0) {
             System.out.println("Bet amount ($" + player.getMoney() + " remaining) or 0 to end game: ");
-            Double bet = scnr.nextDouble();
+            Double bet = BlackJackPlayController.newBalance;
             if (bet==0) {
                 state = GameState.END_GAME;
             }
@@ -174,10 +174,5 @@ public class Game {
     }
 
 
-
-
-
-
-
-
 }
+

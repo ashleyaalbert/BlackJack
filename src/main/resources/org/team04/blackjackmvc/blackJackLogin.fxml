@@ -19,12 +19,12 @@
             <Font name="Charter Roman" size="23.0" />
          </font>
       </Text>
-      <Text fill="#fcfcfc" layoutX="83.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your remaining balance:">
+      <Text fill="#fcfcfc" layoutX="83.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your initial balance:">
          <font>
             <Font name="Charter Roman" size="23.0" />
          </font>
       </Text>
-      <Label fx:id="lblRemainingBalance" layoutX="434.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="54.0" text="Label" textFill="WHITE">
+      <Label fx:id="lblInitialBalance" layoutX="434.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="54.0" text="Label" textFill="WHITE">
          <font>
             <Font name="Charter Roman" size="23.0" />
          </font>
@@ -34,6 +34,7 @@
             <Font name="Charter Roman" size="22.0" />
          </font>
       </Button>
-      <TextField fx:id="txtFieldName" layoutX="392.0" layoutY="121.0" onAction="#onName" />
+      <TextField fx:id="txtFieldName" layoutX="392.0" layoutY="121.0" onAction="#initialize" />
    </children>
 </AnchorPane>
+
