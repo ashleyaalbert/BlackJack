@@ -55,6 +55,7 @@ public class User{
     public User(String name, double initMoney) {
         this.name = name;
         this.money= initMoney;
+        this.currentHand = new Hand();
     }
 
     public double getMoney() {
@@ -67,9 +68,7 @@ public class User{
                     "INSUFFICIENT FUNDS! Required: $%.2f, Available: $%.2f",
                     amount, this.money)));
         }
-        Hand hand = new Hand();
-        this.currentHand = hand;
-        this.handBets.put(hand, amount);
+        this.handBets.put(currentHand, amount);
         this.money -= amount;
         System.out.printf("Bet: $.2f, Remaining funds: $.2f", amount, this.money);
 

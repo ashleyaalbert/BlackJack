@@ -34,7 +34,6 @@ public class BlackJackLoginController {
 
     private int balance = 500;
 
-
     @FXML
     void initialize() {
         assert btnGo != null : "fx:id=\"btnGo\" was not injected: check your FXML file 'blackJackLogin.fxml'.";
@@ -45,10 +44,6 @@ public class BlackJackLoginController {
 
     @FXML
     void onName(){
-        // Creates a new game and deck
-        game = new Game();
-        game.start();
-
         lblRemainingBalance.setText(Integer.toString(balance));
     }
 
@@ -64,7 +59,11 @@ public class BlackJackLoginController {
         // Get the Stage object of this button
         Stage stage = (Stage) btnGo.getScene().getWindow();
 
-        if (event.getSource() == btnGo)
+        if (event.getSource() == btnGo) {
+            // Creates a new game and deck
+            game = new Game();
+            game.start();
             blackjackMain.loadSceneOnStage(stage, FXMLScenes.PLAY);
+        }
     }
 }
