@@ -54,5 +54,8 @@ public class Dealer{
     public void makeCardsVisible() {
         this.dealerHand.makeVisible();
     }
+    public int getBest() {
+        return dealerHand.best();
+    }
 }
 
