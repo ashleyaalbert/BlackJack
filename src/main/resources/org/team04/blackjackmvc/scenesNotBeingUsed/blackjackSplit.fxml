@@ -44,7 +44,7 @@
             <graphic>
                 <ImageView fx:id="btnHome" fitHeight="58.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/homeIcon.png" />
+                        <Image url="@../images/homeIcon.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -52,7 +52,7 @@
             <graphic>
                 <ImageView fitHeight="33.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/speakerIcon.svg.png" />
+                        <Image url="@../images/speakerIcon.svg.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -90,7 +90,7 @@
             <graphic>
                 <ImageView fx:id="blueChip" fitHeight="111.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/bluechipTransNum_1.png" />
+                        <Image url="@../images/bluechipTransNum_1.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -99,7 +99,7 @@
             <graphic>
                 <ImageView fx:id="greenChip" fitHeight="111.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/greenchipTransNum_1.png" />
+                        <Image url="@../images/greenchipTransNum_1.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -108,7 +108,7 @@
             <graphic>
                 <ImageView fx:id="redChip" fitHeight="111.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/redchipTransNum_1.png" />
+                        <Image url="@../images/redchipTransNum_1.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -117,7 +117,7 @@
             <graphic>
                 <ImageView fx:id="blackChip" fitHeight="112.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/blackchipTrans_1.png" />
+                        <Image url="@../images/blackchipTrans_1.png" />
                     </image>
                 </ImageView>
             </graphic>

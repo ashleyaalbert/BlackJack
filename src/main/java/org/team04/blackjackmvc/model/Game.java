@@ -18,7 +18,13 @@
  */
 package org.team04.blackjackmvc.model;
 
+import org.team04.blackjackmvc.BlackJackPlayController;
+
 import java.util.Scanner;
+
+/** Values taken from controller **/
+import static org.team04.blackjackmvc.BlackJackLoginController.name;
+import static org.team04.blackjackmvc.BlackJackPlayController.newBalanceAfterBet;
 
 public class Game {
 
@@ -52,6 +58,19 @@ public class Game {
      */
     private Scanner scnr;
 
+    /**
+     * Stores the bet value from the user
+     */
+    public static double bet;
+
+    public Game(String name) {
+        player = new User(name, initFunds);
+        dealer = new Dealer();
+        deck = new Deck(nBox);
+        state = GameState.IN_GAME;
+    }
+
+
 
     public void playBlackJack() {
         state = GameState.START_GAME;
@@ -76,10 +95,10 @@ public class Game {
     /**
      * User has begun the game
      */
-    private void start() {
-        scnr = new Scanner(System.in);
-        System.out.println("Please enter your name: ");
-        String name = scnr.nextLine().strip();
+    public void start() {
+//        scnr = new Scanner(System.in);
+//        System.out.println("Please enter your name: ");
+//        String name = scnr.nextLine().strip();
         // Generate player, dealer, and deck
         player = new User(name, initFunds);
         dealer = new Dealer();
@@ -91,11 +110,11 @@ public class Game {
      * User can either place bet or end game. If bet exceeds available funds
      * then InsufficientFundsException is thrown.
      */
-    private void placeBet() {
+    public void placeBet() {
         if (player.getMoney()>0) {
-            System.out.println("Bet amount ($" + player.getMoney() + " remaining) or 0 to end game: ");
-            Double bet = scnr.nextDouble();
-            if (bet==0) {
+//            System.out.println("Bet amount ($" + player.getMoney() + " remaining) or 0 to end game: ");
+            bet = newBalanceAfterBet;
+            if (bet == 0) {
                 state = GameState.END_GAME;
             }
             else {
@@ -141,7 +160,7 @@ public class Game {
     /**
      * Player stands and dealer plays. Dealer hits until hand total is greater than 16
      */
-    private void playerStand() {
+    public void playerStand() {
         dealer.makeCardsVisible();
         while (dealer.getBest() <=16) {
             dealer.dealCardVisible(deck.drawCard());
@@ -156,16 +175,10 @@ public class Game {
         player.dealCard(deck.drawCard());
     }
 
-    /**
-     * Evaluate the winner and either give user winnings or display that user pushed or dealer won
-     */
-    private void evaluateHands() {
-        int playerTotal = player.getBest();
-        int dealerTotal = dealer.getBest();
-
+   public void evaluateHands() {
 
     }
 
 
-
 }
+

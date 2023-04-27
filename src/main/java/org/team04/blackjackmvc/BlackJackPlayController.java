@@ -14,7 +14,11 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import org.team04.blackjackmvc.model.*;
 
+import static org.team04.blackjackmvc.BlackJackLoginController.name;
+
 public class BlackJackPlayController {
+
+    // GUI elements of the program
 
     @FXML
     private ResourceBundle resources;
@@ -22,98 +26,100 @@ public class BlackJackPlayController {
     @FXML
     private URL location;
 
-    @FXML
-    private Label amountOfMoneyInPot;
-
-    @FXML
-    private ImageView blackChip;
-
-    @FXML
-    private Label blackjackText;
-
-    @FXML
-    private ImageView blueChip;
-
+    /**
+     * Button for the black chip that represents the value 1
+     */
     @FXML
     private Button btnBlackChip;
 
+    /**
+     * Button for the blue chip that represents the value 100
+     */
     @FXML
     private Button btnBlueChip;
 
+    /**
+     * Button when pressed deals the cards for the player
+     */
     @FXML
     private Button btnDeal;
 
+    /**
+     * Button for the green chip that represents the value 25
+     */
     @FXML
     private Button btnGreenChip;
 
-    @FXML
-    private ImageView btnHome;
-
+    /**
+     * Button for the red chip that represents the value 5
+     */
     @FXML
     private Button btnRedCHip;
 
+    /**
+     * Button to control the volume in settings
+     */
     @FXML
     private Button btnVolume;
 
-    @FXML
-    private ImageView greenChip;
-
+    /**
+     * Button when pressed will deal the user another card
+     */
     @FXML
     private Button hitButton;
 
+    /**
+     * Button when pressed will take the person back to the home screen
+     */
     @FXML
     private Button homeButton;
 
+    /**
+     * Label that represents the chip total for the player
+     */
     @FXML
     private Label lblChipTotal;
 
+    /**
+     * Label that represents the total chips in the pot
+     */
     @FXML
     private Label lblPot;
 
-    @FXML
-    private ImageView redChip;
-
+    /**
+     * Button that deals the dealer to stop dealing cards and is ready for the showdown
+     */
     @FXML
     private Button standButton;
 
+    /**
+     * Label that communicates with the user who is the winner
+     */
     @FXML
     private Label lblWinner;
 
     @FXML
-    private FlowPane dealerFlowPane;
+    private FlowPane dealerFlowPane = new FlowPane();
 
     @FXML
-    private FlowPane playerFlowPane;
-
-    /**
-     * Creating variables for player
-     */
-    private Dealer dealer;
-
-    /**
-     * Creating variables for dealer
-     */
-    private User player;
-
-    /**
-     * Creating a hand for the player
-     */
-    private Hand playerHand;
-
-    /**
-     * Creating a hand for the dealer
-     */
-    private Hand dealerHand;
+    private FlowPane playerFlowPane = new FlowPane();
 
     /**
      * Initializing a game
      */
-    private Game game;
+    public Game game;
 
     /**
-     * Initializing a deck
+     * Creating a hand for the player
      */
-    private Deck deck;
+    private Hand playerHand = new Hand();
+
+    /**
+     * Creating a hand for the dealer
+     */
+    private Hand dealerHand = new Hand();
+
+    private User player;
 
     /**
      * Add a boolean variable to track whether the game has started
@@ -124,7 +130,12 @@ public class BlackJackPlayController {
      * An updated user balance that is updated
      * throughout the game
      */
-    private int newBalance;
+    private double newBalance;
+
+    /**
+     * The balance of the user after betting
+     */
+    public static double newBalanceAfterBet;
 
     /**
      * The currentBalance of the user at that
@@ -148,52 +159,44 @@ public class BlackJackPlayController {
     /**
      * An array of ImageView objects that stores 12 images of the dealer's cards
      */
-    private ImageView[] dealerImageView;
+    private ImageView[] dealerImageView = new ImageView[12];
 
     /**
      * An array of ImageView objects that stores 12 images of the player's cards
      */
-    private ImageView[] playerImageView;
-
+    private ImageView[] playerImageView = new ImageView[12];
 
 
     @FXML
     void initialize() {
-        assert amountOfMoneyInPot != null : "fx:id=\"amountOfMoneyInPot\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert blackChip != null : "fx:id=\"blackChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert blackjackText != null : "fx:id=\"blackjackText\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert blueChip != null : "fx:id=\"blueChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnBlackChip != null : "fx:id=\"btnBlackChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnBlueChip != null : "fx:id=\"btnBlueChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnDeal != null : "fx:id=\"btnDeal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnGreenChip != null : "fx:id=\"btnGreenChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert btnHome != null : "fx:id=\"btnHome\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnRedCHip != null : "fx:id=\"btnRedCHip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnVolume != null : "fx:id=\"btnVolume\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert greenChip != null : "fx:id=\"greenChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert hitButton != null : "fx:id=\"hitButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblChipTotal != null : "fx:id=\"lblChipTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblPot != null : "fx:id=\"lblPot\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert redChip != null : "fx:id=\"redChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblWinner != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert playerFlowPane != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert dealerFlowPane != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
-        // Creates a new game and deck
-        game = new Game();
-        deck = new Deck(52);
-        // Creates a new dealer and player
-        dealer = new Dealer();
-        player = new User("Eva", 500);
-        // Creates new hands for dealer and player
-        dealerHand = new Hand();
-        playerHand = new Hand();
+        game = new Game(name);
+
 
         //Creates a bank for the dealer
         bank = 0;
         resetPot = 0;
-
         lblWinner.setVisible(false);
+
+
+
+        if (this.game == null) {
+            throw new IllegalArgumentException("CRASH!");
+        }
 
     }
 
@@ -346,17 +349,23 @@ public class BlackJackPlayController {
     @FXML
     void onDeal() {
         gameStarted = true;
+        newBalanceAfterBet = Integer.parseInt(lblChipTotal.getText());
+        System.out.println(newBalanceAfterBet);
+//        game.placeBet();
+
 
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);
 
         // Deals cards to player and dealer
-
-        game.dealHand();
+//        Game.getTheGame().dealHand();
 
         // and hit and stand button are visible.
         standButton.setVisible(true);
         hitButton.setVisible(true);
+
+        updateDealerFlowPane(true);
+        updatePlayerFlowPane();
 
     }
 
@@ -366,8 +375,7 @@ public class BlackJackPlayController {
      */
     @FXML
     void onHit() {
-        playerHand.add(new Card(Card.Suit.HEARTS, Card.Rank.JACK));
-
+        game.playerHit();
     }
 
     /**
@@ -378,118 +386,110 @@ public class BlackJackPlayController {
      */
     @FXML
     void onStand() {
-        // Trying to calculate sum of cards as well as deal the dealer
-        // until satisfied.
-        int playerHandSum = playerHand.sum();
-        boolean playerHasBlackjack = playerHand.getSize() == 2 && playerHandSum == 21;
+        game.playerStand();
+        updateDealerFlowPane(false);
+        updatePlayerFlowPane();
 
-        if (playerHandSum <= 21 && !playerHasBlackjack) {
-            // dealer hits repeatedly, stands on hard a 17
-            while (dealerHand.sum() < 17) {
-                dealerHand.add(new Card(Card.Suit.CLUBS, Card.Rank.JACK));
+        game.evaluateHands();
+//        btnDeal.setVisible(true);
+
 //
-//                // if dealer has a soft 17, hit again
-//                if (dealerHand.sum() == 17 && dealerHand.hasAce()) {
-//                    dealerHand.add(new Card(Card.Suit.CLUBS, Card.Rank.JACK));
-            }
-        }
-
-        String getWinner = getWinner();
-        // player has black jack
-        if(getWinner.equals("player blackjack")){
-            // give bets to player
-            newBalance += newPot;
-            // Updates the pot label and balance label
-            lblPot.setText(Integer.toString(resetPot));
-            lblChipTotal.setText(Integer.toString(currentBalance));
-
-            lblWinner.setText("Blackjack!!!");
-            lblWinner.setVisible(true);
-
-        }
-
-        // player wins
-        if(getWinner.equals("player wins")){
-            // give bets to player
-            newBalance += newPot;
-            // Updates the pot label and balance label
-            lblPot.setText(Integer.toString(resetPot));
-            lblChipTotal.setText(Integer.toString(newBalance));
-
-            lblWinner.setText("You win!");
-            lblWinner.setVisible(true);
-
-        }
-
-        // dealer has black jack or wins
-        if(getWinner.equals("dealer blackjack") || getWinner.equals("dealer wins")){
-            // give bets to player
-            bank += newPot;
-            // Updates the pot label and balance label
-            lblPot.setText(Integer.toString(resetPot));
-            lblChipTotal.setText(Integer.toString(currentBalance));
-
-
-            lblWinner.setText("Dealer Wins.");
-            lblWinner.setVisible(true);
-
-        }
-
-        // push
-        if(getWinner.equals("push")){
-            // bets go back to each player
-            newBalance += newPot;
-            lblPot.setText(Integer.toString(resetPot));
-            lblChipTotal.setText(Integer.toString(newBalance));
-
-            lblWinner.setText("Push");
-            lblWinner.setVisible(true);
-        }
+//        //String getWinner = getWinner();
+//        // player has black jack
+//        if(getWinner.equals("player blackjack")){
+//            // give bets to player
+//            newBalance += newPot;
+//            // Updates the pot label and balance label
+//            lblPot.setText(Integer.toString(resetPot));
+//            lblChipTotal.setText(Integer.toString(currentBalance));
+//
+//            lblWinner.setText("Blackjack!!!");
+//            lblWinner.setVisible(true);
+//        }
+//
+//        // player wins
+//        if(getWinner.equals("player wins")){
+//            // give bets to player
+//            newBalance += newPot;
+//            // Updates the pot label and balance label
+//            lblPot.setText(Integer.toString(resetPot));
+//            lblChipTotal.setText(Integer.toString(newBalance));
+//
+//            lblWinner.setText("You win!");
+//            lblWinner.setVisible(true);
+//
+//        }
+//
+//        // dealer has black jack or wins
+//        if(getWinner.equals("dealer blackjack") || getWinner.equals("dealer wins")){
+//            // give bets to player
+//            bank += newPot;
+//            // Updates the pot label and balance label
+//            lblPot.setText(Integer.toString(resetPot));
+//            lblChipTotal.setText(Integer.toString(currentBalance));
+//
+//
+//            lblWinner.setText("Dealer Wins.");
+//            lblWinner.setVisible(true);
+//
+//        }
+//
+//        // push
+//        if(getWinner.equals("push")){
+//            // bets go back to each player
+//            newBalance += newPot;
+//            lblPot.setText(Integer.toString(resetPot));
+//            lblChipTotal.setText(Integer.toString(newBalance));
+//
+//            lblWinner.setText("Push");
+//            lblWinner.setVisible(true);
+//        }
     }
 
-    /**
-     * Compares the values of the sums of player and dealer
-     * to find the winner
-     *
-     * @return String value of player or dealer
-     */
-    private String getWinner() {
-        int dealerSum = dealerHand.sum();
-        int playerSum = playerHand.sum();
-        boolean dealerHasBlackjack = false;
-        boolean playerHasBlackjack = false;
-
-        // Checks if dealer or player has blackjack
-        if (dealerHand.getSize() == 2 && dealerSum == 21) {
-            dealerHasBlackjack = true;
-        } else if (playerHand.getSize() == 2 && playerSum == 21) {
-            playerHasBlackjack = true;
-        }
-
-        // Finds winner is user or dealer has black jack
-        if (dealerHasBlackjack && !playerHasBlackjack) {         // if dealer has blackjack and the player does not
-            return "dealer blackjack";
-        } else if (!dealerHasBlackjack && playerHasBlackjack) {   // if player has blackjack and the dealer does not
-            return "player blackjack";
-        }
-
-        // Compares sums finds winner or determines a push (tie)
-        if (playerSum > 21) {
-            return "dealer wins";
-        } else if (dealerSum > 21) {
-            return "player wins";
-        } else if (playerSum > dealerSum) {
-            return "player wins";
-        } else if (dealerSum > playerSum) {
-            return "dealer wins";
-        } else if (dealerSum == playerSum) {
-            return "push";
-        } else {
-            // Should never get here
-            return "null";
-        }
-
-    }
+//    /**
+//     * Compares the values of the sums of player and dealer
+//     * to find the winner
+//     *
+//     * @return String value of player or dealer
+//     */
+//    private String getWinner() {
+//        int dealerSum = dealerHand.sum();
+//        int playerSum = playerHand.sum();
+//
+//        boolean dealerHasBlackjack = false;
+//        boolean playerHasBlackjack = false;
+//
+//        // Checks if dealer or player has blackjack
+//        if (dealerHand.getSize() == 2 && dealerSum == 21) {
+//            dealerHasBlackjack = true;
+//        } else if (playerHand.getSize() == 2 && playerSum == 21) {
+//            playerHasBlackjack = true;
+//        }
+//
+//        // Finds winner is user or dealer has black jack
+//        if (dealerHasBlackjack && !playerHasBlackjack) {         // if dealer has blackjack and the player does not
+//            return "dealer blackjack";
+//        } else if (!dealerHasBlackjack && playerHasBlackjack) {   // if player has blackjack and the dealer does not
+//            return "player blackjack";
+//        }
+//
+//        // Compares sums finds winner or determines a push (tie)
+//        if (playerSum > 21) {
+//            return "dealer wins";
+//        } else if (dealerSum > 21) {
+//            return "player wins";
+//        } else if (playerSum > dealerSum) {
+//            return "player wins";
+//        } else if (dealerSum > playerSum) {
+//            return "dealer wins";
+//        } else if (dealerSum == playerSum) {
+//            return "push";
+//        } else {
+//            // Should never get here
+//            return "null";
+//        }
+//
+//    }
 
     /**
      * Code from https://github.com/nalabrie/Blackjack/blob/master/src/Blackjack/Controller.java
@@ -500,7 +500,7 @@ public class BlackJackPlayController {
     private void updateDealerFlowPane(boolean showFirstCard) {
         // if 'showFirstCard' is true: first card shown is a card back rather than the actual first card
         if (showFirstCard) {
-            Image back = new Image("file:resources/org.team04.blackjackmvc/images/cards/back.png");
+            Image back = new Image("file:resources/org/team04/blackjackmvc/images/cards/backsideOfACard.jpg");
             dealerImageView[0] = new ImageView();
             dealerImageView[0].setImage(back);
             dealerImageView[0].setPreserveRatio(true);
@@ -520,7 +520,7 @@ public class BlackJackPlayController {
         for (int i = 0; i < dealerHand.getSize(); i++) {
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
             if (dealerImageView[i] == null) {
-                Image card = new Image("file:resources/org.team04.blackjackmvc/images/cards/" + dealerHand.getCard(i).value() + dealerHand.getCard(i).suit() + ".png");
+                Image card = new Image("file:resources/org/team04/blackjackmvc/images/cards" + dealerHand.getCard(i).value() + dealerHand.getCard(i).suit() + ".png");
                 dealerImageView[i] = new ImageView();
                 dealerImageView[i].setImage(card);
                 dealerImageView[i].setPreserveRatio(true);
@@ -544,7 +544,7 @@ public class BlackJackPlayController {
         for (int i = 0; i < playerHand.getSize(); i++) {
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
             if (playerImageView[i] == null) {
-                Image card = new Image("file:resources/org.team04.blackjackmvc/images/cards/" + playerHand.getCard(i).value() + playerHand.getCard(i).suit() + ".png");
+                Image card = new Image("file:resources/org/team04/blackjackmvc/images/cards/" + playerHand.getCard(i).value() + playerHand.getCard(i).suit() + ".png");
                 playerImageView[i] = new ImageView();
                 playerImageView[i].setImage(card);
                 playerImageView[i].setPreserveRatio(true);
@@ -560,4 +560,3 @@ public class BlackJackPlayController {
     }
 
 }
-
