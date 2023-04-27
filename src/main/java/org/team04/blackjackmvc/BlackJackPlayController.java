@@ -130,7 +130,12 @@ public class BlackJackPlayController {
      * An updated user balance that is updated
      * throughout the game
      */
-    public static double newBalance;
+    private double newBalance;
+
+    /**
+     * The balance of the user after betting
+     */
+    public static double newBalanceAfterBet;
 
     /**
      * The currentBalance of the user at that
@@ -344,7 +349,9 @@ public class BlackJackPlayController {
     @FXML
     void onDeal() {
         gameStarted = true;
-        game.placeBet();
+        newBalanceAfterBet = Integer.parseInt(lblChipTotal.getText());
+        System.out.println(newBalanceAfterBet);
+//        game.placeBet();
 
 
         // after the deal button is pressed, it is disabled
@@ -380,9 +387,12 @@ public class BlackJackPlayController {
     @FXML
     void onStand() {
         game.playerStand();
-        game.evaluateHands();
         updateDealerFlowPane(false);
         updatePlayerFlowPane();
+
+        game.evaluateHands();
+//        btnDeal.setVisible(true);
+
 //
 //        //String getWinner = getWinner();
 //        // player has black jack

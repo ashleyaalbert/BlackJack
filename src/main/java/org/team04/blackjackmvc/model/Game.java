@@ -18,12 +18,13 @@
  */
 package org.team04.blackjackmvc.model;
 
-import org.team04.blackjackmvc.BlackJackLoginController;
 import org.team04.blackjackmvc.BlackJackPlayController;
 
 import java.util.Scanner;
 
+/** Values taken from controller **/
 import static org.team04.blackjackmvc.BlackJackLoginController.name;
+import static org.team04.blackjackmvc.BlackJackPlayController.newBalanceAfterBet;
 
 public class Game {
 
@@ -56,6 +57,11 @@ public class Game {
      * Generate scanner for user prompts
      */
     private Scanner scnr;
+
+    /**
+     * Stores the bet value from the user
+     */
+    public static double bet;
 
     public Game(String name) {
         player = new User(name, initFunds);
@@ -106,9 +112,9 @@ public class Game {
      */
     public void placeBet() {
         if (player.getMoney()>0) {
-            System.out.println("Bet amount ($" + player.getMoney() + " remaining) or 0 to end game: ");
-            Double bet = BlackJackPlayController.newBalance;
-            if (bet==0) {
+//            System.out.println("Bet amount ($" + player.getMoney() + " remaining) or 0 to end game: ");
+            bet = newBalanceAfterBet;
+            if (bet == 0) {
                 state = GameState.END_GAME;
             }
             else {
