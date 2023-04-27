@@ -363,7 +363,6 @@ public class BlackJackPlayController {
 
         // Deals cards to player and dealer
         game.dealHand();
-        System.out.println();
 
         updateDealerFlowPane(true);
         updatePlayerFlowPane();
@@ -397,105 +396,7 @@ public class BlackJackPlayController {
         updatePlayerFlowPane();
 
         game.evaluateHands();
-//        btnDeal.setVisible(true);
-
-//
-//        //String getWinner = getWinner();
-//        // player has black jack
-//        if(getWinner.equals("player blackjack")){
-//            // give bets to player
-//            newBalance += newPot;
-//            // Updates the pot label and balance label
-//            lblPot.setText(Integer.toString(resetPot));
-//            lblChipTotal.setText(Integer.toString(currentBalance));
-//
-//            lblWinner.setText("Blackjack!!!");
-//            lblWinner.setVisible(true);
-//        }
-//
-//        // player wins
-//        if(getWinner.equals("player wins")){
-//            // give bets to player
-//            newBalance += newPot;
-//            // Updates the pot label and balance label
-//            lblPot.setText(Integer.toString(resetPot));
-//            lblChipTotal.setText(Integer.toString(newBalance));
-//
-//            lblWinner.setText("You win!");
-//            lblWinner.setVisible(true);
-//
-//        }
-//
-//        // dealer has black jack or wins
-//        if(getWinner.equals("dealer blackjack") || getWinner.equals("dealer wins")){
-//            // give bets to player
-//            bank += newPot;
-//            // Updates the pot label and balance label
-//            lblPot.setText(Integer.toString(resetPot));
-//            lblChipTotal.setText(Integer.toString(currentBalance));
-//
-//
-//            lblWinner.setText("Dealer Wins.");
-//            lblWinner.setVisible(true);
-//
-//        }
-//
-//        // push
-//        if(getWinner.equals("push")){
-//            // bets go back to each player
-//            newBalance += newPot;
-//            lblPot.setText(Integer.toString(resetPot));
-//            lblChipTotal.setText(Integer.toString(newBalance));
-//
-//            lblWinner.setText("Push");
-//            lblWinner.setVisible(true);
-//        }
     }
-
-//    /**
-//     * Compares the values of the sums of player and dealer
-//     * to find the winner
-//     *
-//     * @return String value of player or dealer
-//     */
-//    private String getWinner() {
-//        int dealerSum = dealerHand.sum();
-//        int playerSum = playerHand.sum();
-//
-//        boolean dealerHasBlackjack = false;
-//        boolean playerHasBlackjack = false;
-//
-//        // Checks if dealer or player has blackjack
-//        if (dealerHand.getSize() == 2 && dealerSum == 21) {
-//            dealerHasBlackjack = true;
-//        } else if (playerHand.getSize() == 2 && playerSum == 21) {
-//            playerHasBlackjack = true;
-//        }
-//
-//        // Finds winner is user or dealer has black jack
-//        if (dealerHasBlackjack && !playerHasBlackjack) {         // if dealer has blackjack and the player does not
-//            return "dealer blackjack";
-//        } else if (!dealerHasBlackjack && playerHasBlackjack) {   // if player has blackjack and the dealer does not
-//            return "player blackjack";
-//        }
-//
-//        // Compares sums finds winner or determines a push (tie)
-//        if (playerSum > 21) {
-//            return "dealer wins";
-//        } else if (dealerSum > 21) {
-//            return "player wins";
-//        } else if (playerSum > dealerSum) {
-//            return "player wins";
-//        } else if (dealerSum > playerSum) {
-//            return "dealer wins";
-//        } else if (dealerSum == playerSum) {
-//            return "push";
-//        } else {
-//            // Should never get here
-//            return "null";
-//        }
-//
-//    }
 
     /**
      * Code from https://github.com/nalabrie/Blackjack/blob/master/src/Blackjack/Controller.java
