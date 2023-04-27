@@ -371,15 +371,16 @@ public class BlackJackPlayController {
         game.playerHit();
     }
 
-    //    /**
-//     * When the stand button is pressed, the dealer will stop dealing to
-//     * the user and deal itself to try and get 21. Then the sum of the players
-//     * and dealers hands will then be calculated and returned. As well as dealing with
-//     * beats.
-//     */
+    /**
+     * When the stand button is pressed, the dealer will stop dealing to
+     * the user and deal itself to try and get 21. Then the sum of the players
+     * and dealers hands will then be calculated and returned. As well as dealing with
+     * beats.
+     */
     @FXML
     void onStand() {
-        //game.playerStand();
+        game.playerStand();
+        game.evaluateHands();
         updateDealerFlowPane(false);
         updatePlayerFlowPane();
 //

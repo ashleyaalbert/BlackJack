@@ -169,7 +169,7 @@ public class Game {
         player.dealCard(deck.drawCard());
     }
 
-    private void evaluateHands() {
+   public void evaluateHands() {
 
     }
 
