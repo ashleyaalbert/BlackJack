@@ -98,9 +98,15 @@ public class BlackJackPlayController {
     @FXML
     private Label lblWinner;
 
+    /**
+     * FlowPane that projects the cards for dealer
+     */
     @FXML
     private FlowPane dealerFlowPane = new FlowPane();
 
+    /**
+     * FlowPane that projects the cards for player
+     */
     @FXML
     private FlowPane playerFlowPane = new FlowPane();
 
@@ -119,7 +125,6 @@ public class BlackJackPlayController {
      */
     private Hand dealerHand = new Hand();
 
-    private User player;
 
     /**
      * Add a boolean variable to track whether the game has started
@@ -235,7 +240,7 @@ public class BlackJackPlayController {
 
                 // Get the current balance
                 currentBalance = Integer.parseInt(lblChipTotal.getText());
-                int newBalance = currentBalance - 1;
+                newBalance = currentBalance - 1;
 
                 // Check if the new pot value exceeds the balance
                 if (newBalance < 0) {
@@ -244,7 +249,7 @@ public class BlackJackPlayController {
 
                 // Updates the pot label and balance label
                 lblPot.setText(Integer.toString(newPot));
-                lblChipTotal.setText(Integer.toString(newBalance));
+                lblChipTotal.setText(Integer.toString((int) newBalance));
             }
         }
     }
@@ -266,7 +271,7 @@ public class BlackJackPlayController {
 
                 // Get the current balance
                 currentBalance = Integer.parseInt(lblChipTotal.getText());
-                int newBalance = currentBalance - 5;
+                newBalance = currentBalance - 5;
 
                 // Check if the new pot value exceeds the balance
                 if (newBalance < 0) {
@@ -275,7 +280,7 @@ public class BlackJackPlayController {
 
                 // Updates the pot label and balance label
                 lblPot.setText(Integer.toString(newPot));
-                lblChipTotal.setText(Integer.toString(newBalance));
+                lblChipTotal.setText(Integer.toString((int) newBalance));
             }
         }
     }
@@ -297,7 +302,7 @@ public class BlackJackPlayController {
 
                 // Get the current balance
                 currentBalance = Integer.parseInt(lblChipTotal.getText());
-                int newBalance = currentBalance - 25;
+                newBalance = currentBalance - 25;
 
                 // Check if the new pot value exceeds the balance
                 if (newBalance < 0) {
@@ -306,7 +311,7 @@ public class BlackJackPlayController {
 
                 // Updates the pot label and balance label
                 lblPot.setText(Integer.toString(newPot));
-                lblChipTotal.setText(Integer.toString(newBalance));
+                lblChipTotal.setText(Integer.toString((int) newBalance));
             }
         }
     }
@@ -328,7 +333,7 @@ public class BlackJackPlayController {
 
                 // Get the current balance
                 currentBalance = Integer.parseInt(lblChipTotal.getText());
-                int newBalance = currentBalance - 100;
+                newBalance = currentBalance - 100;
 
                 // Check if the new pot value exceeds the balance
                 if (newBalance < 0) {
@@ -337,7 +342,7 @@ public class BlackJackPlayController {
 
                 // Updates the pot label and balance label
                 lblPot.setText(Integer.toString(newPot));
-                lblChipTotal.setText(Integer.toString(newBalance));
+                lblChipTotal.setText(Integer.toString((int) newBalance));
             }
         }
     }
@@ -350,29 +355,30 @@ public class BlackJackPlayController {
     void onDeal() {
         gameStarted = true;
         newBalanceAfterBet = Integer.parseInt(lblChipTotal.getText());
-        System.out.println(newBalanceAfterBet);
+//        System.out.println(newBalanceAfterBet);
 //        game.placeBet();
-
 
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);
 
         // Deals cards to player and dealer
-//        Game.getTheGame().dealHand();
+        game.dealHand();
+        System.out.println();
+
+        updateDealerFlowPane(true);
+        updatePlayerFlowPane();
 
         // and hit and stand button are visible.
         standButton.setVisible(true);
         hitButton.setVisible(true);
 
-        updateDealerFlowPane(true);
-        updatePlayerFlowPane();
 
     }
 
     /**
      * When the hit button is pressed, the dealer will deal the player
      * a new card.
-     */
+    git pul */
     @FXML
     void onHit() {
         game.playerHit();
@@ -498,6 +504,7 @@ public class BlackJackPlayController {
      * @param showFirstCard Shows the first card when true, replaces it with a card back when false.
      */
     private void updateDealerFlowPane(boolean showFirstCard) {
+        dealerFlowPane.setVisible(true);
         // if 'showFirstCard' is true: first card shown is a card back rather than the actual first card
         if (showFirstCard) {
             Image back = new Image("file:resources/org/team04/blackjackmvc/images/cards/backsideOfACard.jpg");
@@ -540,6 +547,7 @@ public class BlackJackPlayController {
      * Creates/updates the card images representing the player's hand inside the 'playerFlowPane' container.
      */
     private void updatePlayerFlowPane() {
+        playerFlowPane.setVisible(true);
         // add all cards in the player's hand to the FlowPane as images
         for (int i = 0; i < playerHand.getSize(); i++) {
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
