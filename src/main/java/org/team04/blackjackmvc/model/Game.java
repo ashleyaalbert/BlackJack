@@ -63,11 +63,17 @@ public class Game {
      */
     public static double bet;
 
+    /**
+     * The win state of the user in the current hand
+     */
+    private WinState win;
+
     public Game(String name) {
         player = new User(name, initFunds);
         dealer = new Dealer();
         deck = new Deck(nBox);
         state = GameState.IN_GAME;
+        win = WinState.NULL;
     }
 
 
@@ -104,6 +110,7 @@ public class Game {
         dealer = new Dealer();
         deck = new Deck(nBox);
         state = GameState.IN_GAME;
+        this.win = WinState.NULL;
     }
 
     /**
@@ -132,6 +139,7 @@ public class Game {
      * is not yet visible
      */
     public void dealHand() {
+        this.win = WinState.NULL;
         player.dealCard(deck.drawCard());
         dealer.dealCardVisible(deck.drawCard());
         player.dealCard(deck.drawCard());
@@ -175,10 +183,55 @@ public class Game {
         player.dealCard(deck.drawCard());
     }
 
-   public void evaluateHands() {
+    /**
+     * Evaluate if player wins, loses, pushes, or has blackjack
+     */
+    public void evaluateHands() {
+       int playerTotal = player.getBest();
+       int dealerTotal = dealer.getBest();
 
-    }
+       // Check if player busts
+       if (playerTotal > 21) {
+           this.win = WinState.LOSS;
+       }
 
+       // Check for user blackjack. Push if dealer also blackjack. Blackjack if not
+       else if (playerTotal == -1) {
+           if (dealerTotal == -1) {
+               this.win = WinState.PUSH;
+           }
+           else {
+               this.win = WinState.BLACKJACK;
+           }
+       }
+
+       // Check if dealer busts
+       else if (dealerTotal > 21) {
+           this.win = WinState.WIN;
+       }
+
+       // Check who has higher score
+       else if (playerTotal > dealerTotal) {
+           this.win = WinState.WIN;
+       }
+
+       else if (playerTotal < dealerTotal) {
+           this.win = WinState.LOSS;
+       }
+
+       // Player and dealer have same score...push
+       else {
+           this.win = WinState.PUSH;
+       }
+   }
+
+   public WinState getWin() {
+        return this.win;
+   }
+
+   public void handleWinner() {
+
+   }
 
 }
 
