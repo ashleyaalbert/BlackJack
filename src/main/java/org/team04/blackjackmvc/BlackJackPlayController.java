@@ -176,6 +176,8 @@ public class BlackJackPlayController {
         assert lblPot != null : "fx:id=\"lblPot\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert standButton != null : "fx:id=\"standButton\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblWinner != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert playerFlowPane != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert dealerFlowPane != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
         game = new Game(name);
 
@@ -185,7 +187,6 @@ public class BlackJackPlayController {
         resetPot = 0;
         lblWinner.setVisible(false);
 
-//        this.game = Game.getTheGame();
 
 
         if (this.game == null) {
@@ -508,7 +509,7 @@ public class BlackJackPlayController {
         for (int i = 0; i < dealerHand.getSize(); i++) {
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
             if (dealerImageView[i] == null) {
-                Image card = new Image("file:resources/org.team04.blackjackmvc/images/cards/" + dealerHand.getCard(i).value() + dealerHand.getCard(i).suit() + ".png");
+                Image card = new Image("file:resources/org/team04/blackjackmvc/images/cards" + dealerHand.getCard(i).value() + dealerHand.getCard(i).suit() + ".png");
                 dealerImageView[i] = new ImageView();
                 dealerImageView[i].setImage(card);
                 dealerImageView[i].setPreserveRatio(true);
@@ -532,7 +533,7 @@ public class BlackJackPlayController {
         for (int i = 0; i < playerHand.getSize(); i++) {
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
             if (playerImageView[i] == null) {
-                Image card = new Image("file:resources/org.team04.blackjackmvc/images/cards/" + playerHand.getCard(i).value() + playerHand.getCard(i).suit() + ".png");
+                Image card = new Image("file:resources/org/team04/blackjackmvc/images/cards/" + playerHand.getCard(i).value() + playerHand.getCard(i).suit() + ".png");
                 playerImageView[i] = new ImageView();
                 playerImageView[i].setImage(card);
                 playerImageView[i].setPreserveRatio(true);
