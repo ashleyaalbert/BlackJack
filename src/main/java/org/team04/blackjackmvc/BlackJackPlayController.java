@@ -172,6 +172,7 @@ public class BlackJackPlayController {
     private ImageView[] playerImageView = new ImageView[12];
 
 
+
     @FXML
     void initialize() {
         assert btnBlackChip != null : "fx:id=\"btnBlackChip\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
@@ -371,16 +372,17 @@ public class BlackJackPlayController {
         standButton.setVisible(true);
         hitButton.setVisible(true);
 
-
     }
 
     /**
      * When the hit button is pressed, the dealer will deal the player
      * a new card.
-    git pul */
+     **/
     @FXML
     void onHit() {
         game.playerHit();
+        updateDealerFlowPane(false);
+        updatePlayerFlowPane();
     }
 
     /**
@@ -392,11 +394,58 @@ public class BlackJackPlayController {
     @FXML
     void onStand() {
         game.playerStand();
-        updateDealerFlowPane(false);
-        updatePlayerFlowPane();
-
         game.evaluateHands();
+
+        WinState winState = WinState.LOSS;
+
+        /**
+         * Calculate bets after scores have been calculated
+         */
+            // Player Loss
+        if (winState == WinState.LOSS){
+            // give bets to dealer
+            bank += newPot;
+            // Updates the pot label and balance label
+            lblPot.setText(Integer.toString(resetPot));
+            lblChipTotal.setText(Integer.toString(currentBalance));
+            lblWinner.setText("Dealer Wins.");
+            lblWinner.setVisible(true);
+            // Player Win
+        } else if (winState == WinState.WIN){
+            // give bets to player
+            newBalance += newPot;
+            // Updates the pot label and balance label
+            lblPot.setText(Integer.toString(resetPot));
+            lblChipTotal.setText(Integer.toString((int) newBalance));
+
+            lblWinner.setText("You win!");
+            lblWinner.setVisible(true);
+            // Payer Blackjack
+        } else if (winState == WinState.BLACKJACK) {
+            // give bets to player
+            int doubleWinnings = 2 * newPot;
+            newBalance = doubleWinnings;
+            // Updates the pot label and balance label
+            lblPot.setText(Integer.toString(resetPot));
+            lblChipTotal.setText(Integer.toString((int) newBalance));
+
+            lblWinner.setText("Blackjack!!!");
+            lblWinner.setVisible(true);
+            // Tie
+        } else if (winState == WinState.PUSH) {
+            // bets go back to each player
+            lblPot.setText(Integer.toString(resetPot));
+            lblChipTotal.setText(Integer.toString((int) newBalance));
+
+            lblWinner.setText("Push");
+            lblWinner.setVisible(true);
+        }
+
+
     }
+
+
+
 
     /**
      * Code from https://github.com/nalabrie/Blackjack/blob/master/src/Blackjack/Controller.java
