@@ -91,7 +91,7 @@ public class Hand {
 
     /**
      * @return the best possible score in the hand, which is the highest value less than 21.
-     * A return of 22 is a blackjack
+     * A return of -1 is a blackjack
      */
     public int best() {
         List<Integer> totals = new ArrayList<Integer>();
@@ -110,7 +110,7 @@ public class Hand {
             }
         }
         if (bestScore==21 && this.size==2 && this.aces==1) {
-            return 22;
+            return -1;
         }
         else {
             return bestScore;

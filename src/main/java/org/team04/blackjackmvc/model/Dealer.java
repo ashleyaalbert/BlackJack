@@ -54,8 +54,14 @@ public class Dealer{
     public void makeCardsVisible() {
         this.dealerHand.makeVisible();
     }
+
+    /**
+     * @return the best possible score of the user hand (-1 is a blackjack)
+     */
     public int getBest() {
         return dealerHand.best();
     }
+
+
 }
 

@@ -33,10 +33,11 @@ public class User{
      * Name of the player
      */
     private String name;
+
     /**
-     * Maps the bet placed by the user to the hand of the bet
+     * The current bet by the user
      */
-    private Map<Hand, Double> handBets = new TreeMap<>();
+    private double currentBet;
     /**
      * A property that represents the player's money
      */
@@ -52,24 +53,30 @@ public class User{
      */
     private Scanner scnr;
 
+    /**
+     * Create user and initialize user with @param initMoney and @param name and new empty hand
+     */
     public User(String name, double initMoney) {
         this.name = name;
         this.money= initMoney;
+        this.currentHand = new Hand();
     }
 
     public double getMoney() {
         return money;
     }
 
+    /**
+     * Place bet of {@param amount} on current hand
+     * @throws InsufficientFundsException
+     */
     public void placeBet(double amount) throws InsufficientFundsException{
         if (this.money < amount) {
             throw new InsufficientFundsException((String.format(
                     "INSUFFICIENT FUNDS! Required: $%.2f, Available: $%.2f",
                     amount, this.money)));
         }
-        Hand hand = new Hand();
-        this.currentHand = hand;
-        this.handBets.put(hand, amount);
+        this.currentBet = amount;
         this.money -= amount;
         System.out.printf("Bet: $.2f, Remaining funds: $.2f", amount, this.money);
 
@@ -84,7 +91,21 @@ public class User{
         this.currentHand.add(card);
     }
 
+    /**
+     * @return the best possible score of the hand (-1 is a blackjack)
+     */
     public int getBest() {
         return this.currentHand.best();
+    }
+
+    /**
+     * reset the current hand
+     */
+    public void clearHand() {
+        this.currentHand.clear();
+    }
+
+    public double getCurrentBet() {
+        return currentBet;
     }
 }

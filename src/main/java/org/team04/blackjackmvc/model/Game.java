@@ -156,14 +156,15 @@ public class Game {
         player.dealCard(deck.drawCard());
     }
 
+    /**
+     * Evaluate the winner and either give user winnings or display that user pushed or dealer won
+     */
     private void evaluateHands() {
+        int playerTotal = player.getBest();
+        int dealerTotal = dealer.getBest();
+
 
     }
-
-
-
-
-
 
 
 
