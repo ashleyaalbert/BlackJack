@@ -66,7 +66,7 @@ public class Game {
     /**
      * The win state of the user in the current hand
      */
-    private WinState win;
+    public WinState win;
 
     public Game(String name) {
         player = new User(name, initFunds);

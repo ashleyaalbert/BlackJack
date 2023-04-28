@@ -397,10 +397,17 @@ public class BlackJackPlayController {
      */
     @FXML
     void onStand() {
+        // Player stops getting cards from dealer
         game.playerStand();
+
+        // Game class calculates hand totals
         game.evaluateHands();
 
+        // and hit and stand button are no longer visible.
+        standButton.setVisible(false);
+        hitButton.setVisible(false);
 
+        // Todo Fix winstates with taylor
         WinState winState = null;
 
         /**
@@ -415,6 +422,7 @@ public class BlackJackPlayController {
             lblChipTotal.setText(Integer.toString(currentBalance));
             lblWinner.setText("Dealer Wins.");
             lblWinner.setVisible(true);
+
             // Player Win
         } else if (winState == WinState.WIN){
             // give bets to player
@@ -425,6 +433,7 @@ public class BlackJackPlayController {
 
             lblWinner.setText("You win!");
             lblWinner.setVisible(true);
+
             // Payer Blackjack
         } else if (winState == WinState.BLACKJACK) {
             // give bets to player
@@ -436,6 +445,7 @@ public class BlackJackPlayController {
 
             lblWinner.setText("Blackjack!!!");
             lblWinner.setVisible(true);
+
             // Tie
         } else if (winState == WinState.PUSH) {
             // bets go back to each player
@@ -461,10 +471,8 @@ public class BlackJackPlayController {
         dealerFlowPane.setVisible(true);
         // if 'showFirstCard' is true: first card shown is a card back rather than the actual first card
         if (showFirstCard) {
-            //  THANK YOU PROFESSOR KING!!!
+            //  THANK YOU PROFESSOR KING!!! (and brandon)
             InputStream backCard = getClass().getResourceAsStream("images/cards/back.png");
-//            InputStream backCard = getClass().getClassLoader().getResourceAsStream("org/team04/blackjackmvc/back.png");
-//            InputStream backCard = getClass().getClassLoader().getResourceAsStream("back.png");
 
             assert backCard != null;
             Image back = new Image(backCard);

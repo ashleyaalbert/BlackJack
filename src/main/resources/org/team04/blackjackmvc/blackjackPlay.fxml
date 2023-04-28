@@ -11,8 +11,8 @@
 
 <AnchorPane id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.team04.blackjackmvc.BlackJackPlayController">
    <children>
-      <FlowPane fx:id="dealerFlowPane" layoutX="332.0" layoutY="18.0" prefHeight="332.0" prefWidth="328.0" />
-      <FlowPane fx:id="playerFlowPane" layoutX="71.0" layoutY="65.0" prefHeight="316.0" prefWidth="302.0" />
+      <FlowPane fx:id="dealerFlowPane" layoutX="524.0" layoutY="206.0" prefHeight="205.0" prefWidth="146.0" />
+      <FlowPane fx:id="playerFlowPane" layoutX="216.0" layoutY="186.0" prefHeight="194.0" prefWidth="146.0" />
       <Label fx:id="blackjackText" layoutX="14.0" layoutY="6.0" text="BLACKJACK" textFill="#fffefe">
          <font>
             <Font name="Charter Roman" size="48.0" />
