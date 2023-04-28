@@ -33,7 +33,7 @@ Enumerations are used to declare the suit, rank, chip, game state, and FXMLScene
 EmptyDeckException, a HandIndexOutOfBoundsException, and a NegativeBalanceException.  Our testing files test the 
 classes we have created to ensure they are valid and work properly.  Lastly, the "images" folder we have included 
 contains images of each card's face, the back of one card, varying chips, a welcoming image, and icons, such as a home
-icon, a speaker icon, and a sparkle icona\s.
+icon, a speaker icon, and a sparkle icon.
 
 ## Package Structure
 
