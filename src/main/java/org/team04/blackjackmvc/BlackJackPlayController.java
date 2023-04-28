@@ -220,7 +220,8 @@ public class BlackJackPlayController {
         lblWinner.setVisible(false);
         lblDealerTotal.setVisible(false);
         lblPlayerTotal.setVisible(false);
-
+        hitButton.setVisible(false);
+        standButton.setVisible(false);
 
 
         if (this.game == null) {
@@ -481,8 +482,8 @@ public class BlackJackPlayController {
 
     @FXML
     void updateTotal(){
-       int playerTotal = 15;
-       int dealerTotal = 20;
+       int playerTotal = game.getPlayerTotal();
+       int dealerTotal = game.getDealerTotal();
        lblDealerTotal.setText(Integer.toString(dealerTotal));
        lblPlayerTotal.setText(Integer.toString(playerTotal));
     }
