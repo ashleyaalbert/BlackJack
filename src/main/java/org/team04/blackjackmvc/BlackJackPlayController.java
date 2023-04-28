@@ -377,9 +377,9 @@ public class BlackJackPlayController {
      */
     @FXML
     void onDeal() {
-        gameStarted = true;
         double bet = Double.parseDouble(lblPot.getText());
         if (bet>0) {
+            gameStarted = true;
             game.placeBet(bet);
 
             // after the deal button is pressed, it is disabled
@@ -481,8 +481,8 @@ public class BlackJackPlayController {
 
     @FXML
     void onReset() {
-
         game.reset();
+        gameStarted = false;
         lblWinner.setVisible(false);
         lblDealerTotal.setVisible(false);
         lblPlayerTotal.setVisible(false);
