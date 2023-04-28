@@ -360,7 +360,7 @@ public class BlackJackPlayController {
     void onDeal() {
         gameStarted = true;
         double bet = Integer.parseInt(lblPot.getText());
-        game.placeBet();
+        game.placeBet(bet);
 
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);

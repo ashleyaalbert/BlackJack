@@ -85,7 +85,7 @@ public class Game {
         }
         while (state != GameState.END_GAME && player.getMoney() >0) {
             if (state == GameState.IN_GAME) {
-                placeBet();
+                placeBet(bet);
             }
             else if (state==GameState.PLAY_HAND) {
                 dealHand();
@@ -117,10 +117,9 @@ public class Game {
      * User can either place bet or end game. If bet exceeds available funds
      * then InsufficientFundsException is thrown.
      */
-    public void placeBet() {
+    public void placeBet(Double bet) {
         if (player.getMoney()>0) {
-            bet = playerBet;
-            System.out.println(playerBet);
+            System.out.println(bet);
             if (bet == 0) {
                 state = GameState.END_GAME;
             }
