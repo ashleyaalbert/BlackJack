@@ -153,6 +153,8 @@ public class Game {
      * Evaluate if player wins, loses, pushes, or has blackjack
      */
     public void evaluateHands() {
+        dealer.makeCardsVisible();
+        System.out.println(getDealerHand());
        int playerTotal = player.getBest();
        int dealerTotal = dealer.getBest();
 

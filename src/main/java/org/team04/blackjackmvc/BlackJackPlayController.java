@@ -407,8 +407,7 @@ public class BlackJackPlayController {
         standButton.setVisible(false);
         hitButton.setVisible(false);
 
-        // Todo Fix winstates with taylor
-        WinState winState = null;
+        WinState winState = game.getWin();
 
         /**
          * Calculate bets after scores have been calculated
@@ -456,8 +455,6 @@ public class BlackJackPlayController {
             lblWinner.setVisible(true);
         }
     }
-
-
 
 
     /**
