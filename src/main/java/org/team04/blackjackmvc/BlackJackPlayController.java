@@ -409,6 +409,11 @@ public class BlackJackPlayController {
         game.playerHit();
         updatePlayerFlowPane();
         updateTotal();
+        if (playerHand.best()>21) {
+            hitButton.setVisible(false);
+            standButton.setVisible(false);
+            onStand();
+        }
     }
 
     /**

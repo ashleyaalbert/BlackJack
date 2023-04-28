@@ -165,7 +165,7 @@ public class Game {
 
        // Check if player busts
        if (playerTotal > 21) {
-           this.win = WinState.LOSS;
+           this.win = WinState.BUST;
        }
 
        // Check for user blackjack. Push if dealer also blackjack. Blackjack if not
