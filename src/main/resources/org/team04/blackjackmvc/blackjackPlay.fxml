@@ -12,7 +12,7 @@
 <AnchorPane id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.team04.blackjackmvc.BlackJackPlayController">
    <children>
       <FlowPane fx:id="dealerFlowPane" layoutX="524.0" layoutY="206.0" prefHeight="205.0" prefWidth="146.0" />
-      <FlowPane fx:id="playerFlowPane" layoutX="216.0" layoutY="186.0" prefHeight="194.0" prefWidth="146.0" />
+      <FlowPane fx:id="playerFlowPane" layoutX="216.0" layoutY="186.0" prefHeight="192.0" prefWidth="362.0" />
       <Label fx:id="blackjackText" layoutX="14.0" layoutY="6.0" text="BLACKJACK" textFill="#fffefe">
          <font>
             <Font name="Charter Roman" size="48.0" />
@@ -59,7 +59,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="hitButton" alignment="CENTER" layoutX="377.0" layoutY="253.0" maxHeight="39.0" maxWidth="70.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onHit" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-min-height: 60px; -fx-max-height: 60px; -fx-min-width: 60px; -fx-max-width: 60px;" textFill="#fffefe">
+      <Button fx:id="hitButton" alignment="CENTER" layoutX="289.0" layoutY="23.0" maxHeight="39.0" maxWidth="70.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onHit" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-min-height: 60px; -fx-max-height: 60px; -fx-min-width: 60px; -fx-max-width: 60px;" textFill="#fffefe">
          <font>
             <Font name="Charter Roman" size="21.0" />
          </font>
@@ -70,7 +70,7 @@
                </font>
             </Text>
          </graphic></Button>
-      <Button fx:id="standButton" layoutX="370.0" layoutY="337.0" maxHeight="65.0" mnemonicParsing="false" onAction="#onStand" prefHeight="65.0" prefWidth="75.0" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-min-height: 50px; -fx-max-height: 50px; -fx-min-width: 50px; -fx-max-height: 50px;" textFill="#f8f7f7">
+      <Button fx:id="standButton" layoutX="390.0" layoutY="32.0" maxHeight="65.0" mnemonicParsing="false" onAction="#onStand" prefHeight="65.0" prefWidth="75.0" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-min-height: 50px; -fx-max-height: 50px; -fx-min-width: 50px; -fx-max-height: 50px;" textFill="#f8f7f7">
          <font>
             <Font name="Charter Roman" size="17.0" />
          </font>
