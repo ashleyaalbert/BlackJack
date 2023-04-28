@@ -432,6 +432,7 @@ public class BlackJackPlayController {
         winState = game.getWin();
         updateDealerFlowPane();
 
+
         /**
          * Calculate bets after scores have been calculated
          */
@@ -439,6 +440,7 @@ public class BlackJackPlayController {
         if (winState == WinState.LOSS){
             // give bets to dealer
             bank += newPot;
+            currentBalance -= newPot;
             // Updates the pot label and balance label
             lblPot.setText(Integer.toString(resetPot));
             lblChipTotal.setText(Integer.toString(currentBalance));
@@ -477,14 +479,15 @@ public class BlackJackPlayController {
             lblWinner.setText("Push");
             lblWinner.setVisible(true);
         }
+        int dealerTotal = game.getDealerTotal();
+        lblDealerTotal.setVisible(true);
+        lblDealerTotal.setText(Integer.toString(dealerTotal));
         game.reset();
     }
 
     @FXML
     void updateTotal(){
        int playerTotal = game.getPlayerTotal();
-       int dealerTotal = game.getDealerTotal();
-       lblDealerTotal.setText(Integer.toString(dealerTotal));
        lblPlayerTotal.setText(Integer.toString(playerTotal));
     }
 

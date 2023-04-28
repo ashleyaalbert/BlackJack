@@ -8,14 +8,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.team04.blackjackmvc.BlackJackSettingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: darkgreen; -fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.team04.blackjackmvc.BlackJackSettingsController">
    <children>
-      <Label layoutX="240.0" layoutY="15.0" text="SETTINGS" textFill="#f2f0f0">
+      <Label layoutX="342.0" layoutY="56.0" text="SETTINGS" textFill="#f2f0f0">
          <font>
-            <Font name="Charter Roman" size="48.0" />
+            <Font name="Charter Roman" size="62.0" />
          </font>
       </Label>
-      <Button fx:id="btnVolume" layoutX="185.0" layoutY="139.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="41.0" prefWidth="70.0" style="-fx-background-color: gray;" textFill="#f8f7f7">
+      <Button fx:id="btnVolume" layoutX="230.0" layoutY="309.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: gray;" textFill="#f8f7f7">
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -23,27 +23,27 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Text fill="WHITE" layoutX="187.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume">
+      <Text fill="WHITE" layoutX="215.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume">
          <font>
-            <Font name="Charter Roman" size="26.0" />
+            <Font name="Charter Roman" size="38.0" />
          </font>
       </Text>
-      <Button fx:id="btnBack" layoutX="16.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="41.0" prefWidth="70.0" style="-fx-background-color: gray;" textFill="#f8f7f7">
+      <Button fx:id="btnBack" layoutX="16.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: gray;" textFill="#f8f7f7">
          <graphic>
-            <ImageView fitHeight="41.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/backArrowIcon.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnOn" layoutX="315.0" layoutY="138.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="41.0" prefWidth="70.0" style="-fx-background-color: gray;" text="ON" textFill="#f8f7f7">
+      <Button fx:id="btnOn" layoutX="456.0" layoutY="309.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: gray;" text="ON" textFill="#f8f7f7">
          <font>
-            <Font name="Charter Roman" size="22.0" />
+            <Font name="Charter Roman" size="28.0" />
          </font>
       </Button>
-      <Button fx:id="btnOff" layoutX="408.0" layoutY="138.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="41.0" prefWidth="70.0" style="-fx-background-color: gray;" text="OFF" textFill="#f8f7f7">
+      <Button fx:id="btnOff" layoutX="616.0" layoutY="309.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnNextSceneAction" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: gray;" text="OFF" textFill="#f8f7f7">
          <font>
-            <Font name="Charter Roman" size="21.0" />
+            <Font name="Charter Roman" size="26.0" />
          </font>
       </Button>
    </children>
