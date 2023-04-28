@@ -461,6 +461,7 @@ public class BlackJackPlayController {
         dealerFlowPane.setVisible(true);
         // if 'showFirstCard' is true: first card shown is a card back rather than the actual first card
         if (showFirstCard) {
+            //  THANK YOU PROFESSOR KING!!!
             InputStream backCard = getClass().getClassLoader().getResourceAsStream("org/team04/blackjackmvc/images/cards/back.png");
             Image back = new Image(backCard);
             dealerImageView[0] = new ImageView();
@@ -480,9 +481,9 @@ public class BlackJackPlayController {
 
         // add all cards in the dealer's hand to the FlowPane as images
         for (int i = 0; i < dealerHand.getSize(); i++) {
-            System.out.println("AM I HERE????");
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
             if (dealerImageView[i] == null) {
+                //  THANK YOU PROFESSOR KING!!!
                 InputStream frontCard = getClass().getClassLoader().getResourceAsStream("org/team04/blackjackmvc/images/cards/" + dealerHand.getCard(i).value() + dealerHand.getCard(i).suit() + ".png");
                 Image card = new Image(frontCard);
                 dealerImageView[i] = new ImageView();
@@ -510,6 +511,7 @@ public class BlackJackPlayController {
         for (int i = 0; i < playerHand.getSize(); i++) {
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
             if (playerImageView[i] == null) {
+                //  THANK YOU PROFESSOR KING!!!
                 InputStream frontCard = getClass().getClassLoader().getResourceAsStream("org/team04/blackjackmvc/images/cards/" + playerHand.getCard(i).value() + playerHand.getCard(i).suit() + ".png");
                 Image card = new Image(frontCard);
                 playerImageView[i] = new ImageView();
