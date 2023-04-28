@@ -11,6 +11,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import org.team04.blackjackmvc.model.Game;
 import org.team04.blackjackmvc.model.Hand;
+import org.team04.blackjackmvc.model.User;
 import org.team04.blackjackmvc.model.WinState;
 
 import java.io.InputStream;
@@ -90,6 +91,12 @@ public class BlackJackPlayController {
      */
     @FXML
     private Label lblPot;
+
+    @FXML
+    private Label lblDealerTotal;
+
+    @FXML
+    private Label lblPlayerTotal;
 
     /**
      * Button that deals the dealer to stop dealing cards and is ready for the showdown
@@ -195,6 +202,8 @@ public class BlackJackPlayController {
         assert lblWinner != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert playerFlowPane != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert dealerFlowPane != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert lblDealerTotal != null : "fx:id=\"lblDealerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert lblPlayerTotal != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
         game = new Game(name);
 
@@ -203,6 +212,8 @@ public class BlackJackPlayController {
         bank = 0;
         resetPot = 0;
         lblWinner.setVisible(false);
+        lblDealerTotal.setVisible(false);
+        lblPlayerTotal.setVisible(false);
 
 
 
@@ -369,6 +380,9 @@ public class BlackJackPlayController {
 
         // Deals cards to player and dealer
         game.dealHand();
+        updateTotal();
+        lblDealerTotal.setVisible(true);
+        lblPlayerTotal.setVisible(true);
 
         updateDealerFlowPane(true);
         updatePlayerFlowPane();
@@ -387,6 +401,7 @@ public class BlackJackPlayController {
     void onHit() {
         game.playerHit();
         updatePlayerFlowPane();
+        updateTotal();
     }
 
     /**
@@ -407,11 +422,13 @@ public class BlackJackPlayController {
         standButton.setVisible(false);
         hitButton.setVisible(false);
 
-        WinState winState = game.getWin();
+        updateTotal();
 
         /**
          * Calculate bets after scores have been calculated
          */
+        WinState winState = game.getWin();
+
             // Player Loss
         if (winState == WinState.LOSS){
             // give bets to dealer
@@ -454,6 +471,14 @@ public class BlackJackPlayController {
             lblWinner.setText("Push");
             lblWinner.setVisible(true);
         }
+    }
+
+    @FXML
+    void updateTotal(){
+       int playerTotal = 15;
+       int dealerTotal = 20;
+       lblDealerTotal.setText(Integer.toString(dealerTotal));
+       lblPlayerTotal.setText(Integer.toString(playerTotal));
     }
 
 
@@ -538,4 +563,5 @@ public class BlackJackPlayController {
             }
         }
     }
+
 }
