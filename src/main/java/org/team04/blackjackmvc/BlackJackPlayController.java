@@ -520,7 +520,7 @@ public class BlackJackPlayController {
 
     @FXML
     void onReset(){
-        // Remove cards from screen
+        // Remove cards from screen!
         dealerFlowPane.setVisible(false);
         playerFlowPane.setVisible(false);
 
