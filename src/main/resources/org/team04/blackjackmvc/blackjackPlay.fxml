@@ -115,7 +115,7 @@
             <Font name="Charter Roman" size="43.0" />
          </font>
       </Label>
-      <Label fx:id="lblWinner" contentDisplay="CENTER" layoutX="373.0" layoutY="153.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="326.0" text="Label" textFill="WHITE">
+      <Label fx:id="lblWinner" contentDisplay="CENTER" layoutX="273.0" layoutY="153.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="566.0" text="Label" textFill="WHITE">
          <font>
             <Font name="Charter Roman" size="51.0" />
          </font>

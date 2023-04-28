@@ -217,7 +217,8 @@ public class BlackJackPlayController {
         //Creates a bank for the dealer
         bank = 0;
         resetPot = 0;
-        lblWinner.setVisible(false);
+        lblWinner.setText("Place your bets!!!");
+        lblWinner.setVisible(true);
         lblDealerTotal.setVisible(false);
         lblPlayerTotal.setVisible(false);
         hitButton.setVisible(false);
@@ -378,6 +379,7 @@ public class BlackJackPlayController {
      */
     @FXML
     void onDeal() {
+        lblWinner.setVisible(false);
         gameStarted = true;
         double bet = Integer.parseInt(lblPot.getText());
         game.placeBet(bet);
@@ -408,12 +410,14 @@ public class BlackJackPlayController {
     void onHit() {
         game.playerHit();
         updatePlayerFlowPane();
-        game.checkForBust();
         updateTotal();
-        if (playerHand.best()>21) {
+        if (playerHand.best() > 21) {
             hitButton.setVisible(false);
             standButton.setVisible(false);
+            lblWinner.setText("BUST!");
+            lblWinner.setVisible(true);
             onStand();
+
         }
     }
 
