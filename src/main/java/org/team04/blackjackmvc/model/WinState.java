@@ -5,6 +5,6 @@ public enum WinState {
     LOSS, // User loses hand, bank keeps current bet
     PUSH, // Player gets back bet
     BLACKJACK, // Deal hand to user and dealer
-    BUST, // Player hand over 21
+    BUST, //User over 21
     NULL; // Hand is still in play, winner not evaluated yet
 }
