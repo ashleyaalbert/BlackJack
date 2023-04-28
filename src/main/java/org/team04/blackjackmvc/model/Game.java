@@ -232,5 +232,13 @@ public class Game {
 
    }
 
+   public Hand getDealerHand() {
+        return dealer.getHand();
+   }
+
+    public Hand getPlayerHand() {
+        return player.getHand();
+    }
+
 }
 

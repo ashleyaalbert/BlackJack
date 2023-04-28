@@ -121,12 +121,12 @@ public class BlackJackPlayController {
     /**
      * Creating a hand for the player
      */
-    private Hand playerHand = new Hand();
+    private Hand playerHand;
 
     /**
      * Creating a hand for the dealer
      */
-    private Hand dealerHand = new Hand();
+    private Hand dealerHand;
 
 
     /**
@@ -455,6 +455,7 @@ public class BlackJackPlayController {
      * @param showFirstCard Shows the first card when true, replaces it with a card back when false.
      */
     private void updateDealerFlowPane(boolean showFirstCard) {
+        dealerHand = game.getDealerHand();
         dealerFlowPane.setVisible(true);
         // if 'showFirstCard' is true: first card shown is a card back rather than the actual first card
         if (showFirstCard) {
@@ -498,6 +499,7 @@ public class BlackJackPlayController {
      * Creates/updates the card images representing the player's hand inside the 'playerFlowPane' container.
      */
     private void updatePlayerFlowPane() {
+        playerHand = game.getPlayerHand();
         playerFlowPane.setVisible(true);
         // add all cards in the player's hand to the FlowPane as images
         for (int i = 0; i < playerHand.getSize(); i++) {

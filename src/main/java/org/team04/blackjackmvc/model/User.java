@@ -108,4 +108,8 @@ public class User{
     public double getCurrentBet() {
         return currentBet;
     }
+
+    public Hand getHand() {
+        return this.currentHand;
+    }
 }

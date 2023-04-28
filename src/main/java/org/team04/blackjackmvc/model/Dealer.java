@@ -62,6 +62,10 @@ public class Dealer{
         return dealerHand.best();
     }
 
+    public Hand getHand() {
+        return this.dealerHand;
+    }
+
 
 }
 
