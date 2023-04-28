@@ -466,6 +466,7 @@ public class BlackJackPlayController {
 //            InputStream backCard = getClass().getClassLoader().getResourceAsStream("org/team04/blackjackmvc/back.png");
 //            InputStream backCard = getClass().getClassLoader().getResourceAsStream("back.png");
 
+            assert backCard != null;
             Image back = new Image(backCard);
             dealerImageView[0] = new ImageView();
             dealerImageView[0].setImage(back);
@@ -487,8 +488,9 @@ public class BlackJackPlayController {
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
             if (dealerImageView[i] == null) {
                 //  THANK YOU PROFESSOR KING!!!
-                InputStream frontCard = getClass().getResourceAsStream("images/cards/" + dealerHand.getCard(i).value() + dealerHand.getCard(i).suit() + ".png");
-                Image card = new Image(frontCard);
+                InputStream frontDealerCard = getClass().getResourceAsStream("images/cards/" + dealerHand.getCard(i).rank().name() + dealerHand.getCard(i).suit() + ".png");
+                assert frontDealerCard != null;
+                Image card = new Image(frontDealerCard);
                 dealerImageView[i] = new ImageView();
                 dealerImageView[i].setImage(card);
                 dealerImageView[i].setPreserveRatio(true);
@@ -515,8 +517,9 @@ public class BlackJackPlayController {
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
             if (playerImageView[i] == null) {
                 //  THANK YOU PROFESSOR KING!!!
-                InputStream frontCard = getClass().getResourceAsStream("images/cards/" + playerHand.getCard(i).value() + playerHand.getCard(i).suit() + ".png");
-                Image card = new Image(frontCard);
+                InputStream frontPlayerCard = getClass().getResourceAsStream("images/cards/" + playerHand.getCard(i).rank().name() + playerHand.getCard(i).suit() + ".png");
+                assert frontPlayerCard != null;
+                Image card = new Image(frontPlayerCard);
                 playerImageView[i] = new ImageView();
                 playerImageView[i].setImage(card);
                 playerImageView[i].setPreserveRatio(true);
