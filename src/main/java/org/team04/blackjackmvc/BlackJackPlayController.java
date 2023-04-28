@@ -476,6 +476,7 @@ public class BlackJackPlayController {
             lblWinner.setText("Push");
             lblWinner.setVisible(true);
         }
+        game.reset();
     }
 
     @FXML
