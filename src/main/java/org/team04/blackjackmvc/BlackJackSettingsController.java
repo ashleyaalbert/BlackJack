@@ -1,14 +1,16 @@
 package org.team04.blackjackmvc;
 
-import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
-import javax.print.attribute.standard.Media;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import static org.team04.blackjackmvc.blackjackMain.musicPlayer;
+import static org.team04.blackjackmvc.blackjackMain.musicStopper;
 
 public class BlackJackSettingsController {
 
@@ -30,12 +32,18 @@ public class BlackJackSettingsController {
     private Button btnVolume;
 
     @FXML
-    void onBtnNextSceneAction(ActionEvent event) {
+    void onBtnNextSceneAction(ActionEvent event) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         // Get the Stage object of this button
         Stage stage = (Stage) btnBack.getScene().getWindow();
 
         if (event.getSource() == btnBack)
             blackjackMain.loadSceneOnStage(stage, FXMLScenes.PLAY);
+
+        if(event.getSource() == btnOff)
+            musicStopper();
+
+        if(event.getSource() == btnOn)
+            musicPlayer("jazz.wav");
     }
 
     @FXML
