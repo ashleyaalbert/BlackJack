@@ -40,14 +40,10 @@ public class BlackJackLoginController {
     private TextField txtFieldName;
 
     /**
-     * Initializing a game
-     */
-    private Game game;
-
-    /**
      * Initial Balance
      */
     private int balance = 500;
+
 
 
     @FXML
@@ -61,19 +57,14 @@ public class BlackJackLoginController {
     }
 
     /**
-     * Method that gets user input and starts the game
+     * Method that gets user input
      */
     private void initEventHandlers() {
-        // Creates a new game and deck
-        game = new Game(name);
-        game.playBlackJack();
-        game.start();
-
         txtFieldName.setOnKeyPressed( event -> {
             if(event.getCode() == KeyCode.ENTER ) {
                 lblInitialBalance.setText(Integer.toString(balance));
                 lblInitialBalance.setVisible(true);
-                String name = String.valueOf(txtFieldName.getText());
+                name = String.valueOf(txtFieldName.getText());
             }
         } );
     }

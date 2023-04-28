@@ -22,7 +22,7 @@ import org.team04.blackjackmvc.BlackJackPlayController;
 
 import java.util.Scanner;
 
-import static org.team04.blackjackmvc.BlackJackLoginController.name;
+//import static org.team04.blackjackmvc.BlackJackLoginController.name;
 import static org.team04.blackjackmvc.BlackJackPlayController.playerBet;
 
 
@@ -74,44 +74,45 @@ public class Game {
         deck = new Deck(nBox);
         state = GameState.IN_GAME;
         win = WinState.NULL;
+        System.out.println("New game");
     }
 
 
 
-    public void playBlackJack() {
-        state = GameState.START_GAME;
-        if (state == GameState.START_GAME) {
-            start();
-        }
-        while (state != GameState.END_GAME && player.getMoney() >0) {
-            if (state == GameState.IN_GAME) {
-                placeBet(bet);
-            }
-            else if (state==GameState.PLAY_HAND) {
-                dealHand();
-            }
-
-        }
-        if (state == GameState.END_GAME || player.getMoney() ==0) {
-            end();
-        }
-
-    }
+//    public void playBlackJack() {
+//        state = GameState.START_GAME;
+//        if (state == GameState.START_GAME) {
+////            start();
+//        }
+//        while (state != GameState.END_GAME && player.getMoney() >0) {
+//            if (state == GameState.IN_GAME) {
+//                placeBet(bet);
+//            }
+//            else if (state==GameState.PLAY_HAND) {
+//                dealHand();
+//            }
+//
+//        }
+//        if (state == GameState.END_GAME || player.getMoney() ==0) {
+//            end();
+//        }
+//
+//    }
 
     /**
      * User has begun the game
      */
-    public void start() {
-//        scnr = new Scanner(System.in);
-//        System.out.println("Please enter your name: ");
-//        String name = scnr.nextLine().strip();
-        // Generate player, dealer, and deck
-        player = new User(name, initFunds);
-        dealer = new Dealer();
-        deck = new Deck(nBox);
-        state = GameState.IN_GAME;
-        this.win = WinState.NULL;
-    }
+//    public void start() {
+////        scnr = new Scanner(System.in);
+////        System.out.println("Please enter your name: ");
+////        String name = scnr.nextLine().strip();
+//        // Generate player, dealer, and deck
+//        player = new User(name, initFunds);
+//        dealer = new Dealer();
+//        deck = new Deck(nBox);
+//        state = GameState.IN_GAME;
+//        this.win = WinState.NULL;
+//    }
 
     /**
      * User can either place bet or end game. If bet exceeds available funds
@@ -143,6 +144,8 @@ public class Game {
         dealer.dealCardVisible(deck.drawCard());
         player.dealCard(deck.drawCard());
         dealer.dealCardInvisible(deck.drawCard());
+        System.out.println(player.getHand());
+        System.out.println(dealer.getHand());
     }
 
     /**

@@ -60,6 +60,7 @@ public class User{
         this.name = name;
         this.money= initMoney;
         this.currentHand = new Hand();
+        System.out.println(name);
     }
 
     public double getMoney() {
