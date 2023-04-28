@@ -441,12 +441,6 @@ public class BlackJackPlayController {
         game.handleWinner();
         currentBalance = game.getPlayerMoney();
         System.out.println(currentBalance);
-        // give bets to dealer
-        bank += newPot;
-        // Updates the pot label and balance label
-        lblPot.setText(Double.toString(resetPot));
-        lblChipTotal.setText(Double.toString(currentBalance));
-
 
 
         /**
@@ -458,21 +452,43 @@ public class BlackJackPlayController {
         }
             // Player Loss
          else if (winState == WinState.LOSS){
+            // give bets to dealer
+            bank += newPot;
+            // Updates the pot label and balance label
+            lblPot.setText(Double.toString(resetPot));
+            lblChipTotal.setText(Double.toString(currentBalance));
             lblWinner.setText("Dealer Wins.");
+            lblWinner.setVisible(true);
 
             // Player Win
         } else if (winState == WinState.WIN){
+            // give bets to player
+            newBalance += newPot;
+            // Updates the pot label and balance label
+            lblPot.setText(Double.toString(resetPot));
+            lblChipTotal.setText(Double.toString((double) currentBalance));
+
             lblWinner.setText("You win!");
+            lblWinner.setVisible(true);
 
             // Payer Blackjack
         } else if (winState == WinState.BLACKJACK) {
+            // Updates the pot label and balance label
+            lblPot.setText(Double.toString(resetPot));
+            lblChipTotal.setText(Double.toString((double) currentBalance));
+
             lblWinner.setText("Blackjack!!!");
+            lblWinner.setVisible(true);
 
             // Tie
         } else if (winState == WinState.PUSH) {
+            // bets go back to each player
+            lblPot.setText(Double.toString(resetPot));
+            lblChipTotal.setText(Double.toString((double) currentBalance));
+
             lblWinner.setText("Push");
+            lblWinner.setVisible(true);
         }
-        lblWinner.setVisible(true);
         int dealerTotal = game.getDealerTotal();
         lblDealerTotal.setVisible(true);
         lblDealerTotal.setText(Integer.toString(dealerTotal));
