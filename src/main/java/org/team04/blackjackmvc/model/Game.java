@@ -18,12 +18,9 @@
  */
 package org.team04.blackjackmvc.model;
 
-import org.team04.blackjackmvc.BlackJackPlayController;
-
 import java.util.Scanner;
 
 //import static org.team04.blackjackmvc.BlackJackLoginController.name;
-import static org.team04.blackjackmvc.BlackJackPlayController.playerBet;
 
 
 public class Game {
@@ -165,7 +162,7 @@ public class Game {
 
        // Check if player busts
        if (playerTotal > 21) {
-           this.win = WinState.LOSS;
+           this.win = WinState.BUST;
        }
 
        // Check for user blackjack. Push if dealer also blackjack. Blackjack if not
@@ -221,6 +218,15 @@ public class Game {
     public int getDealerTotal() {
         return dealer.getBest();
     }
+
+//    public void checkForBust(){
+//        int playerTotal = player.getBest();
+//        // Check if player busts
+//        if (playerTotal > 21) {
+//            this.win = WinState.BUST;
+//            state = GameState.END_GAME;
+//        }
+//    }
 
 }
 

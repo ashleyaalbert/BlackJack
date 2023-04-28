@@ -408,6 +408,7 @@ public class BlackJackPlayController {
     void onHit() {
         game.playerHit();
         updatePlayerFlowPane();
+        game.checkForBust();
         updateTotal();
     }
 
@@ -436,8 +437,12 @@ public class BlackJackPlayController {
         /**
          * Calculate bets after scores have been calculated
          */
+            // Player Busts
+        if (winState == WinState.BUST){
+            lblWinner.setText("BUST!");
+        }
             // Player Loss
-        if (winState == WinState.LOSS){
+         else if (winState == WinState.LOSS){
             // give bets to dealer
             bank += newPot;
             currentBalance -= newPot;
