@@ -214,5 +214,13 @@ public class Game {
         return player.getHand();
     }
 
+    public int getPlayerTotal() {
+        return player.getBest();
+    }
+
+    public int getDealerTotal() {
+        return dealer.getBest();
+    }
+
 }
 
