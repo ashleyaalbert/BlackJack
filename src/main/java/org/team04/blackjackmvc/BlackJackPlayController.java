@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import org.team04.blackjackmvc.model.Card;
 import org.team04.blackjackmvc.model.Game;
 import org.team04.blackjackmvc.model.Hand;
 import org.team04.blackjackmvc.model.WinState;
@@ -141,6 +142,11 @@ public class BlackJackPlayController {
      * throughout the game
      */
     private double newBalance;
+
+    /**
+     * Current winstate of the player
+     */
+    private WinState winState;
 
     /**
      * The balance of the user after betting
@@ -370,7 +376,7 @@ public class BlackJackPlayController {
         // Deals cards to player and dealer
         game.dealHand();
 
-        updateDealerFlowPane(true);
+        updateDealerFlowPane();
         updatePlayerFlowPane();
 
         // and hit and stand button are visible.
@@ -407,7 +413,8 @@ public class BlackJackPlayController {
         standButton.setVisible(false);
         hitButton.setVisible(false);
 
-        WinState winState = game.getWin();
+        winState = game.getWin();
+        updateDealerFlowPane();
 
         /**
          * Calculate bets after scores have been calculated
@@ -461,51 +468,35 @@ public class BlackJackPlayController {
      * Code from https://github.com/nalabrie/Blackjack/blob/master/src/Blackjack/Controller.java
      * Creates/updates the card images representing the dealer's hand inside the 'dealerFlowPane' container.
      *
-     * @param showFirstCard Shows the first card when true, replaces it with a card back when false.
      */
-    private void updateDealerFlowPane(boolean showFirstCard) {
+    private void updateDealerFlowPane() {
         dealerHand = game.getDealerHand();
         dealerFlowPane.setVisible(true);
+        dealerFlowPane.getChildren().clear();
+
         // if 'showFirstCard' is true: first card shown is a card back rather than the actual first card
-        if (showFirstCard) {
-            //  THANK YOU PROFESSOR KING!!! (and brandon)
-            InputStream backCard = getClass().getResourceAsStream("images/cards/back.png");
-
-            assert backCard != null;
-            Image back = new Image(backCard);
-            dealerImageView[0] = new ImageView();
-            dealerImageView[0].setImage(back);
-            dealerImageView[0].setPreserveRatio(true);
-            dealerImageView[0].setSmooth(true);
-            dealerImageView[0].setCache(true);
-            dealerImageView[0].setFitHeight(160);
-            dealerFlowPane.getChildren().add(dealerImageView[0]);
-        }
-
-        // replace flipped over card with real card by clearing variables to force the next loop to run entirely
-        else if (dealerImageView[0] != null) {
-            dealerFlowPane.getChildren().clear();
-            dealerImageView = new ImageView[12];
-        }
 
         // add all cards in the dealer's hand to the FlowPane as images
         for (int i = 0; i < dealerHand.getSize(); i++) {
             // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
-            if (dealerImageView[i] == null) {
-                //  THANK YOU PROFESSOR KING!!!
-                InputStream frontDealerCard = getClass().getResourceAsStream("images/cards/" + dealerHand.getCard(i).rank().name() + dealerHand.getCard(i).suit() + ".png");
-                assert frontDealerCard != null;
-                Image card = new Image(frontDealerCard);
-                dealerImageView[i] = new ImageView();
-                dealerImageView[i].setImage(card);
-                dealerImageView[i].setPreserveRatio(true);
-                dealerImageView[i].setSmooth(true);
-                dealerImageView[i].setCache(true);
-                dealerImageView[i].setFitHeight(160);
-                dealerFlowPane.getChildren().add(dealerImageView[i]);
-                if (i != 0) {
-                    FlowPane.setMargin(dealerImageView[i], new Insets(0, 0, 0, -75));
-                }
+            Card card = dealerHand.getCard(i);
+            InputStream frontDealerCard;
+            if (card.getVisibility()) {
+                frontDealerCard = getClass().getResourceAsStream("images/cards/" + card.rank().name() + card.suit() + ".png");
+            } else {
+                frontDealerCard = getClass().getResourceAsStream("images/cards/back.png");
+            }
+            assert frontDealerCard != null;
+            Image cardImage = new Image(frontDealerCard);
+            dealerImageView[i] = new ImageView();
+            dealerImageView[i].setImage(cardImage);
+            dealerImageView[i].setPreserveRatio(true);
+            dealerImageView[i].setSmooth(true);
+            dealerImageView[i].setCache(true);
+            dealerImageView[i].setFitHeight(160);
+            dealerFlowPane.getChildren().add(dealerImageView[i]);
+            if (i != 0) {
+                FlowPane.setMargin(dealerImageView[i], new Insets(0, 0, 0, -75));
             }
         }
     }

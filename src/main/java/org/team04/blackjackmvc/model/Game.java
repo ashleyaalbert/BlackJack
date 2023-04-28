@@ -77,6 +77,12 @@ public class Game {
         System.out.println("New game");
     }
 
+    public void reset() {
+        state = GameState.IN_GAME;
+        win = WinState.NULL;
+        player.clearHand();
+    }
+
 
     /**
      * User can either place bet or end game. If bet exceeds available funds
@@ -153,7 +159,6 @@ public class Game {
      * Evaluate if player wins, loses, pushes, or has blackjack
      */
     public void evaluateHands() {
-        dealer.makeCardsVisible();
         System.out.println(getDealerHand());
        int playerTotal = player.getBest();
        int dealerTotal = dealer.getBest();
