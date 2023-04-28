@@ -1,8 +1,7 @@
 package org.team04.blackjackmvc;
 
 //import java.awt.*;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -12,11 +11,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
-import org.team04.blackjackmvc.model.*;
+import org.team04.blackjackmvc.model.Game;
+import org.team04.blackjackmvc.model.Hand;
+import org.team04.blackjackmvc.model.WinState;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import static org.team04.blackjackmvc.BlackJackLoginController.name;
 
+
 public class BlackJackPlayController {
+    public static double playerBet;
 
     // GUI elements of the program
 
@@ -150,11 +156,12 @@ public class BlackJackPlayController {
     /**
      * Updated pot after bets are made
      */
-    private int newPot;
+    public static int newPot;
     /**
      * Resets the pot to 0, when the game is reset
      */
     private int resetPot;
+
     /**
      * Stores the bets of the user that have
      * been lost
@@ -355,9 +362,8 @@ public class BlackJackPlayController {
     @FXML
     void onDeal() {
         gameStarted = true;
-        newBalanceAfterBet = Integer.parseInt(lblChipTotal.getText());
-//        System.out.println(newBalanceAfterBet);
-//        game.placeBet();
+        double bet = Integer.parseInt(lblPot.getText());
+        game.placeBet();
 
         // after the deal button is pressed, it is disabled
         btnDeal.setVisible(false);
@@ -440,8 +446,6 @@ public class BlackJackPlayController {
             lblWinner.setText("Push");
             lblWinner.setVisible(true);
         }
-
-
     }
 
 

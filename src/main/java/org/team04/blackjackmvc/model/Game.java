@@ -22,9 +22,9 @@ import org.team04.blackjackmvc.BlackJackPlayController;
 
 import java.util.Scanner;
 
-/** Values taken from controller **/
 import static org.team04.blackjackmvc.BlackJackLoginController.name;
-import static org.team04.blackjackmvc.BlackJackPlayController.newBalanceAfterBet;
+import static org.team04.blackjackmvc.BlackJackPlayController.playerBet;
+
 
 public class Game {
 
@@ -119,8 +119,8 @@ public class Game {
      */
     public void placeBet() {
         if (player.getMoney()>0) {
-//            System.out.println("Bet amount ($" + player.getMoney() + " remaining) or 0 to end game: ");
-            bet = newBalanceAfterBet;
+            bet = playerBet;
+            System.out.println(playerBet);
             if (bet == 0) {
                 state = GameState.END_GAME;
             }
