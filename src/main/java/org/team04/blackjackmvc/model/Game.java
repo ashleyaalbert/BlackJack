@@ -200,7 +200,7 @@ public class Game {
    }
 
    public void handleWinner() {
-
+        player.handleMoney(this.win);
    }
 
    public Hand getDealerHand() {
@@ -219,14 +219,9 @@ public class Game {
         return dealer.getBest();
     }
 
-//    public void checkForBust(){
-//        int playerTotal = player.getBest();
-//        // Check if player busts
-//        if (playerTotal > 21) {
-//            this.win = WinState.BUST;
-//            state = GameState.END_GAME;
-//        }
-//    }
+    public double getPlayerMoney() {
+        return player.getMoney();
+    }
 
 }
 

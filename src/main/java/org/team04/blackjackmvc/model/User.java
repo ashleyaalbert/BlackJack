@@ -114,5 +114,24 @@ public class User{
         return this.currentHand;
     }
 
+    public void handleMoney(WinState win) {
+        // If loses or busts bet stays out of money
+        if (win.equals(WinState.BUST) || win.equals(WinState.LOSS)) {
+            this.money = this.money;
+        }
 
+        // If win, earn back twice money
+        else if (win.equals(WinState.WIN)) {
+            this.money += this.currentBet*2;
+        }
+
+        else if (win.equals(WinState.BLACKJACK)) {
+            this.money += this.currentBet*1.5 + this.currentBet;
+        }
+
+        else if (win.equals(WinState.PUSH)) {
+            this.money += this.currentBet;
+        }
+//        System.out.println(this.money);
+    }
 }
