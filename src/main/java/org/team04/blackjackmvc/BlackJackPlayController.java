@@ -3,6 +3,7 @@ package org.team04.blackjackmvc;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -377,6 +378,20 @@ public class BlackJackPlayController {
      */
     @FXML
     void onDeal() {
+        try {
+            double bet = Double.parseDouble(lblPot.getText());
+            if (bet <= 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+             //Show an error message and return
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Bet Amount");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid bet amount.");
+            alert.showAndWait();
+            return;
+        }
         gameStarted = true;
         double bet = Double.parseDouble(lblPot.getText());
         game.placeBet(bet);
@@ -432,60 +447,64 @@ public class BlackJackPlayController {
         // and hit and stand button are no longer visible.
         standButton.setVisible(false);
         hitButton.setVisible(false);
+        // Chip totals and
         updateTotal();
+
+        // Get the game state
         winState = game.getWin();
+
+        // Dealer gets cards and player can see cards
         updateDealerFlowPane();
         lblDealerTotal.setVisible(true);
+
+        // Game handles the winner
         game.handleWinner();
+
+        // Getting the current balance
         currentBalance = game.getPlayerMoney();
-        System.out.println(currentBalance);
 
 
         /**
          * Calculate bets after scores have been calculated
          */
-            // Player Busts
-        if (winState == WinState.BUST){
-            lblWinner.setText("BUST!");
-        }
             // Player Loss
-         else if (winState == WinState.LOSS){
+         if (winState == WinState.LOSS){
             // give bets to dealer
             bank += newPot;
+            lblWinner.setText("Dealer Wins.");
+            lblWinner.setVisible(true);
             // Updates the pot label and balance label
             lblPot.setText(Double.toString(resetPot));
             lblChipTotal.setText(Double.toString(currentBalance));
-            lblWinner.setText("Dealer Wins.");
-            lblWinner.setVisible(true);
 
             // Player Win
         } else if (winState == WinState.WIN){
             // give bets to player
             newBalance += newPot;
-            // Updates the pot label and balance label
-            lblPot.setText(Double.toString(resetPot));
-            lblChipTotal.setText(Double.toString((double) currentBalance));
-
             lblWinner.setText("You win!");
             lblWinner.setVisible(true);
+
+            // Updates the pot label and balance label
+            lblPot.setText(Double.toString(resetPot));
+            lblChipTotal.setText(Double.toString(currentBalance));
 
             // Payer Blackjack
         } else if (winState == WinState.BLACKJACK) {
             // Updates the pot label and balance label
-            lblPot.setText(Double.toString(resetPot));
-            lblChipTotal.setText(Double.toString((double) currentBalance));
-
             lblWinner.setText("Blackjack!!!");
             lblWinner.setVisible(true);
 
+            lblPot.setText(Double.toString(resetPot));
+            lblChipTotal.setText(Double.toString(currentBalance));
+
             // Tie
         } else if (winState == WinState.PUSH) {
-            // bets go back to each player
-            lblPot.setText(Double.toString(resetPot));
-            lblChipTotal.setText(Double.toString((double) currentBalance));
-
             lblWinner.setText("Push");
             lblWinner.setVisible(true);
+
+            // bets go back to each player
+            lblPot.setText(Double.toString(resetPot));
+            lblChipTotal.setText(Double.toString(currentBalance));
         }
         int dealerTotal = game.getDealerTotal();
         lblDealerTotal.setVisible(true);
@@ -497,6 +516,26 @@ public class BlackJackPlayController {
     void updateTotal(){
        int playerTotal = game.getPlayerTotal();
        lblPlayerTotal.setText(Integer.toString(playerTotal));
+    }
+
+    @FXML
+    void onReset(){
+        // Remove cards from screen
+        dealerFlowPane.setVisible(false);
+        playerFlowPane.setVisible(false);
+
+
+        // Get rid of certain labels
+        lblWinner.setText("Place your bets!!!");
+        lblWinner.setVisible(true);
+
+        lblDealerTotal.setVisible(false);
+        lblPlayerTotal.setVisible(false);
+
+        btnDeal.setVisible(true);
+        hitButton.setVisible(true);
+        standButton.setVisible(true);
+
     }
 
 
