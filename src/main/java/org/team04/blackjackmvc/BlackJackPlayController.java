@@ -1,7 +1,5 @@
 package org.team04.blackjackmvc;
 
-//import java.awt.*;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -14,7 +12,6 @@ import javafx.stage.Stage;
 import org.team04.blackjackmvc.model.Game;
 import org.team04.blackjackmvc.model.Hand;
 import org.team04.blackjackmvc.model.WinState;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
