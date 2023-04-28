@@ -67,6 +67,7 @@ public class Hand {
      * Clear the hand
      */
     public void clear() {
+        this.size = 0;
         this.cardList.clear();
     }
 

@@ -78,6 +78,7 @@ public class Game {
         state = GameState.IN_GAME;
         win = WinState.NULL;
         player.clearHand();
+        dealer.clearHand();
     }
 
 

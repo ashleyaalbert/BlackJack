@@ -62,6 +62,13 @@ public class Dealer{
         return dealerHand.best();
     }
 
+    /**
+     * Clear dealer hand
+     */
+    public void clearHand() {
+        this.dealerHand.clear();
+    }
+
     public Hand getHand() {
         return this.dealerHand;
     }
