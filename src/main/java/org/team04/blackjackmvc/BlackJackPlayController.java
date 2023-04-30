@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.team04.blackjackmvc.model.Card;
 import org.team04.blackjackmvc.model.Game;
@@ -132,6 +133,9 @@ public class BlackJackPlayController {
     @FXML
     private Label lblIntro;
 
+    @FXML
+    private Rectangle rectShade;
+
     /**
      * Initializing a game
      */
@@ -222,7 +226,7 @@ public class BlackJackPlayController {
         assert lblIntro != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnQuit != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnPlayAgain != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-
+        assert rectShade != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
         game = new Game(name);
 
@@ -237,6 +241,7 @@ public class BlackJackPlayController {
         standButton.setVisible(false);
         btnQuit.setVisible(false);
         btnPlayAgain.setVisible(false);
+        rectShade.setVisible(false);
 
 
         if (this.game == null) {
@@ -262,7 +267,8 @@ public class BlackJackPlayController {
             blackjackMain.loadSceneOnStage(stage, FXMLScenes.SETTINGS);
         } else if (event.getSource() == btnQuit){
             blackjackMain.loadSceneOnStage(stage, FXMLScenes.QUIT);
-
+        } else if (event.getSource() == btnPlayAgain) {
+           onReset();
         }
     }
 
@@ -500,6 +506,7 @@ public class BlackJackPlayController {
         lblDealerTotal.setText(Integer.toString(dealerTotal));
         updatePlayerFlowPane();
         updateDealerFlowPane();
+        rectShade.setVisible(true);
         btnQuit.setVisible(true);
         btnPlayAgain.setVisible(true);
         onReset();

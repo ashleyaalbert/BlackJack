@@ -27,6 +27,7 @@ public class BlackjackGameOverContoller {
     void initialize() {
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'blackJackGameOver.fxml'.";
         assert lblEndBalance != null : "fx:id=\"lblEndBalance\" was not injected: check your FXML file 'blackJackGameOver.fxml'.";
+        lblEndBalance.setVisible(false);
     }
 
 
