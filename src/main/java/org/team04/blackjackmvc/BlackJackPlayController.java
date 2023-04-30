@@ -3,7 +3,6 @@ package org.team04.blackjackmvc;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -124,6 +123,9 @@ public class BlackJackPlayController {
     @FXML
     private FlowPane playerFlowPane = new FlowPane();
 
+    @FXML
+    private Label lblIntro;
+
     /**
      * Initializing a game
      */
@@ -211,12 +213,14 @@ public class BlackJackPlayController {
         assert dealerFlowPane != null : "fx:id=\"lblWinner\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblDealerTotal != null : "fx:id=\"lblDealerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblPlayerTotal != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert lblIntro != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
         game = new Game(name);
 
 
         //Creates a bank for the dealer
         bank = 0;
+        lblIntro.setVisible(true);
         lblWinner.setVisible(false);
         lblDealerTotal.setVisible(false);
         lblPlayerTotal.setVisible(false);
@@ -378,39 +382,28 @@ public class BlackJackPlayController {
      */
     @FXML
     void onDeal() {
-        try {
-            double bet = Double.parseDouble(lblPot.getText());
-            if (bet <= 0) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-             //Show an error message and return
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Bet Amount");
-            alert.setHeaderText(null);
-            alert.setContentText("Please enter a valid bet amount.");
-            alert.showAndWait();
-            return;
-        }
-        gameStarted = true;
+        lblIntro.setVisible(false);
         double bet = Double.parseDouble(lblPot.getText());
-        game.placeBet(bet);
+        if (bet>0) {
+            gameStarted = true;
+            game.placeBet(bet);
 
-        // after the deal button is pressed, it is disabled
-        btnDeal.setVisible(false);
+            // after the deal button is pressed, it is disabled
+            btnDeal.setVisible(false);
 
-        // Deals cards to player and dealer
-        game.dealHand();
-        updateTotal();
-        lblDealerTotal.setVisible(false);
-        lblPlayerTotal.setVisible(true);
+            // Deals cards to player and dealer
+            game.dealHand();
+            updateTotal();
+            lblDealerTotal.setVisible(false);
+            lblPlayerTotal.setVisible(true);
 
-        updateDealerFlowPane();
-        updatePlayerFlowPane();
+            updateDealerFlowPane();
+            updatePlayerFlowPane();
 
-        // and hit and stand button are visible.
-        standButton.setVisible(true);
-        hitButton.setVisible(true);
+            // and hit and stand button are visible.
+            standButton.setVisible(true);
+            hitButton.setVisible(true);
+        }
 
     }
 
@@ -447,95 +440,70 @@ public class BlackJackPlayController {
         // and hit and stand button are no longer visible.
         standButton.setVisible(false);
         hitButton.setVisible(false);
-        // Chip totals and
         updateTotal();
-
-        // Get the game state
         winState = game.getWin();
-
-        // Dealer gets cards and player can see cards
         updateDealerFlowPane();
         lblDealerTotal.setVisible(true);
-
-        // Game handles the winner
         game.handleWinner();
-
-        // Getting the current balance
         currentBalance = game.getPlayerMoney();
+        System.out.println(currentBalance);
+        // give bets to dealer
+        bank += newPot;
+        // Updates the pot label and balance label
+        lblPot.setText(Double.toString(resetPot));
+        lblChipTotal.setText(Double.toString(currentBalance));
+
 
 
         /**
          * Calculate bets after scores have been calculated
          */
-            // Player Loss
-         if (winState == WinState.LOSS){
-            // give bets to dealer
-            bank += newPot;
+        // Player Busts
+        if (winState == WinState.BUST){
+            lblWinner.setText("BUST!");
+        }
+        // Player Loss
+        else if (winState == WinState.LOSS){
             lblWinner.setText("Dealer Wins.");
-            lblWinner.setVisible(true);
-            // Updates the pot label and balance label
-            lblPot.setText(Double.toString(resetPot));
-            lblChipTotal.setText(Double.toString(currentBalance));
 
             // Player Win
         } else if (winState == WinState.WIN){
-            // give bets to player
-            newBalance += newPot;
             lblWinner.setText("You win!");
-            lblWinner.setVisible(true);
-
-            // Updates the pot label and balance label
-            lblPot.setText(Double.toString(resetPot));
-            lblChipTotal.setText(Double.toString(currentBalance));
 
             // Payer Blackjack
         } else if (winState == WinState.BLACKJACK) {
-            // Updates the pot label and balance label
             lblWinner.setText("Blackjack!!!");
-            lblWinner.setVisible(true);
-
-            lblPot.setText(Double.toString(resetPot));
-            lblChipTotal.setText(Double.toString(currentBalance));
 
             // Tie
         } else if (winState == WinState.PUSH) {
             lblWinner.setText("Push");
-            lblWinner.setVisible(true);
-
-            // bets go back to each player
-            lblPot.setText(Double.toString(resetPot));
-            lblChipTotal.setText(Double.toString(currentBalance));
         }
+        lblWinner.setVisible(true);
         int dealerTotal = game.getDealerTotal();
         lblDealerTotal.setVisible(true);
         lblDealerTotal.setText(Integer.toString(dealerTotal));
+        onReset();
+    }
+
+    @FXML
+    void onReset() {
         game.reset();
+        gameStarted = false;
+
+        lblDealerTotal.setVisible(false);
+        lblPlayerTotal.setVisible(false);
+        hitButton.setVisible(false);
+        standButton.setVisible(false);
+        btnDeal.setVisible(true);
+        //        lblWinner.setVisible(false);
+        updateDealerFlowPane();
+        updatePlayerFlowPane();
     }
 
     @FXML
     void updateTotal(){
-       int playerTotal = game.getPlayerTotal();
-       lblPlayerTotal.setText(Integer.toString(playerTotal));
-    }
-
-    @FXML
-    void onReset(){
-        // Remove cards from screen!
-        dealerFlowPane.setVisible(false);
-        playerFlowPane.setVisible(false);
-
-
-        // Get rid of certain labels
-        lblWinner.setText("Place your bets!!!");
-        lblWinner.setVisible(true);
-
-        lblDealerTotal.setVisible(false);
-        lblPlayerTotal.setVisible(false);
-
-        btnDeal.setVisible(true);
-        hitButton.setVisible(true);
-        standButton.setVisible(true);
-
+        int playerTotal = game.getPlayerTotal();
+        lblPlayerTotal.setText(Integer.toString(playerTotal));
     }
 
 
@@ -549,29 +517,29 @@ public class BlackJackPlayController {
         dealerFlowPane.setVisible(true);
         dealerFlowPane.getChildren().clear();
 
-        // if 'showFirstCard' is true: first card shown is a card back rather than the actual first card
-
-        // add all cards in the dealer's hand to the FlowPane as images
-        for (int i = 0; i < dealerHand.getSize(); i++) {
-            // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
-            Card card = dealerHand.getCard(i);
-            InputStream frontDealerCard;
-            if (card.getVisibility()) {
-                frontDealerCard = getClass().getResourceAsStream("images/cards/" + card.rank().name() + card.suit() + ".png");
-            } else {
-                frontDealerCard = getClass().getResourceAsStream("images/cards/back.png");
-            }
-            assert frontDealerCard != null;
-            Image cardImage = new Image(frontDealerCard);
-            dealerImageView[i] = new ImageView();
-            dealerImageView[i].setImage(cardImage);
-            dealerImageView[i].setPreserveRatio(true);
-            dealerImageView[i].setSmooth(true);
-            dealerImageView[i].setCache(true);
-            dealerImageView[i].setFitHeight(160);
-            dealerFlowPane.getChildren().add(dealerImageView[i]);
-            if (i != 0) {
-                FlowPane.setMargin(dealerImageView[i], new Insets(0, 0, 0, -75));
+        if (dealerHand.getSize()>0) {
+            // add all cards in the dealer's hand to the FlowPane as images
+            for (int i = 0; i < dealerHand.getSize(); i++) {
+                // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
+                Card card = dealerHand.getCard(i);
+                InputStream frontDealerCard;
+                if (card.getVisibility()) {
+                    frontDealerCard = getClass().getResourceAsStream("images/cards/" + card.rank().name() + card.suit() + ".png");
+                } else {
+                    frontDealerCard = getClass().getResourceAsStream("images/cards/back.png");
+                }
+                assert frontDealerCard != null;
+                Image cardImage = new Image(frontDealerCard);
+                dealerImageView[i] = new ImageView();
+                dealerImageView[i].setImage(cardImage);
+                dealerImageView[i].setPreserveRatio(true);
+                dealerImageView[i].setSmooth(true);
+                dealerImageView[i].setCache(true);
+                dealerImageView[i].setFitHeight(160);
+                dealerFlowPane.getChildren().add(dealerImageView[i]);
+                if (i != 0) {
+                    FlowPane.setMargin(dealerImageView[i], new Insets(0, 0, 0, -75));
+                }
             }
         }
     }
@@ -583,10 +551,12 @@ public class BlackJackPlayController {
     private void updatePlayerFlowPane() {
         playerHand = game.getPlayerHand();
         playerFlowPane.setVisible(true);
+        playerFlowPane.getChildren().clear();
+
         // add all cards in the player's hand to the FlowPane as images
-        for (int i = 0; i < playerHand.getSize(); i++) {
-            // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
-            if (playerImageView[i] == null) {
+        if (playerHand.getSize()>0) {
+            for (int i = 0; i < playerHand.getSize(); i++) {
+                // only add card when it hasn't been created yet (more efficient than overwriting the same image every time)
                 //  THANK YOU PROFESSOR KING!!!
                 InputStream frontPlayerCard = getClass().getResourceAsStream("images/cards/" + playerHand.getCard(i).rank().name() + playerHand.getCard(i).suit() + ".png");
                 assert frontPlayerCard != null;
@@ -603,5 +573,6 @@ public class BlackJackPlayController {
                 }
             }
         }
+
     }
 }

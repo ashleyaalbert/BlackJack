@@ -148,5 +148,10 @@
             <Font name="Charter Roman" size="32.0" />
          </font>
       </Label>
+      <Label fx:id="lblIntro" contentDisplay="CENTER" layoutX="276.0" layoutY="110.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="566.0" text="Please place your bets!!" textFill="WHITE">
+         <font>
+            <Font name="Charter Roman" size="51.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
