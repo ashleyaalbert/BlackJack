@@ -126,7 +126,7 @@
             <Font name="Charter Roman" size="57.0" />
          </font>
       </Label>
-      <Button fx:id="standButton" layoutX="550.0" layoutY="439.0" maxHeight="65.0" mnemonicParsing="false" onAction="#onStand" prefHeight="75.0" prefWidth="87.0" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-min-height: 75px; -fx-max-height: 75px; -fx-min-width: 75px; -fx-max-height: 75px;" textFill="#f8f7f7">
+      <Button fx:id="standButton" layoutX="550.0" layoutY="439.0" maxHeight="65.0" mnemonicParsing="false" onAction="#onStand" prefHeight="75.0" prefWidth="87.0" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-min-height: 75px; -fx-max-height: 75px; -fx-min-width: 75px; -fx-max-width: 75px;" textFill="#f8f7f7">
          <font>
             <Font name="Charter Roman" size="17.0" />
          </font>

@@ -49,12 +49,6 @@ public class blackjackMain extends Application {
         stage.show(); // Shows the scene
         // calling the method that plays the music
         musicPlayer("jazz.wav");
-
-//        // Initialising path of the media file, replace this with your file path
-//        String path = "org/team04/blackjackmvc/a-jazz-piano-110481.mp3";
-//        Media sound = new Media(getClass().getClassLoader().getResource(path).toString());
-//        mediaPlayer = new MediaPlayer(sound);
-//        mediaPlayer.play();
     }
 
     public static void main(String[] args) {
