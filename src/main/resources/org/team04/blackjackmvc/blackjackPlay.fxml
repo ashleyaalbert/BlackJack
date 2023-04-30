@@ -153,5 +153,29 @@
             <Font name="Charter Roman" size="51.0" />
          </font>
       </Label>
+      <Button fx:id="btnPlayAgain" alignment="CENTER" contentDisplay="CENTER" layoutX="506.0" layoutY="44.0" maxWidth="176.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="176.0" style="-fx-background-radius: 5em; -fx-background-color: gray; -fx-max-height: 75px; -fx-min-height: 75px; -fx-max-width: px; -fx-min-width: 75px;" textFill="WHITE">
+         <font>
+            <Font name="Charter Roman" size="23.0" />
+         </font>
+         <graphic>
+            <Text fill="#fcfafa" strokeType="OUTSIDE" strokeWidth="0.0" text="Play Again!">
+               <font>
+                  <Font name="Charter Roman" size="26.0" />
+               </font>
+            </Text>
+         </graphic>
+      </Button>
+      <Button fx:id="btnQuit" layoutX="409.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-max-height: 75px; -fx-min-height: 75px; -fx-min-width: 75px; -fx-max-width: 75;" textFill="#fff7f7">
+         <font>
+            <Font name="Charter Roman" size="21.0" />
+         </font>
+         <graphic>
+            <Text fill="#fcfcfc" strokeType="OUTSIDE" strokeWidth="0.0" text="Quit">
+               <font>
+                  <Font name="Charter Roman" size="28.0" />
+               </font>
+            </Text>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
