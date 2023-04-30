@@ -278,7 +278,7 @@ public class BlackJackPlayController {
 
                 // Updates the pot label and balance label
                 lblPot.setText(Double.toString(newPot));
-                lblChipTotal.setText(Double.toString((double) newBalance));
+                lblChipTotal.setText(Double.toString(newBalance));
             }
         }
     }
@@ -382,6 +382,11 @@ public class BlackJackPlayController {
      */
     @FXML
     void onDeal() {
+        updateDealerFlowPane();
+        updatePlayerFlowPane();
+        lblWinner.setVisible(false);
+        lblDealerTotal.setVisible(false);
+        lblPlayerTotal.setVisible(false);
         lblIntro.setVisible(false);
         double bet = Double.parseDouble(lblPot.getText());
         if (bet>0) {
@@ -454,7 +459,6 @@ public class BlackJackPlayController {
         lblChipTotal.setText(Double.toString(currentBalance));
 
 
-
         /**
          * Calculate bets after scores have been calculated
          */
@@ -465,12 +469,10 @@ public class BlackJackPlayController {
         // Player Loss
         else if (winState == WinState.LOSS){
             lblWinner.setText("Dealer Wins.");
-
             // Player Win
         } else if (winState == WinState.WIN){
             lblWinner.setText("You win!");
-
-            // Payer Blackjack
+            // Player Blackjack
         } else if (winState == WinState.BLACKJACK) {
             lblWinner.setText("Blackjack!!!");
 
@@ -478,10 +480,12 @@ public class BlackJackPlayController {
         } else if (winState == WinState.PUSH) {
             lblWinner.setText("Push");
         }
-        lblWinner.setVisible(true);
         int dealerTotal = game.getDealerTotal();
+        lblWinner.setVisible(true);
         lblDealerTotal.setVisible(true);
         lblDealerTotal.setText(Integer.toString(dealerTotal));
+        updatePlayerFlowPane();
+        updateDealerFlowPane();
         onReset();
     }
 
@@ -490,20 +494,18 @@ public class BlackJackPlayController {
         game.reset();
         gameStarted = false;
 
-        lblDealerTotal.setVisible(false);
-        lblPlayerTotal.setVisible(false);
         hitButton.setVisible(false);
         standButton.setVisible(false);
         btnDeal.setVisible(true);
-        //        lblWinner.setVisible(false);
-        updateDealerFlowPane();
-        updatePlayerFlowPane();
+
+
     }
 
     @FXML
     void updateTotal(){
         int playerTotal = game.getPlayerTotal();
         lblPlayerTotal.setText(Integer.toString(playerTotal));
+
     }
 
 
