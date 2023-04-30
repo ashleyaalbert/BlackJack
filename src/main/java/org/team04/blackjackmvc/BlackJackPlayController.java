@@ -235,6 +235,8 @@ public class BlackJackPlayController {
         lblPlayerTotal.setVisible(false);
         hitButton.setVisible(false);
         standButton.setVisible(false);
+        btnQuit.setVisible(false);
+        btnPlayAgain.setVisible(false);
 
 
         if (this.game == null) {
@@ -498,6 +500,8 @@ public class BlackJackPlayController {
         lblDealerTotal.setText(Integer.toString(dealerTotal));
         updatePlayerFlowPane();
         updateDealerFlowPane();
+        btnQuit.setVisible(true);
+        btnPlayAgain.setVisible(true);
         onReset();
     }
 
