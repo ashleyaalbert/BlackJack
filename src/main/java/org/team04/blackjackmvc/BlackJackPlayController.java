@@ -177,7 +177,7 @@ public class BlackJackPlayController {
      * The currentBalance of the user at that
      * current time
      */
-    private double currentBalance;
+    public static double currentBalance;
     /**
      * Updated pot after bets are made
      */
