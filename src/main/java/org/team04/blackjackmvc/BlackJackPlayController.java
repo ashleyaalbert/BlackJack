@@ -269,6 +269,16 @@ public class BlackJackPlayController {
             blackjackMain.loadSceneOnStage(stage, FXMLScenes.QUIT);
         } else if (event.getSource() == btnPlayAgain) {
            onReset();
+           btnPlayAgain.setVisible(false);
+           btnQuit.setVisible(false);
+           rectShade.setVisible(false);
+           lblWinner.setVisible(false);
+           lblIntro.setVisible(true);
+           lblDealerTotal.setVisible(false);
+           lblPlayerTotal.setVisible(false);
+           dealerFlowPane.setVisible(false);
+           playerFlowPane.setVisible(false);
+
         }
     }
 
