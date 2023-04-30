@@ -81,6 +81,12 @@ public class BlackJackPlayController {
     @FXML
     private Button homeButton;
 
+    @FXML
+    private Button btnQuit;
+
+    @FXML
+    private Button btnPlayAgain;
+
     /**
      * Label that represents the chip total for the player
      */
@@ -214,6 +220,9 @@ public class BlackJackPlayController {
         assert lblDealerTotal != null : "fx:id=\"lblDealerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblPlayerTotal != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert lblIntro != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert btnQuit != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert btnPlayAgain != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+
 
         game = new Game(name);
 
@@ -249,6 +258,9 @@ public class BlackJackPlayController {
             blackjackMain.loadSceneOnStage(stage, FXMLScenes.WELCOME);
         } else if (event.getSource() == btnVolume) {
             blackjackMain.loadSceneOnStage(stage, FXMLScenes.SETTINGS);
+        } else if (event.getSource() == btnQuit){
+            blackjackMain.loadSceneOnStage(stage, FXMLScenes.QUIT);
+
         }
     }
 
@@ -507,6 +519,8 @@ public class BlackJackPlayController {
         lblPlayerTotal.setText(Integer.toString(playerTotal));
 
     }
+
+
 
 
     /**

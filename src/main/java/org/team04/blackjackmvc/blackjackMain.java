@@ -17,6 +17,7 @@ enum FXMLScenes {
     WELCOME("blackjackWelcome.fxml"),
     PLAY("blackjackPlay.fxml"),
     SETTINGS("blackjackSettings.fxml"),
+    QUIT ("blackJackGameOver.fxml"),
     LOGIN("blackJackLogin.fxml");
 
     private final String fileName;

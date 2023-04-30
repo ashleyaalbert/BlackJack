@@ -165,7 +165,7 @@
             </Text>
          </graphic>
       </Button>
-      <Button fx:id="btnQuit" layoutX="409.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-max-height: 75px; -fx-min-height: 75px; -fx-min-width: 75px; -fx-max-width: 75;" textFill="#fff7f7">
+      <Button fx:id="btnQuit" layoutX="409.0" layoutY="38.0" mnemonicParsing="false" onAction="#onBtnNextSceneAction" style="-fx-background-color: gray; -fx-background-radius: 5em; -fx-max-height: 75px; -fx-min-height: 75px; -fx-min-width: 75px; -fx-max-width: 75;" textFill="#fff7f7">
          <font>
             <Font name="Charter Roman" size="21.0" />
          </font>

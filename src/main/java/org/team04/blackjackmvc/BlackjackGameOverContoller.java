@@ -42,12 +42,14 @@ public class BlackjackGameOverContoller {
         Stage stage = (Stage) homeButton.getScene().getWindow();
 
         if (event.getSource() == homeButton)
-            blackjackMain.loadSceneOnStage(stage, FXMLScenes.PLAY);
+            blackjackMain.loadSceneOnStage(stage, FXMLScenes.WELCOME);
 
     }
 
     @FXML
     void setBalance(){
+        //lblEndBalance.setText();
+        lblEndBalance.setVisible(true);
 
     }
 }
