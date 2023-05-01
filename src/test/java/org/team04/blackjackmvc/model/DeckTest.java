@@ -13,7 +13,7 @@
  *
  * *****************************************/
 
-package org.team04.blackjackmvc;
+package org.team04.blackjackmvc.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

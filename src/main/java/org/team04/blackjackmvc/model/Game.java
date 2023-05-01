@@ -104,8 +104,6 @@ public class Game {
         dealer.dealCardVisible(deck.drawCard());
         player.dealCard(deck.drawCard());
         dealer.dealCardInvisible(deck.drawCard());
-        System.out.println(player.getHand());
-        System.out.println(dealer.getHand());
     }
 
 

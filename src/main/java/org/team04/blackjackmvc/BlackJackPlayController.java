@@ -362,7 +362,7 @@ public class BlackJackPlayController {
 
                 // Updates the pot label and balance label
                 lblPot.setText(Double.toString(newPot));
-                lblChipTotal.setText(Double.toString((double) newBalance));
+                lblChipTotal.setText(Double.toString(newBalance));
             }
         }
     }
@@ -393,7 +393,7 @@ public class BlackJackPlayController {
 
                 // Updates the pot label and balance label
                 lblPot.setText(Double.toString(newPot));
-                lblChipTotal.setText(Double.toString((double) newBalance));
+                lblChipTotal.setText(Double.toString(newBalance));
             }
         }
     }
@@ -424,7 +424,7 @@ public class BlackJackPlayController {
 
                 // Updates the pot label and balance label
                 lblPot.setText(Double.toString(newPot));
-                lblChipTotal.setText(Double.toString((double) newBalance));
+                lblChipTotal.setText(Double.toString(newBalance));
             }
         }
     }
@@ -453,14 +453,18 @@ public class BlackJackPlayController {
             game.dealHand();
             updateTotal();
             lblDealerTotal.setVisible(false);
-            lblPlayerTotal.setVisible(true);
-
             updateDealerFlowPane();
             updatePlayerFlowPane();
+            if (game.getPlayerTotal() == -1) {
+                onStand();
+            }
+            else {
+                lblPlayerTotal.setVisible(true);
+                // and hit and stand button are visible.
+                standButton.setVisible(true);
+                hitButton.setVisible(true);
+            }
 
-            // and hit and stand button are visible.
-            standButton.setVisible(true);
-            hitButton.setVisible(true);
         }
 
     }
@@ -504,7 +508,6 @@ public class BlackJackPlayController {
         lblDealerTotal.setVisible(true);
         game.handleWinner();
         currentBalance = game.getPlayerMoney();
-        System.out.println(currentBalance);
         // give bets to dealer
         bank += newPot;
         // Updates the pot label and balance label
@@ -558,6 +561,11 @@ public class BlackJackPlayController {
 
         hitButton.setVisible(false);
         standButton.setVisible(false);
+        //End game if player is out of money
+        if (game.getPlayerMoney() <1 ) {
+            Stage stage = (Stage) homeButton.getScene().getWindow();
+            blackjackMain.loadSceneOnStage(stage, FXMLScenes.QUIT);
+        }
         btnDeal.setVisible(true);
 
 

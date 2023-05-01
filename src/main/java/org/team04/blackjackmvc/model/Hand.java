@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import static org.team04.blackjackmvc.model.Card.Rank.ACE;
+
 /**
  * A hand of cards held by the player with the current best value represented by the cards
  */
@@ -32,6 +34,7 @@ public class Hand {
      * The cards currently in the hand
      */
     private LinkedList<Card> cardList;
+
 
     /**
      * Number of aces in the hand
@@ -58,7 +61,7 @@ public class Hand {
     public void add(Card card) {
         this.cardList.add(card);
         this.size +=1;
-        if (card.rank().equals("ACE")) {
+        if (card.rank().equals(ACE)) {
             this.aces +=1;
         }
     }
@@ -68,6 +71,7 @@ public class Hand {
      */
     public void clear() {
         this.size = 0;
+        this.aces=0;
         this.cardList.clear();
     }
 
@@ -78,8 +82,8 @@ public class Hand {
         List<Integer> totals = new ArrayList<Integer>();
         totals.add(0);
         for (Card c : this.cardList) {
-            int size = totals.size();
-            for(int i=0; i<size; i++) {
+            int size1 = totals.size();
+            for(int i=0; i<size1; i++) {
                 int val = totals.get(i);
                 totals.set(i, val+c.value());
                 if(c.value() ==1) {
@@ -136,7 +140,7 @@ public class Hand {
      * @return How many cards are in the hand.
      */
     public int getSize() {
-        return size;
+        return this.size;
     }
 
     /**
@@ -178,13 +182,20 @@ public class Hand {
      */
     public Card getCard(int index) {
         // check the index is in the bounds of the hand
-        if (index < 0 || index >= size) {
+        if (index < 0 || index >= this.size) {
             throw new HandIndexOutOfBoundsException();
         }
 
-        return cardList.get(index);
+        return this.cardList.get(index);
     }
 
+    public LinkedList<Card> getCardList() {
+        return this.cardList;
+    }
+
+    public int getAces() {
+        return this.aces;
+    }
 
 }
 
