@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import org.team04.blackjackmvc.model.Card;
 import org.team04.blackjackmvc.model.Game;
 import org.team04.blackjackmvc.model.Hand;
+import org.team04.blackjackmvc.model.User;
 import org.team04.blackjackmvc.model.WinState;
 
 import java.io.InputStream;
@@ -23,6 +24,7 @@ import static org.team04.blackjackmvc.BlackJackLoginController.name;
 
 
 public class BlackJackPlayController {
+    public static double playerBet;
 
     // GUI elements of the program
 
@@ -80,15 +82,9 @@ public class BlackJackPlayController {
     @FXML
     private Button homeButton;
 
-    /**
-     * Button involved when the user wants to quit when they LOSE
-     */
     @FXML
     private Button btnQuit;
 
-    /**
-     * Button involved when the user wants to keep playing when they LOSE
-     */
     @FXML
     private Button btnPlayAgain;
 
@@ -104,16 +100,9 @@ public class BlackJackPlayController {
     @FXML
     private Label lblPot;
 
-    /**
-     * Label that represents the dealer's total
-     */
     @FXML
     private Label lblDealerTotal;
 
-
-    /**
-     * Label that represents the player's total
-     */
     @FXML
     private Label lblPlayerTotal;
 
@@ -141,15 +130,9 @@ public class BlackJackPlayController {
     @FXML
     private FlowPane playerFlowPane = new FlowPane();
 
-    /**
-     * Label that gives user instruction to place a bet
-     */
     @FXML
     private Label lblIntro;
 
-    /**
-     * Rectangle for added style
-     */
     @FXML
     private Rectangle rectShade;
 
@@ -185,6 +168,10 @@ public class BlackJackPlayController {
      */
     private WinState winState;
 
+    /**
+     * The balance of the user after betting
+     */
+    public static double newBalanceAfterBet;
 
     /**
      * The currentBalance of the user at that
@@ -216,16 +203,9 @@ public class BlackJackPlayController {
      */
     private ImageView[] playerImageView = new ImageView[12];
 
-
-    /**
-     * Button involved when the user wants to quit when they WIN
-     */
     @FXML
     private Button btnQuitWin;
 
-    /**
-     * Button involved when the user wants to keep playing when they WIN
-     */
     @FXML
     private Button btnPlayAgainWin;
 
@@ -255,19 +235,11 @@ public class BlackJackPlayController {
         assert btnPlayAgainWin != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert rectShade != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
-        // Initializes a new game
         game = new Game(name);
-
-        if (this.game == null) {
-            throw new IllegalArgumentException("CRASH!");
-        }
-
 
 
         //Creates a bank for the dealer
         bank = 0;
-
-        // Sets up starting FXML Screen for the user
         lblIntro.setVisible(true);
         lblWinner.setVisible(false);
         lblDealerTotal.setVisible(false);
@@ -280,6 +252,10 @@ public class BlackJackPlayController {
         btnPlayAgainWin.setVisible(false);
         rectShade.setVisible(false);
 
+
+        if (this.game == null) {
+            throw new IllegalArgumentException("CRASH!");
+        }
 
     }
 
@@ -386,7 +362,7 @@ public class BlackJackPlayController {
 
                 // Updates the pot label and balance label
                 lblPot.setText(Double.toString(newPot));
-                lblChipTotal.setText(Double.toString((double) newBalance));
+                lblChipTotal.setText(Double.toString(newBalance));
             }
         }
     }
@@ -417,7 +393,7 @@ public class BlackJackPlayController {
 
                 // Updates the pot label and balance label
                 lblPot.setText(Double.toString(newPot));
-                lblChipTotal.setText(Double.toString((double) newBalance));
+                lblChipTotal.setText(Double.toString(newBalance));
             }
         }
     }
@@ -448,7 +424,7 @@ public class BlackJackPlayController {
 
                 // Updates the pot label and balance label
                 lblPot.setText(Double.toString(newPot));
-                lblChipTotal.setText(Double.toString((double) newBalance));
+                lblChipTotal.setText(Double.toString(newBalance));
             }
         }
     }
@@ -459,20 +435,14 @@ public class BlackJackPlayController {
      */
     @FXML
     void onDeal() {
-        // Updates players and dealers cards
         updateDealerFlowPane();
         updatePlayerFlowPane();
-
-        // Updates FXML Screen
         lblWinner.setVisible(false);
         lblDealerTotal.setVisible(false);
         lblPlayerTotal.setVisible(false);
         lblIntro.setVisible(false);
-
-        // Checks that bet is valid
         double bet = Double.parseDouble(lblPot.getText());
         if (bet>0) {
-            // Game has now begun and bet has been placed
             gameStarted = true;
             game.placeBet(bet);
 
@@ -481,17 +451,20 @@ public class BlackJackPlayController {
 
             // Deals cards to player and dealer
             game.dealHand();
-            updatePlayerTotal();
-            // Reveals card totals
+            updateTotal();
             lblDealerTotal.setVisible(false);
-            lblPlayerTotal.setVisible(true);
-
             updateDealerFlowPane();
             updatePlayerFlowPane();
+            if (game.getPlayerTotal() == -1) {
+                onStand();
+            }
+            else {
+                lblPlayerTotal.setVisible(true);
+                // and hit and stand button are visible.
+                standButton.setVisible(true);
+                hitButton.setVisible(true);
+            }
 
-            // and hit and stand button are visible.
-            standButton.setVisible(true);
-            hitButton.setVisible(true);
         }
 
     }
@@ -502,17 +475,12 @@ public class BlackJackPlayController {
      **/
     @FXML
     void onHit() {
-        // Game gives player another card
         game.playerHit();
-        // Updates players cards and total
         updatePlayerFlowPane();
-        updatePlayerTotal();
-        // if the player hand total is greater than 21
+        updateTotal();
         if (playerHand.best()>21) {
-            // Refuse hit or stand action...
             hitButton.setVisible(false);
             standButton.setVisible(false);
-            // ... calls on stand method
             onStand();
         }
     }
@@ -534,33 +502,19 @@ public class BlackJackPlayController {
         // and hit and stand button are no longer visible.
         standButton.setVisible(false);
         hitButton.setVisible(false);
-
-        // Update players totals and get win state
-        updatePlayerTotal();
+        updateTotal();
         winState = game.getWin();
-
-        // Update dealers cards
         updateDealerFlowPane();
         lblDealerTotal.setVisible(true);
-
-        // Game calculates the winner and updates user's balance
         game.handleWinner();
         currentBalance = game.getPlayerMoney();
-
         // give bets to dealer
         bank += newPot;
         // Updates the pot label and balance label
         lblPot.setText(Double.toString(resetPot));
         lblChipTotal.setText(Double.toString(currentBalance));
 
-        // Gets the winner label and updates screen
-        getWinnerLblUpdateScreen();
-    }
 
-    /**
-     * Sets the winner label and updates screen
-     */
-    private void getWinnerLblUpdateScreen() {
         /**
          * Calculate bets after scores have been calculated
          */
@@ -600,9 +554,6 @@ public class BlackJackPlayController {
         btnDeal.setVisible(false);
     }
 
-    /**
-     * Method that resets the game, and the screen.
-     */
     @FXML
     void onReset() {
         game.reset();
@@ -610,19 +561,24 @@ public class BlackJackPlayController {
 
         hitButton.setVisible(false);
         standButton.setVisible(false);
+        //End game if player is out of money
+        if (game.getPlayerMoney() <1 ) {
+            Stage stage = (Stage) homeButton.getScene().getWindow();
+            blackjackMain.loadSceneOnStage(stage, FXMLScenes.QUIT);
+        }
         btnDeal.setVisible(true);
 
 
     }
 
-    /**
-     * Method that updates the player's total
-     */
     @FXML
-    void updatePlayerTotal(){
+    void updateTotal(){
         int playerTotal = game.getPlayerTotal();
         lblPlayerTotal.setText(Integer.toString(playerTotal));
+
     }
+
+
 
 
     /**

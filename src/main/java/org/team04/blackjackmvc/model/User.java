@@ -12,15 +12,11 @@
  * Package: org.team04.blackjackmvc
  * Class: User
  *
- * Description:
+ * Description: A user object to be controlled for a playing a game of blackjack
  *
  * ****************************************
  */
 package org.team04.blackjackmvc.model;
-
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.Scanner;
 
 class InsufficientFundsException extends Exception {
     public InsufficientFundsException(String message) {
@@ -28,6 +24,9 @@ class InsufficientFundsException extends Exception {
     }
 }
 
+/**
+ * A user class for a blackjack game that controls the player hand, bets, and money balance
+ */
 public class User{
     /**
      * Name of the player
@@ -49,22 +48,13 @@ public class User{
     private Hand currentHand;
 
     /**
-     * Scanner for user input
-     */
-    private Scanner scnr;
-
-    /**
      * Create user and initialize user with @param initMoney and @param name and new empty hand
      */
     public User(String name, double initMoney) {
         this.name = name;
         this.money= initMoney;
         this.currentHand = new Hand();
-        System.out.println(name);
-    }
-
-    public double getMoney() {
-        return money;
+        this.currentBet = 0;
     }
 
     /**
@@ -92,28 +82,6 @@ public class User{
         this.currentHand.add(card);
     }
 
-    /**
-     * @return the best possible score of the hand (-1 is a blackjack)
-     */
-    public int getBest() {
-        return this.currentHand.best();
-    }
-
-    /**
-     * reset the current hand
-     */
-    public void clearHand() {
-        this.currentHand.clear();
-    }
-
-    public double getCurrentBet() {
-        return currentBet;
-    }
-
-    public Hand getHand() {
-        return this.currentHand;
-    }
-
     public void handleMoney(WinState win) {
         // If loses or busts bet stays out of money
         if (win.equals(WinState.BUST) || win.equals(WinState.LOSS)) {
@@ -132,6 +100,31 @@ public class User{
         else if (win.equals(WinState.PUSH)) {
             this.money += this.currentBet;
         }
-//        System.out.println(this.money);
+    }
+
+    /**
+     * @return the best possible score of the current user hand (-1 is a blackjack)
+     */
+    public int getBest() {
+        return this.currentHand.best();
+    }
+
+    /**
+     * reset the current hand
+     */
+    public void clearHand() {
+        this.currentHand.clear();
+    }
+
+    public Hand getHand() {
+        return this.currentHand;
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public double getCurrentBet() {
+        return currentBet;
     }
 }

@@ -24,7 +24,9 @@ import java.util.Scanner;
 
 //import static org.team04.blackjackmvc.BlackJackLoginController.name;
 
-
+/**
+ * A game class for the card game blackjack that controls the gameflow and objects involved in the game
+ */
 public class Game {
 
     /**
@@ -48,15 +50,6 @@ public class Game {
      */
     private final double initFunds = 500;
 
-    /**
-     * Generate scanner for user prompts
-     */
-    private Scanner scnr;
-
-    /**
-     * Stores the bet value from the user
-     */
-    public static double bet;
 
     /**
      * The win state of the user in the current hand
@@ -111,8 +104,6 @@ public class Game {
         dealer.dealCardVisible(deck.drawCard());
         player.dealCard(deck.drawCard());
         dealer.dealCardInvisible(deck.drawCard());
-        System.out.println(player.getHand());
-        System.out.println(dealer.getHand());
     }
 
 

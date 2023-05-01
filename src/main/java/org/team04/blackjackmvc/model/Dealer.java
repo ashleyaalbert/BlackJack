@@ -12,12 +12,16 @@
  * Package: org.team04.blackjackmvc
  * Class: Dealer
  *
- * Description:
+ * Description: A dealer object for the blackjack game. Dealer
+ * has a hand of cards that they use to play against the user
  *
  * ****************************************
  */
 package org.team04.blackjackmvc.model;
 
+/**
+ * A dealer object for the game of blackjack that has a hand to play the user
+ */
 public class Dealer{
     /**
      * The dealer hand to be used
