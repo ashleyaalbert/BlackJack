@@ -529,7 +529,13 @@ public class BlackJackPlayController {
 
         hitButton.setVisible(false);
         standButton.setVisible(false);
-        btnDeal.setVisible(true);
+        if (currentBalance == 0) {
+            Stage stage = (Stage) homeButton.getScene().getWindow();
+            blackjackMain.loadSceneOnStage(stage, FXMLScenes.QUIT);
+        }
+        else {
+            btnDeal.setVisible(true);
+        }
 
 
     }
