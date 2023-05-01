@@ -38,5 +38,10 @@
          <font>
             <Font size="21.0" />
          </font></TextField>
+      <Text fill="#f5f5f5" layoutX="186.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please hit 'enter' after typing your name, then press &quot;Go!&quot;">
+         <font>
+            <Font name="Charter Roman" size="26.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
