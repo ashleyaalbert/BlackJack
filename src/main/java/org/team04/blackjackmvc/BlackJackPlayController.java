@@ -526,7 +526,6 @@ public class BlackJackPlayController {
             btnPlayAgain.setVisible(true);
         }
         btnDeal.setVisible(false);
-        onReset();
     }
 
     @FXML
