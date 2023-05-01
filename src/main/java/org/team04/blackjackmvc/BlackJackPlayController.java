@@ -152,11 +152,6 @@ public class BlackJackPlayController {
     @FXML
     private Rectangle rectShade;
 
-    @FXML
-    private Button btnQuitWin;
-    @FXML
-    private Button btnPlayAgainWin;
-
 
     /**
      * Initializing a game
@@ -245,8 +240,6 @@ public class BlackJackPlayController {
         assert btnQuit != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnPlayAgain != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert rectShade != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert btnQuitWin != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
-        assert btnPlayAgainWin != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
         // Creates a new game
         game = new Game(name);
@@ -509,12 +502,20 @@ public class BlackJackPlayController {
 
         // Update totals
         updateTotal();
+
+        // Get win state
         winState = game.getWin();
+
+        // update dealers cards and total
         updateDealerFlowPane();
         lblDealerTotal.setVisible(true);
+
+        // Game class handles the winner
         game.handleWinner();
-        currentBalance = game.getPlayerMoney();
+
+        // updates money
         System.out.println(currentBalance);
+
         // give bets to dealer
         bank += newPot;
         // Updates the pot label and balance label
@@ -522,9 +523,14 @@ public class BlackJackPlayController {
         lblChipTotal.setText(Double.toString(currentBalance));
 
 
-        /**
-         * Calculate bets after scores have been calculated
-         */
+        calculateBetsVisualAspect();
+    }
+
+    /**
+     * Assigns text to labels after scores have been calulated as well
+     * as bets!
+     */
+    private void calculateBetsVisualAspect() {
         // Player Busts
         if (winState == WinState.BUST){
             lblWinner.setText("BUST!");
@@ -556,7 +562,7 @@ public class BlackJackPlayController {
     }
 
     /**
-     *
+     * This method resets the game!
      */
     @FXML
     void onReset() {
@@ -568,14 +574,15 @@ public class BlackJackPlayController {
         btnDeal.setVisible(true);
     }
 
+    /**
+     * This method updates the total of cards for the player
+     */
     @FXML
     void updateTotal(){
         int playerTotal = game.getPlayerTotal();
         lblPlayerTotal.setText(Integer.toString(playerTotal));
 
     }
-
-
 
 
     /**
