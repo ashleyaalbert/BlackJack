@@ -12,14 +12,12 @@
  * Package: org.team04.blackjackmvc
  * Class: User
  *
- * Description:
+ * Description: A user object to be controlled for a playing a game of blackjack
  *
  * ****************************************
  */
 package org.team04.blackjackmvc.model;
 
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.Scanner;
 
 class InsufficientFundsException extends Exception {
@@ -28,6 +26,9 @@ class InsufficientFundsException extends Exception {
     }
 }
 
+/**
+ * A user class for a blackjack game that controls the player hand, bets, and money balance
+ */
 public class User{
     /**
      * Name of the player
@@ -47,11 +48,6 @@ public class User{
      * The current hand being played
      */
     private Hand currentHand;
-
-    /**
-     * Scanner for user input
-     */
-    private Scanner scnr;
 
     /**
      * Create user and initialize user with @param initMoney and @param name and new empty hand
@@ -132,6 +128,5 @@ public class User{
         else if (win.equals(WinState.PUSH)) {
             this.money += this.currentBet;
         }
-//        System.out.println(this.money);
     }
 }

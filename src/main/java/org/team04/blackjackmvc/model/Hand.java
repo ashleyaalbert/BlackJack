@@ -118,18 +118,6 @@ public class Hand {
         }
     }
 
-    public List<Card> getCardList() {
-        return this.cardList;
-    }
-
-    /**
-     * @return true if the hand can be split. i.e. there are 2 cards in
-     * the hand of the same rank
-     */
-    public boolean splitable() {
-        return ((this.cardList.size() ==2) && (this.cardList.get(0).rank()==this.cardList.get(1).rank()));
-    }
-
     /**
      * Make all cards visible
      */
@@ -178,37 +166,6 @@ public class Hand {
             i++;
         }
         return sb.append(']').toString();
-    }
-
-
-    /**
-     * Sums up the hands to be able to find winner,
-     *
-     * @return The sum of the hand.
-     */
-    public int sum(){
-        // Keeps track of the total cards in each hand
-        int result = 0;
-
-        // Keeps track of number of aces, to determine whether their value
-        // is 11 or 1.
-        int aceCount = 0;
-
-        // Calculates the sum hand and counts the number of aces
-        for (int i = 0; i < size; i++) {
-            result += cardList.get(i).value();
-            if (cardList.get(i).rank().equals("ACE")) {
-                aceCount++;
-            }
-        }
-
-        // Change ace values from 11 to 1 if sum is currently above 21
-        while (result > 21 && aceCount != 0) {
-            result -= 10;
-            aceCount--;
-        }
-
-        return result;
     }
 
     /**
