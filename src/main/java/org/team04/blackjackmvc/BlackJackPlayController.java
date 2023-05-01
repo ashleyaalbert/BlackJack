@@ -203,6 +203,11 @@ public class BlackJackPlayController {
      */
     private ImageView[] playerImageView = new ImageView[12];
 
+    @FXML
+    private Button btnQuitWin;
+
+    @FXML
+    private Button btnPlayAgainWin;
 
 
     @FXML
@@ -226,6 +231,8 @@ public class BlackJackPlayController {
         assert lblIntro != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnQuit != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert btnPlayAgain != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert btnQuitWin != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
+        assert btnPlayAgainWin != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
         assert rectShade != null : "fx:id=\"lblPlayerTotal\" was not injected: check your FXML file 'blackjackPlay.fxml'.";
 
         game = new Game(name);
@@ -241,6 +248,8 @@ public class BlackJackPlayController {
         standButton.setVisible(false);
         btnQuit.setVisible(false);
         btnPlayAgain.setVisible(false);
+        btnQuitWin.setVisible(false);
+        btnPlayAgainWin.setVisible(false);
         rectShade.setVisible(false);
 
 
@@ -278,6 +287,21 @@ public class BlackJackPlayController {
            lblPlayerTotal.setVisible(false);
            dealerFlowPane.setVisible(false);
            playerFlowPane.setVisible(false);
+        }
+        else if (event.getSource() == btnQuitWin) {
+            blackjackMain.loadSceneOnStage(stage, FXMLScenes.QUIT);
+        }
+        else if (event.getSource() == btnPlayAgainWin) {
+            onReset();
+            btnPlayAgainWin.setVisible(false);
+            btnQuitWin.setVisible(false);
+            rectShade.setVisible(false);
+            lblWinner.setVisible(false);
+            lblIntro.setVisible(true);
+            lblDealerTotal.setVisible(false);
+            lblPlayerTotal.setVisible(false);
+            dealerFlowPane.setVisible(false);
+            playerFlowPane.setVisible(false);
         }
     }
 
@@ -521,8 +545,8 @@ public class BlackJackPlayController {
             btnPlayAgain.setVisible(true);
         }
         else {
-            btnQuit.setVisible(true);
-            btnPlayAgain.setVisible(true);
+            btnQuitWin.setVisible(true);
+            btnPlayAgainWin.setVisible(true);
         }
         btnDeal.setVisible(false);
     }
