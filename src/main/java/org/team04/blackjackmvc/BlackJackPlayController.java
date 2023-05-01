@@ -516,9 +516,16 @@ public class BlackJackPlayController {
         lblDealerTotal.setText(Integer.toString(dealerTotal));
         updatePlayerFlowPane();
         updateDealerFlowPane();
-        rectShade.setVisible(true);
-        btnQuit.setVisible(true);
-        btnPlayAgain.setVisible(true);
+        if ((winState == WinState.PUSH) || (winState == WinState.LOSS) || (winState == WinState.BUST)) {
+            rectShade.setVisible(true);
+            btnQuit.setVisible(true);
+            btnPlayAgain.setVisible(true);
+        }
+        else {
+            btnQuit.setVisible(true);
+            btnPlayAgain.setVisible(true);
+        }
+        btnDeal.setVisible(false);
         onReset();
     }
 

@@ -12,7 +12,9 @@
  * Package: org.team04.blackjackmvc
  * Class: Game
  *
- * Description:
+ * Description: Class that creates a basic game object. A game entails
+ * the game of blackjack. The game has a player and dealer, each with cards.
+ * The game controls the flow of actions.
  *
  * ****************************************
  */
@@ -45,10 +47,6 @@ public class Game {
      * Initial funds for user to start with
      */
     private final double initFunds = 500;
-    /**
-     * Current state of the game
-     */
-    private GameState state;
 
     /**
      * Generate scanner for user prompts
@@ -65,17 +63,24 @@ public class Game {
      */
     public WinState win;
 
+    /**
+     * Create a new game object with a new player, dealer, deck, and
+     * set the current user win state to null
+     *
+     * @param name of the user
+     */
     public Game(String name) {
         player = new User(name, initFunds);
         dealer = new Dealer();
         deck = new Deck(nBox);
-        state = GameState.IN_GAME;
         win = WinState.NULL;
         System.out.println("New game");
     }
 
+    /**
+     * Game is reset. User and dealer hands are reset to no cards.
+     */
     public void reset() {
-        state = GameState.IN_GAME;
         win = WinState.NULL;
         player.clearHand();
         dealer.clearHand();
@@ -89,15 +94,10 @@ public class Game {
     public void placeBet(Double bet) {
         if (player.getMoney()>0) {
             System.out.println(bet);
-            if (bet == 0) {
-                state = GameState.END_GAME;
-            }
-            else {
-                try {
-                    player.placeBet(bet);
-                } catch (InsufficientFundsException e) {
-                    System.out.println(e.getMessage());
-                }
+            try {
+                player.placeBet(bet);
+            } catch (InsufficientFundsException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -107,7 +107,6 @@ public class Game {
      * is not yet visible
      */
     public void dealHand() {
-        this.win = WinState.NULL;
         player.dealCard(deck.drawCard());
         dealer.dealCardVisible(deck.drawCard());
         player.dealCard(deck.drawCard());
@@ -116,24 +115,6 @@ public class Game {
         System.out.println(dealer.getHand());
     }
 
-    /**
-     * End game and report earnings or losses to user
-     */
-    private void end() {
-        if (player.getMoney() ==0) {
-            System.out.println("Out of money! Game over.");
-        }
-        else {
-            Double earnings = player.getMoney() - initFunds;
-            if (earnings>=0) {
-                System.out.printf("Final balance: $.2f, You won: $.2f", player.getMoney(), earnings);
-            }
-            else {
-                earnings = earnings *-1;
-                System.out.printf("Final balance: $.2f, You lost: $.2f", player.getMoney(), earnings);
-            }
-        }
-    }
 
     /**
      * Player stands and dealer plays. Dealer hits until hand total is greater than 16
@@ -143,7 +124,6 @@ public class Game {
         while (dealer.getBest() <=16) {
             dealer.dealCardVisible(deck.drawCard());
         }
-        state = GameState.EVALUATE_HANDS;
     }
 
     /**
@@ -200,6 +180,9 @@ public class Game {
         return this.win;
    }
 
+    /**
+     * Handle the movement of user money depending on whether they win, lose, bust, or blackjack
+     */
    public void handleWinner() {
         player.handleMoney(this.win);
    }
