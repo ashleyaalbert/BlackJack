@@ -20,12 +20,23 @@ enum FXMLScenes {
     QUIT ("blackJackGameOver.fxml"),
     LOGIN("blackJackLogin.fxml");
 
+    /**
+     * Constant variable for file name
+     */
     private final String fileName;
 
+    /**
+     * Constructor for the file name
+     * @param fileName file name of the FXML Scenes
+     */
     FXMLScenes(String fileName) {
         this.fileName = fileName;
     }
 
+    /**
+     * A getter to get the file name
+     * @return fileName - name of the file
+     */
     public String getFileName() {
         return fileName;
     }
@@ -42,6 +53,16 @@ public class blackjackMain extends Application {
     /** A boolean to tell if the music is playing or not */
     private static boolean isPlaying = false;
 
+    /**
+     * Start method for FXML, loads scenes
+     * @param stage the primary stage for this application, onto which
+     * the application scene can be set.
+     * Applications may create other stages, if needed, but they will not be
+     * primary stages.
+     * @throws UnsupportedAudioFileException
+     * @throws LineUnavailableException
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         loadSceneOnStage(stage, FXMLScenes.WELCOME); // Loads the first scene
@@ -51,6 +72,10 @@ public class blackjackMain extends Application {
         musicPlayer("jazz.wav");
     }
 
+    /**
+     * Launches program
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }
@@ -111,6 +136,9 @@ public class blackjackMain extends Application {
         clip.start();
     }
 
+    /**
+     * Method that stops the music
+     */
     public static void musicStopper() {
         // Checking if the music is playing
         if(isPlaying){

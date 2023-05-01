@@ -21,9 +21,8 @@ package org.team04.blackjackmvc;
 
 public class NegativeBalanceException extends Exception{
     /**
-     * Checked exception representing the issue of the the balance being in negatives
+     * Checked exception representing the issue of the balance being in negatives
      */
-
         public NegativeBalanceException(String message) {
             super(message);
         }
