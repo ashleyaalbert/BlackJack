@@ -169,11 +169,6 @@ public class BlackJackPlayController {
     private WinState winState;
 
     /**
-     * The balance of the user after betting
-     */
-    public static double newBalanceAfterBet;
-
-    /**
      * The currentBalance of the user at that
      * current time
      */

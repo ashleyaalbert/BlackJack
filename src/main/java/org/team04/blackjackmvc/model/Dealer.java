@@ -26,13 +26,13 @@ public class Dealer{
     /**
      * The dealer hand to be used
      */
-    Hand dealerHand;
+    private Hand dealerHand;
 
     /**
      * Dealer is created with new empty hand
      */
     public Dealer() {
-        dealerHand = new Hand();
+        this.dealerHand = new Hand();
     }
 
     /**
