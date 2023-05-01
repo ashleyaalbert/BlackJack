@@ -278,7 +278,6 @@ public class BlackJackPlayController {
            lblPlayerTotal.setVisible(false);
            dealerFlowPane.setVisible(false);
            playerFlowPane.setVisible(false);
-
         }
     }
 
