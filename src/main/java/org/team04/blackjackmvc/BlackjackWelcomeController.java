@@ -18,30 +18,55 @@ public class BlackjackWelcomeController {
     @FXML
     private URL location;
 
+    /**
+     * Label that shows the title
+     */
     @FXML
     private Label blackjackTitle;
 
+    /**
+     * Sparkle icon for style
+     */
     @FXML
     private ImageView bottomLeftSparkle;
-
+    /**
+     * Sparkle icon for style
+     */
     @FXML
     private ImageView bottomRightSparkle;
 
+    /**
+     * Button that takes the user to the game
+     */
     @FXML
     private Button btnPlay;
 
+    /**
+     * Button that takes the user to the settings
+     */
     @FXML
     private Button btnSettings;
 
+    /**
+     * Card image used for style
+     */
     @FXML
     private ImageView cardsImageView;
 
+    /**
+     * AnchorPane that was customized for the background
+     */
     @FXML
     private AnchorPane tableBackground;
 
+    /**
+     * Sparkle icon for style
+     */
     @FXML
     private ImageView topLeftSparkle;
-
+    /**
+     * Sparkle icon for style
+     */
     @FXML
     private ImageView topRightSparkle;
 

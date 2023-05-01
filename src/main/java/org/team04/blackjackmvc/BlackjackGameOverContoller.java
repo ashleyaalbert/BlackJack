@@ -17,9 +17,15 @@ public class BlackjackGameOverContoller {
     @FXML
     private URL location;
 
+    /**
+     * Button that takes the user to the home screen
+     */
     @FXML
     private Button homeButton;
 
+    /**
+     * Label that shows the user their end balance at the end of the game
+     */
     @FXML
     private Label lblEndBalance;
 
@@ -49,6 +55,9 @@ public class BlackjackGameOverContoller {
     }
 
 
+    /**
+     * Method that sets the end balance for the user
+     */
     private void setBalance(){
         double endBalance = BlackJackPlayController.currentBalance;
         lblEndBalance.setText(String.valueOf(endBalance));
