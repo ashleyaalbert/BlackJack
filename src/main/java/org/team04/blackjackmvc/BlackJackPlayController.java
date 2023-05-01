@@ -550,10 +550,7 @@ public class BlackJackPlayController {
         // Game calculates the winner and updates user's balance
         game.handleWinner();
         currentBalance = game.getPlayerMoney();
-<<<<<<< HEAD
-                =======
 
->>>>>>> eva
         // give bets to dealer
         bank += newPot;
         // Updates the pot label and balance label
