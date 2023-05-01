@@ -20,17 +20,35 @@ public class BlackJackSettingsController {
     @FXML
     private URL location;
 
+    /**
+     * Button that takes the user back to the play screen
+     */
     @FXML
     private Button btnBack;
+    /**
+     * Button that turns off the music
+     */
     @FXML
     private Button btnOff;
 
+    /**
+     * Button that turns on the music
+     */
     @FXML
     private Button btnOn;
 
+    /**
+     * Button that represents as a volume button
+     */
     @FXML
     private Button btnVolume;
 
+    /**
+     * {@link ActionEvent} handler for when we're ready to change to the next
+     * scene.
+     *
+     * @param event is the {@link ActionEvent} passed
+     */
     @FXML
     void onBtnNextSceneAction(ActionEvent event) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         // Get the Stage object of this button
