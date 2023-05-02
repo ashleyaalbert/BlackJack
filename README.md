@@ -59,7 +59,7 @@ a Design package, which contains our Use Case Diagram, CRC Cards, and Class Diag
 
 
 ## 3rd Party Libraries
-We did not user any 3rd Party Libraries in this project besides JavaFX. JavaFX is at version 17 and the link is https://openjfx.io/. 
+We did not use any 3rd Party Libraries in this project besides JavaFX. JavaFX is at version 17 and the link is https://openjfx.io/. 
 
 ## How to run it
 Open the terminal and find where you are comfortable copying files into.  You then type in the following command: 

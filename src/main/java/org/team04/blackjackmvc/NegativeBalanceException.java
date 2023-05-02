@@ -3,7 +3,7 @@
  * Sprint 2023
  * Instructor: Prof. Brian King
  *
- * Name: Eva Frankovic
+ * Name: Taylor LaMantia, Eva Frankovic, Ashley Albert
  * Section: 01 - 9am
  * Date: 4/24/23
  * Time: 8:30 PM
@@ -12,7 +12,7 @@
  * Package: org.team04.blackjackmvc
  * Class: NegativeBalanceException
  *
- * Description:
+ * Description: An exception to be thrown if there is a negative balance
  *
  * **********************************************
  */

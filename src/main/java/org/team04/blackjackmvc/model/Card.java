@@ -4,7 +4,7 @@
  * Instructor: King
  * Section: 9am
  *
- * Name: Taylor LaMantia
+ * Name: Taylor LaMantia, Eva Frankovic, Ashley Albert
  * Date: 4/7/2023
  *
  * Final Project: Black jack
@@ -13,6 +13,7 @@
  * in a deck of cards with a suit, rank, and value property
  *
  * *****************************************/
+
 package org.team04.blackjackmvc.model;
 
 public class Card {

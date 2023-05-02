@@ -3,7 +3,7 @@
  * Spring 2023
  * Instructor: Prof. Brian King
  *
- * Name: Taylor LaMantia
+ * Name: Taylor LaMantia, Eva Frankovic, Ashley Albert
  * Section: 9am
  * Date: 4/8/2023
  * Time: 11:39 AM
@@ -16,6 +16,7 @@
  *
  * ****************************************
  */
+
 package org.team04.blackjackmvc.model;
 
 class InsufficientFundsException extends Exception {

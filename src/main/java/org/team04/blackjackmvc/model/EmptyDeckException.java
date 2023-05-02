@@ -3,7 +3,7 @@
  * Spring 2023
  * Instructor: Prof. Brian King
  *
- * Name: Taylor LaMantia
+ * Name: Taylor LaMantia, Eva Frankovic, Ashley Albert
  * Section: 9am
  * Date: 4/12/2023
  * Time: 9:22 AM
@@ -12,10 +12,11 @@
  * Package: org.team04.blackjackmvc.model
  * Class: EmptyDeckException
  *
- * Description:
+ * Description: An exception that is thrown if the deck is empty
  *
  * ****************************************
  */
+
 package org.team04.blackjackmvc.model;
 
 /**

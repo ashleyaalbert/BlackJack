@@ -1,3 +1,18 @@
+/* *****************************************
+ * CSCI205 - Software Engineering and Design
+ * Spring 2023
+ * Instructor: King
+ * Section: 9am
+ *
+ * Name: Taylor LaMantia, Eva Frankovic, Ashley Albert
+ * Date: 4/7/2023
+ *
+ * Final Project: Black jack
+ *
+ * Description: A class for the play controller
+ *
+ * *****************************************/
+
 package org.team04.blackjackmvc;
 
 import javafx.event.ActionEvent;
@@ -14,7 +29,6 @@ import org.team04.blackjackmvc.model.Card;
 import org.team04.blackjackmvc.model.Game;
 import org.team04.blackjackmvc.model.Hand;
 import org.team04.blackjackmvc.model.WinState;
-
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;

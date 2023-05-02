@@ -4,7 +4,7 @@
  * Instructor: King
  * Section: 9am
  *
- * Name: Taylor LaMantia
+ * Name: Taylor LaMantia, Eva Frankovic, Ashley Albert
  * Date: 4/7/2023
  *
  * Final Project: Black jack
@@ -18,13 +18,10 @@ package org.team04.blackjackmvc.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.team04.blackjackmvc.model.Card;
-import org.team04.blackjackmvc.model.Deck;
-import org.team04.blackjackmvc.model.EmptyDeckException;
-
 import java.util.LinkedList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class DeckTest {
 

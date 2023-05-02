@@ -3,7 +3,7 @@
  * Spring 2023
  * Instructor: Prof. Brian King
  *
- * Name: Taylor LaMantia
+ * Name: Taylor LaMantia, Eva Frankovic, Ashley Albert
  * Section: 9am
  * Date: 4/7/2023
  * Time: 9:32 AM
@@ -18,11 +18,8 @@
  *
  * ****************************************
  */
+
 package org.team04.blackjackmvc.model;
-
-import java.util.Scanner;
-
-//import static org.team04.blackjackmvc.BlackJackLoginController.name;
 
 /**
  * A game class for the card game blackjack that controls the gameflow and objects involved in the game

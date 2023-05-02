@@ -1,10 +1,24 @@
+/* *****************************************
+ * CSCI205 - Software Engineering and Design
+ * Spring 2023
+ * Instructor: King
+ * Section: 9am
+ *
+ * Name: Taylor LaMantia, Eva Frankovic, Ashley Albert
+ * Date: 4/7/2023
+ *
+ * Final Project: Black jack
+ *
+ * Description: Tests for Hand class
+ *
+ * *****************************************/
+
 package org.team04.blackjackmvc.model;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

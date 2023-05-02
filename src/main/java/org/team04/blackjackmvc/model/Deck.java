@@ -3,7 +3,7 @@
  * Sprint 2023
  * Instructor: Prof. Brian King
  *
- * Name: Taylor LaMantia
+ * Name: Taylor LaMantia, Eva Frankovic, Ashley Albert
  * Section: 01 - 9am
  * Date: 4/4/23
  * Time: 7:34 PM
