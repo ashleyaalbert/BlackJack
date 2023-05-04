@@ -71,4 +71,4 @@ Once the operation completes, run the following:
 After this, the application should begin, so congratulations! Enjoy the game!!
 
 ## Video Presentation
-Here is a link to our video presentation of this Black Jack game: ***URL goes here***
+Here is a link to our video presentation of this Black Jack game: https://mediaspace.bucknell.edu/media/CSCI205%20Team04%20Blackjack/1_jtltg7yg
